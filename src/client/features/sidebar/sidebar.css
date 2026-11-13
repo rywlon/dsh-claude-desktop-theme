@@ -235,10 +235,9 @@ html[data-dsh-ccd-style="true"][data-platform="darwin"] ._3WPZCG_root:not(._3WPZ
   justify-content: flex-start;
   align-items: center;
   /* The 26px navigation height is 3px + the 20px line + 3px, the same rhythm
-     the panel rows below use, so the row grows with the interface type scale
-     instead of clipping its label at the larger steps. */
-  height: auto;
-  min-height: var(--ccd-nav-row-height);
+     the panel rows below use; stated as a formula so the row grows with the
+     interface type scale instead of clipping its label at the larger steps. */
+  height: calc(6px + 20px * var(--ccd-font-scale, 1));
   margin: 0 0 var(--ccd-nav-gap);
   padding: 3px 8px;
   border: 0;
@@ -491,8 +490,10 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) .ccd-sideb
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
-  height: auto;
-  min-height: var(--ccd-nav-row-height);
+  /* Fixed rather than content-sized: the row is a navigation row and its box
+     must match New Session's, whose 26px is 3px + the 20px line + 3px. The
+     same formula keeps it on that pitch at every interface scale. */
+  height: calc(6px + 20px * var(--ccd-font-scale, 1));
   margin: 0 0 var(--ccd-nav-gap);
   padding: 3px 8px;
   border: 0;
