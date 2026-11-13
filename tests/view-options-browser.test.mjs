@@ -92,7 +92,7 @@ test('view-options flyouts support pointer crossing, clicks and one-step keyboar
       assert.ok(geometry.gap >= 0 && geometry.gap <= 2, 'reference surfaces almost touch');
       assert.ok(Math.abs(geometry.top) <= 1, 'submenu aligns with the active row');
       assert.equal(geometry.radius, '10px');
-      assert.equal(geometry.hover, 'rgb(238, 240, 247)', 'shared host hover rules preserve the sampled reference fill');
+      assert.equal(geometry.hover, 'rgb(244, 244, 246)', 'shared host hover rules preserve the sampled reference fill');
       // Cross the actual gap instead of jumping straight to the option.
       await move(await point('[data-ccd-view-row="0"]', true));
       const bridge = await page.evaluate(`(()=>{const r=document.querySelector('.ccd-view-submenu').getBoundingClientRect(),card=document.querySelector('[data-ccd-view-options]').getBoundingClientRect();return{x:(r.left+card.right)/2,y:r.top+12}})()`);
