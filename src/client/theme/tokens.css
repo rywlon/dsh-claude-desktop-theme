@@ -402,10 +402,12 @@ html[data-dsh-ccd-style="true"] {
      drawing a stroke. */
   --ccd-check-fill: #4d6bfe;
   --ccd-check-ink: #ffffff;
-  /* Lavender ink keeps the light reference's crests visible on the pale page. */
+  /* The character ripple keeps the DeepSeek card's own wave ink: the same
+     brand blue it uses for its crests, so the hero animation stays colourful
+     instead of fading into the neutral page. */
   --ccd-hero-space-dot: #8a8a91;
   --ccd-hero-space-shot: #d5d5d9;
-  --ccd-hero-ripple-ink: #848891;
+  --ccd-hero-ripple-ink: #3b6ef0;
   --ccd-hero-ripple-idle-ink: #999a9c;
 
   /* State colours that DSH already owns semantics for. */
@@ -645,7 +647,7 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-price-off-peak: #a1c9aa;
   --ccd-price-peak: #dfb77d;
   --ccd-hero-space-shot: #5e5e66;
-  --ccd-hero-ripple-ink: #8b93a8;
+  --ccd-hero-ripple-ink: #7fa6ff;
   --ccd-hero-ripple-idle-ink: #8e8e96;
   /* Reference surfaces: near-black page and sidebar, charcoal popup and input.
      Hover and selection must remain visibly lighter than the popup. */

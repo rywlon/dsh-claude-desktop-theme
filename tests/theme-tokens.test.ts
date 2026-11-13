@@ -286,3 +286,10 @@ test('the Shiki syntax palette and the inline-code chip leave the Claude rust be
   assert.equal(light.get('ccd-inline-code-fill'), '#f1f3fa');
   assert.equal(dark.get('ccd-inline-code-fill'), '#262b36');
 });
+
+test('the hero ripple keeps the DeepSeek wave ink instead of the neutral page grey', () => {
+  const light = declarations(lightSheet);
+  const dark = declarations(darkSheet);
+  assert.equal(light.get('ccd-hero-ripple-ink'), '#3b6ef0');
+  assert.equal(dark.get('ccd-hero-ripple-ink'), '#7fa6ff');
+});
