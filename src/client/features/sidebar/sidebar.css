@@ -768,6 +768,17 @@ html[data-dsh-ccd-style="true"] .jJkEga_sessionRow .jJkEga_title {
   margin-left: 0;
 }
 
+/* A plugin that draws its own leading control — `dsh-archive-manager`'s
+   favorite star is the one seen here — parks it `position: absolute` over the
+   row's leading 16px cell instead of adding to the row's children in flow. The
+   title above starts at the row inset, so that cell has to be reserved for it
+   again whenever the star slot is present. The star itself only appears on
+   hover or once favorited, but this offset is constant: a hover-dependent
+   indent would make the whole list jump as the pointer moves down it. */
+html[data-dsh-ccd-style="true"] .jJkEga_sessionRow:has(> .dsham_starSlot) > .jJkEga_title {
+  margin-inline-start: calc(16px + var(--dsh-workspace-indent, 0px));
+}
+
 html[data-dsh-ccd-style="true"] [data-ccd-status-group="ended"] > .jJkEga_slot:has(> [data-state]),
 html[data-dsh-ccd-style="true"] .jJkEga_sessionRow > .jJkEga_slot:has(> [data-state="done"]),
 html[data-dsh-ccd-style="true"] .jJkEga_sessionRow > .jJkEga_slot:has(> div[data-slot="sidebar.session.row.leading"]:empty) {

@@ -38,12 +38,24 @@ const SHARED_CLASSES = ['_markdown_1ypvv_5', '_fileMention_1ypvv_85', '_linkIcon
 /** Shared frontend Menu, Modal and RiskConfirmation classes: `<local>_<hash>_<line>`. */
 const SHARED_MENU = /_[_A-Za-z0-9]*_(?:4ub78|o6lrb|cjd8z|1rv3m)_\d+/gu;
 
+/**
+ * Classes a third-party plugin owns, not host modules.
+ *
+ * `dsh-archive-manager` draws its Session favorite star as a `dsham_starSlot`
+ * inside the row; `features/sidebar/sidebar.css` reserves that star's cell, so
+ * the scan below sees the plugin's own `dsham_` prefix. It is not a host
+ * module, so it has no counterpart in either build table — drop it before the
+ * scan rather than pretending the host ships it.
+ */
+const THIRD_PARTY_CLASSES = ['dsham_starSlot', 'dsham_rowStar'];
+
 const root = fileURLToPath(new URL('../', import.meta.url));
 
 /** Drop the shared classes, so only build-specific ones are collected. */
 function withoutShared(text: string): string {
   let out = text.replace(SHARED_MENU, '');
   for (const name of SHARED_CLASSES) out = out.split(name).join('');
+  for (const name of THIRD_PARTY_CLASSES) out = out.split(name).join('');
   return out;
 }
 
