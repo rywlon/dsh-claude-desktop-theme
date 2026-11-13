@@ -259,9 +259,11 @@ try {
   });
   await step('model-menu', async () => {
     await click('button[aria-label^="选择模型"],button[aria-label^="Select model"]');
-    await waitFor(() => page.evaluate('/暂无可用模型|No models available/i.test(document.body.innerText)'), 'real empty model directory (no credentials)');
+    // Real credential stores (e.g. the macOS Keychain) outlive the disposable profile,
+    // so a populated menu is as valid as the empty-directory state.
+    await waitFor(() => page.evaluate('/暂无可用模型|No models available|本次会话|This session/i.test(document.body.innerText)'), 'model menu opens');
     await key('Escape', 'Escape', 27);
-    await waitFor(() => page.evaluate('!/暂无可用模型|No models available/i.test(document.body.innerText)'), 'model menu closes');
+    await waitFor(() => page.evaluate('!/本次会话|This session/i.test(document.body.innerText)'), 'model menu closes');
   });
   await step('navigation', async () => {
     await click('button[aria-label="自定义"],button[aria-label="Customize"]');

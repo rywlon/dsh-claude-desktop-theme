@@ -31,6 +31,14 @@ npm run check:package
 
 完整的 `npm run check` 还包含浏览器用例：需要本机可用的 Chrome，受限环境里 headless Chrome 可能起不来而超时，这时先跑上面的非浏览器步骤，完整校验以 GitHub Actions（push 到 `main` 时运行）为准。
 
+真实宿主冒烟（会启动本机 `/Applications` 里的 DSH Desktop，用一次性 `DSH_HOME`，不碰日常 profile）：
+
+```sh
+npm run test:host -- --tarball <刚才 pack 出来的 tgz>
+```
+
+本机若已登录过 DSH Desktop，凭据在系统钥匙串里、会延续到一次性 profile，模型目录因此非空；脚本已兼容“空目录 / 有模型”两种状态。
+
 ## 安装到本地 DSH
 
 源码安装流程见 [install.md](install.md)。要点是 `npm run pack:local --cache .cache/npm` 打出唯一路径的 tarball，再用桌面版内置 CLI 安装到 `desktop` profile：
