@@ -268,3 +268,21 @@ test('both configuration sections travel in one override layer', () => {
   assert.equal(typeof tokens['--dsw-font-family'], 'undefined');
   assert.equal(typeof tokens['--ds-font-family-code'], 'object');
 });
+
+test('the Shiki syntax palette and the inline-code chip leave the Claude rust behind', () => {
+  const tokens = resolveThemeTokens(adoptConfig({}));
+  const syntax = Object.keys(tokens).filter(name => name.startsWith('--shiki-token-'));
+  assert.equal(syntax.length, 9, 'all nine syntax roles travel with the skin');
+  assert.deepEqual(tokens['--shiki-token-string'], { light: '#157a52', dark: '#7ee2a8' });
+  assert.deepEqual(tokens['--shiki-token-keyword'], { light: '#c0265c', dark: '#ff8fb3' });
+  assert.deepEqual(tokens['--shiki-token-function'], { light: '#6b45d6', dark: '#c0a8ff' });
+  assert.equal('--shiki-foreground' in tokens, false, 'the foreground keeps aliasing the host body ink');
+  assert.equal('--shiki-background' in tokens, false, 'the block surface keeps aliasing the markdown token');
+
+  const light = declarations(lightSheet);
+  const dark = declarations(darkSheet);
+  assert.equal(light.get('ccd-inline-code-text'), '#3b56d9');
+  assert.equal(dark.get('ccd-inline-code-text'), '#9db4ff');
+  assert.equal(light.get('ccd-inline-code-fill'), '#f1f3fa');
+  assert.equal(dark.get('ccd-inline-code-fill'), '#262b36');
+});

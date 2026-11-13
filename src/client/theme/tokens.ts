@@ -60,6 +60,24 @@ const HOST_CARD_TOKENS: Readonly<Record<string, TokenModes>> = Object.freeze({
 });
 
 /**
+ * The Shiki syntax palette. The host highlights fenced code through CSS
+ * custom properties (ui-primitives CodeBlock); overriding them here lets one
+ * syntax theme travel with the skin instead of inheriting the host's warm
+ * defaults. Hues stay distinct but sit in the DeepSeek blue-green range.
+ */
+const SYNTAX_TOKENS: Readonly<Record<string, TokenModes>> = Object.freeze({
+  '--shiki-token-constant': pair('#1f6feb', '#79b8ff'),
+  '--shiki-token-string': pair('#157a52', '#7ee2a8'),
+  '--shiki-token-comment': pair('#8b919c', '#8a92a3'),
+  '--shiki-token-keyword': pair('#c0265c', '#ff8fb3'),
+  '--shiki-token-parameter': pair('#b35c00', '#ffb86b'),
+  '--shiki-token-function': pair('#6b45d6', '#c0a8ff'),
+  '--shiki-token-string-expression': pair('#157a52', '#9bf0c0'),
+  '--shiki-token-punctuation': pair('#5b6270', '#c9cfdb'),
+  '--shiki-token-link': pair('#3b56d9', '#8fa4ff'),
+});
+
+/**
  * Fallback tails live in `theme/tokens.css` next to the built-in stacks, so the
  * composed value references them instead of copying a font list into TypeScript.
  */
@@ -150,6 +168,7 @@ export function resolveThemeTokens(config: StyleConfig): ThemeTokenOverrides {
     ...surfaceTokens(config),
     ...fontTokens(config),
     ...HOST_CARD_TOKENS,
+    ...SYNTAX_TOKENS,
     [FONT_SCALE_VAR]: both(interfaceFontScale(config)),
   };
 }

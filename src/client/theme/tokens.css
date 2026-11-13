@@ -350,9 +350,9 @@ html[data-dsh-ccd-style="true"] {
   /* Assistant Markdown palette matched to the CCD transcript reference. */
   --ccd-link: #3b56d9;
   --ccd-link-underline: rgba(59, 86, 217, .55);
-  --ccd-inline-code-text: #a8322d;
-  --ccd-inline-code-fill: #f2f2f4;
-  --ccd-inline-code-border: #e4e4e7;
+  --ccd-inline-code-text: #3b56d9;
+  --ccd-inline-code-fill: #f1f3fa;
+  --ccd-inline-code-border: #dfe5f4;
   --ccd-command-name: #4d6bfe;
   --ccd-command-argument: #159d36;
 
@@ -769,9 +769,9 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   /* Assistant Markdown palette, lightened for a dark transcript. */
   --ccd-link: #8fa4ff;
   --ccd-link-underline: rgba(143, 164, 255, .5);
-  --ccd-inline-code-text: #f0918a;
-  --ccd-inline-code-fill: #34343a;
-  --ccd-inline-code-border: #45454c;
+  --ccd-inline-code-text: #9db4ff;
+  --ccd-inline-code-fill: #262b36;
+  --ccd-inline-code-border: #353b47;
   --ccd-command-name: #8fa4ff;
   --ccd-command-argument: #8ccf91;
 
