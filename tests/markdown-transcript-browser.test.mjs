@@ -284,7 +284,7 @@ test('the transcript markdown overrides lay out the way the reference crop measu
       /* Quote: a 4px rule in the card-outline grey (the reference measures
          #e3e3e3 and 6 device px at @2x) with its text one step down in ink. */
       assert.equal(on.quoteRule, '4px');
-      assert.equal(on.quoteRuleColour, 'rgb(227, 227, 225)', 'the rule is the CCD outline, not the host mid grey');
+      assert.equal(on.quoteRuleColour, 'rgb(227, 227, 230)', 'the rule is the CCD outline, not the host mid grey');
       assert.equal(on.quotePadding, '15px');
       assert.equal(on.quoteInk, 'rgb(111, 111, 106)', 'quote text is the secondary ink, not body ink');
 

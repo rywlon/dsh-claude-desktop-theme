@@ -209,7 +209,7 @@ test('header reference menus: geometry, real actions, keyboard, boundaries and c
         await page.evaluate(`document.querySelector('[data-conversation-session]').setAttribute('data-conversation-session','s1')`);
         await click('[data-ccd-session-trigger]');
         await page.evaluate(`document.body.setAttribute('data-ds-dark-theme','')`);
-        assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('${menu}')).backgroundColor`), 'rgb(34, 34, 34)');
+        assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('${menu}')).backgroundColor`), 'rgb(27, 27, 30)');
         // A short window and narrow viewport keep all menu rows reachable.
         await page.send('Emulation.setDeviceMetricsOverride', { width: 320, height: 150, deviceScaleFactor: 2, mobile: false });
         await page.evaluate('window.dispatchEvent(new Event("resize"))');

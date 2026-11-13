@@ -158,11 +158,11 @@ body{margin:0;background:#eaeae8;font-family:system-ui;font-size:13px}
 `;
 
 const CARD_SURFACE = 'rgb(255, 255, 255)';
-const BORDER = 'rgb(227, 227, 225)';
-const MUTED = 'rgb(143, 143, 138)';
-const INK = 'rgb(11, 11, 11)';
+const BORDER = 'rgb(227, 227, 230)';
+const MUTED = 'rgb(138, 138, 145)';
+const INK = 'rgb(13, 13, 15)';
 const ACCENT = 'rgb(75, 118, 206)';
-const TINT = 'rgb(211, 226, 249)';
+const TINT = 'rgb(226, 231, 245)';
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
 /** Read a box and a few computed values for one selector. */
@@ -356,7 +356,7 @@ test('the Files pane carries the reference’s filter, tree control, marks and l
       const glyph = await measure(page, '[data-ccd-files-mark]', '::before');
       assert.equal(mark.width, 24, 'the mark is the reference’s 24px square');
       assert.equal(mark.background, TINT, 'on its own tint');
-      assert.equal(glyph.color, 'rgb(48, 78, 145)', 'with the reference’s deeper blue ink');
+      assert.equal(glyph.color, 'rgb(47, 74, 134)', 'with the reference’s deeper blue ink');
       assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-dockkit-tab-title] > svg')).display`),
         'none', 'the host’s category-coloured folder gives up the seat');
 

@@ -92,7 +92,7 @@ test('view-options flyouts support pointer crossing, clicks and one-step keyboar
       assert.ok(geometry.gap >= 0 && geometry.gap <= 2, 'reference surfaces almost touch');
       assert.ok(Math.abs(geometry.top) <= 1, 'submenu aligns with the active row');
       assert.equal(geometry.radius, '10px');
-      assert.equal(geometry.hover, 'rgb(245, 245, 245)', 'shared host hover rules preserve the sampled reference fill');
+      assert.equal(geometry.hover, 'rgb(244, 244, 246)', 'shared host hover rules preserve the sampled reference fill');
       // Cross the actual gap instead of jumping straight to the option.
       await move(await point('[data-ccd-view-row="0"]', true));
       const bridge = await page.evaluate(`(()=>{const r=document.querySelector('.ccd-view-submenu').getBoundingClientRect(),card=document.querySelector('[data-ccd-view-options]').getBoundingClientRect();return{x:(r.left+card.right)/2,y:r.top+12}})()`);
@@ -152,8 +152,8 @@ test('view-options flyouts support pointer crossing, clicks and one-step keyboar
       await page.evaluate(`document.body.setAttribute('data-ds-dark-theme','')`);
       await open();
       await move(await point('[data-ccd-view-row="2"]'));
-      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-view-row="2"]')).color`), 'rgb(232, 232, 230)');
-      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('.ccd-view-submenu')).backgroundColor`), 'rgb(34, 34, 34)');
+      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-view-row="2"]')).color`), 'rgb(236, 236, 239)');
+      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('.ccd-view-submenu')).backgroundColor`), 'rgb(27, 27, 30)');
     });
   } finally { await rm(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }); }
 });

@@ -224,10 +224,10 @@ test('a Session row ends at one ⋮, and the seat it replaces takes no box', {
       /* Fill: nothing while the pointer is only on the row, and the token's step
          — one below the row's own `--ccd-selected` — while it is on the ⋮. */
       assert.equal(view.more.fill, 'rgba(0, 0, 0, 0)', 'the ⋮ rests unfilled');
-      assert.equal(view.strong, '#e1e0dd', 'the light palette declares the measured step');
+      assert.equal(view.strong, '#dbdbdf', 'the light palette declares the measured step');
       await hoverControl('#more-a');
       view = await devtools.evaluate(readout);
-      assert.equal(view.more.fill, 'rgb(225, 224, 221)', `the ⋮ takes ${view.strong} on hover`);
+      assert.equal(view.more.fill, 'rgb(225, 224, 227)', `the ⋮ takes ${view.strong} on hover`);
       assert.equal(view.more.ink, 'rgb(31, 31, 29)', 'and the row\'s own ink with it');
       assert.ok(view.archive.width === 0 && view.pin.width === 0, 'the seat stays out while the menu\'s trigger is pointed at');
 

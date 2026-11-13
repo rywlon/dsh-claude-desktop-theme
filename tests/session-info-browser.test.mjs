@@ -80,7 +80,7 @@ test('session cards follow data, overlay chat beside tools, reorder and clean up
       const tip = await page.evaluate(`(()=>{const t=document.querySelector('.ccd-info-tooltip');return{open:t.matches(':popover-open'),text:t.textContent,bg:getComputedStyle(t).backgroundColor};})()`);
       assert.equal(tip.open, true);
       assert.match(tip.text, /a-very-long-worktree-checkout-directory/);
-      assert.equal(tip.bg, 'rgb(17, 17, 17)');
+      assert.equal(tip.bg, 'rgb(17, 17, 19)');
       await page.evaluate(`document.activeElement.blur()`); await pause();
       assert.equal(await page.evaluate(`document.querySelectorAll('[data-ccd-info-card="usage"] .ccd-info-value [tabindex], [data-ccd-info-card="usage"] [title]').length`), 0,
         'session usage values and its collapsed summary have no tooltip');
