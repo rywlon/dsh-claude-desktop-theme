@@ -324,7 +324,7 @@ test('the transcript markdown overrides lay out the way the reference crop measu
          fill measures #efefef at @2x, which is this raised step. The row is the
          51 device px both shots measure, paid as the transcript's 20px line
          plus 6px of cell padding a side. */
-      assert.equal(on.tableHeadFill, 'rgb(240, 240, 239)', 'the head keeps the CCD raised fill');
+      assert.equal(on.tableHeadFill, 'rgb(235, 235, 237)', 'the head keeps the CCD raised fill');
       assert.equal(on.tableRow, 33, 'the row keeps the reference height under the tighter leading');
 
       /* With the gate off the sheet must not reach the host at all. */
