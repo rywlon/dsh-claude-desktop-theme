@@ -14,6 +14,8 @@ git merge upstream/main
 
 尽量少改上游原有文件，把自有改动集中成独立提交或放在单独文件里，方便持续合并上游；发版、CI、文档口径都沿用上游约定（[AGENTS.md](AGENTS.md)）。
 
+上游 0.10.5 起包含 `.github/workflows/host-compat.yml`（真实宿主冒烟 CI）。本 fork 暂未纳入该文件：本机 `gh` token 只有 `gist`、`read:org`、`repo` scope，推送会因缺少 `workflow` scope 被 GitHub 拒绝。要启用时，先去 GitHub 网页端手工添加该文件（或执行 `gh auth refresh -h github.com -s workflow` 后再推送），然后运行 `npm run test:host`。
+
 README 与其它文档里的绝对链接仍指向上游仓库：这样 fork 的文档保持一致，也满足 [scripts/check-architecture.mjs](scripts/check-architecture.mjs) 里写死的 `zkforge` raw 前缀。要把文档改指本 fork 时，需同步修改该脚本的 `RAW_PREFIX`。
 
 ## 本地验证
@@ -40,7 +42,7 @@ npm run check:package
 
 安装和升级会写 `~/.dsh/profiles/desktop`，装完完整退出并重开 DSH。本地 profile 同时只应启用一个 Claude 风格主题，和别的主题插件并存前先确认不会互相抢注入点。
 
-本机当前安装的是 `~/.dsh/theme-tarballs/dsh-claude-desktop-theme-0.10.5.tgz`，profile 依赖记为指向该 tarball 的 `file:` 路径；本地同时保留一份源码检出在 `~/Developer/dsh-claude-desktop-theme`（`origin` 可推、`upstream` 指上游），日常改动都在检出里做。每次改动后的循环：
+本机当前安装的是 `~/.dsh/theme-tarballs/dsh-claude-desktop-theme-0.10.7.tgz`，profile 依赖记为指向该 tarball 的 `file:` 路径；本地同时保留一份源码检出在 `~/Developer/dsh-claude-desktop-theme`（`origin` 可推、`upstream` 指上游），日常改动都在检出里做。每次改动后的循环：
 
 1. 跑上面的非浏览器验证；完整 `npm test` 依赖 Chrome，本机受限环境起不来时以 CI 为准。
 2. 先改 `package.json` 的版本号再构建——版本号会编进构建产物。
