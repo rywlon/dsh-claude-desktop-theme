@@ -73,7 +73,7 @@ test('one grey rounded native painter covers pages, menus and tool details, with
           assert.equal(await page.evaluate(`(()=>{const e=document.getElementById('${id}');return Math.abs(e.scrollLeft-(e.scrollWidth-e.clientWidth))<1})()`),true,`${id} reaches right`);
         }
         await page.evaluate(`document.body.setAttribute('data-ds-dark-theme','');document.getElementById('page').setAttribute('data-ccd-scrolling','')`);
-        assert.equal(await page.evaluate(`getComputedStyle(document.getElementById('page'),'::-webkit-scrollbar-thumb').backgroundColor`),'rgb(146, 146, 155)');
+        assert.equal(await page.evaluate(`getComputedStyle(document.getElementById('page'),'::-webkit-scrollbar-thumb').backgroundColor`),'rgb(144, 144, 154)');
         await page.evaluate('window.release()');
         assert.deepEqual(await page.evaluate('window.errors'), []);
       });

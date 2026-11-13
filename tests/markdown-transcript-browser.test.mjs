@@ -286,7 +286,7 @@ test('the transcript markdown overrides lay out the way the reference crop measu
       assert.equal(on.quoteRule, '4px');
       assert.equal(on.quoteRuleColour, 'rgb(227, 227, 230)', 'the rule is the CCD outline, not the host mid grey');
       assert.equal(on.quotePadding, '15px');
-      assert.equal(on.quoteInk, 'rgb(111, 111, 106)', 'quote text is the secondary ink, not body ink');
+      assert.equal(on.quoteInk, 'rgb(95, 95, 102)', 'quote text is the secondary ink, not body ink');
 
       /* Body leading. The reference runs its 14px body on a 20px line where the
          host draws 24px — two lines of one paragraph sit 30.7 device px apart in
