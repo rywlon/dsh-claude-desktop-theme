@@ -1,6 +1,6 @@
 {
   "name": "dsh-claude-desktop-theme",
-  "version": "0.10.10",
+  "version": "0.10.11",
   "license": "MIT",
   "description": "Minimal Style — a minimal, neutral theme for DeepSeek Harness (DSH) Desktop (fork of the Claude Desktop theme), with light/dark palettes, an interface type scale, model/effort pickers and an interactive pixel whale",
   "author": "rywlon (fork of zkforge)",
