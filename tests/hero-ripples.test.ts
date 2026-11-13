@@ -366,6 +366,10 @@ test('hero lifecycle pauses for visibility and reduced motion and releases the c
     assert.equal(calls, before + 6, 'the field continues at its normal cadence');
     events.get('keydown')!({ type: 'keydown', key: 'a' }); tick(4300);
     assert.equal(calls, before + 6, 'typing holds the same frame');
+    // A resolved Escape keydown from the theme's own dismissal must not count
+    // as typing: it never gets a keyup and would hold the frame forever.
+    events.get('keydown')!({ type: 'keydown', key: 'Escape', isTrusted: false }); tick(4400);
+    assert.equal(calls, before + 6, 'a synthetic Escape never starts a typing hold');
     events.get('keyup')!({ type: 'keyup', key: 'a' }); tick(4600);
     assert.equal(calls, before + 8, 'releasing the key lets it paint again');
     /* A modifier is not typing, so the cadence carries on under it. */

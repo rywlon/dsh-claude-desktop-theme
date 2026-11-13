@@ -85,12 +85,18 @@ export function mountHeroCanvas(document: Document,
     frame = win.requestAnimationFrame(tick);
   };
   const engage = (event: Event) => {
+    // Only real keystrokes can be typing. The theme itself dispatches resolved
+    // Escape presses (view-options dismissal) and the host may synthesise keys
+    // too; a synthetic keydown has no matching keyup and would freeze the
+    // decorative field for the rest of the session.
+    if (event.isTrusted === false) return;
     const { key, metaKey, ctrlKey } = event as KeyboardEvent;
     // Modifiers alone and command shortcuts do not produce text.
     if (key === 'Shift' || key === 'Control' || key === 'Alt' || key === 'Meta' || metaKey || ctrlKey) return;
     busy = true;
   };
-  const release = () => {
+  const release = (event?: Event) => {
+    if (event?.isTrusted === false) return;
     if (!busy) return;
     busy = false;
     /* Do not paint an overdue frame the moment the gesture ends; the next
@@ -167,7 +173,8 @@ export function mountHeroCanvas(document: Document,
   document.addEventListener('click', click, { passive: true });
   // Capture typing even if an editor stops propagation.
   document.addEventListener('keydown', engage, { capture: true, passive: true });
-  document.addEventListener('keyup', release, { capture: true, passive: true });
+  const onKeyUp = (event: Event) => release(event);
+  document.addEventListener('keyup', onKeyUp, { capture: true, passive: true });
   const blur = () => { leave(); release(); };
   win.addEventListener('blur', blur);
   reduced.addEventListener('change', sync);
@@ -179,7 +186,7 @@ export function mountHeroCanvas(document: Document,
     document.removeEventListener('visibilitychange', sync);
     document.removeEventListener('click', click);
     document.removeEventListener('keydown', engage, { capture: true });
-    document.removeEventListener('keyup', release, { capture: true });
+    document.removeEventListener('keyup', onKeyUp, { capture: true });
     win.removeEventListener('blur', blur);
     reduced.removeEventListener('change', sync); win.removeEventListener('resize', sync);
     root = null; canvas = null; titleCanvas = null; impulses = [];
