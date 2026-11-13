@@ -154,11 +154,11 @@ body{margin:0;background:#eaeae8;font-family:system-ui;font-size:13px}
 `;
 
 const CARD_SURFACE = 'rgb(255, 255, 255)';
-const CARD_BORDER = 'rgb(220, 220, 224)';
-const ROW_LINE = 'rgb(227, 227, 230)';
-const MUTED = 'rgb(138, 138, 145)';
-const ACCENT = 'rgb(75, 118, 206)';
-const TINT = 'rgb(226, 231, 245)';
+const CARD_BORDER = 'rgb(215, 221, 239)';
+const ROW_LINE = 'rgb(221, 227, 241)';
+const MUTED = 'rgb(132, 136, 145)';
+const ACCENT = 'rgb(77, 107, 254)';
+const TINT = 'rgb(220, 228, 247)';
 const TRANSPARENT = 'rgba(0, 0, 0, 0)';
 
 /** Read a box and a few computed values for one selector. */

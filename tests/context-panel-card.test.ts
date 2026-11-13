@@ -108,7 +108,7 @@ test('every category has its own colour in both palettes', () => {
     assert.ok(sheet.includes(`.ccd-context-seg-${key} { background: var(--ccd-context-${name}); }`), `segment ${key}`);
   }
   /* The five sampled hues, to the reference's own pixels. */
-  assert.equal(token('ccd-context-mcp'), '#2a78d8');
+  assert.equal(token('ccd-context-mcp'), '#4d6bfe');
   assert.equal(token('ccd-context-tools'), '#e96a33');
   assert.equal(token('ccd-context-system'), '#1ead7c');
   assert.equal(token('ccd-context-skills'), '#eda105');

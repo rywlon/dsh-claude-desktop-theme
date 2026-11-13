@@ -116,7 +116,7 @@ test('the context panel’s two states measure and dismiss like the reference', 
       assert.equal(Math.round(reserved.left - next.right), 4, 'the reserved grey steps 4px away');
       assert.equal(Math.round(seg.width), 16, '48k of 1M of a 334px bar');
       assert.equal(Math.round(reserved.width), 11, '33k of 1M');
-      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-seg="mcp"]')).backgroundColor`), 'rgb(42, 120, 216)');
+      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-seg="mcp"]')).backgroundColor`), 'rgb(77, 107, 254)');
       assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-bar]')).backgroundColor`), 'rgb(238, 238, 238)',
         'the track is the free-space colour');
 
@@ -214,8 +214,8 @@ test('the context panel’s two states measure and dismiss like the reference', 
       await pause();
       await page.evaluate(`document.body.setAttribute('data-ds-dark-theme','')`);
       await open();
-      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-panel]')).backgroundColor`), 'rgb(27, 27, 30)');
-      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-seg="mcp"]')).backgroundColor`), 'rgb(91, 154, 232)');
+      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-panel]')).backgroundColor`), 'rgb(29, 32, 40)');
+      assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-seg="mcp"]')).backgroundColor`), 'rgb(95, 124, 255)');
       assert.equal(await page.evaluate(`getComputedStyle(document.querySelector('[data-ccd-context-bar]')).backgroundColor`), 'rgb(63, 63, 59)');
     });
   } finally { await rm(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 }); }

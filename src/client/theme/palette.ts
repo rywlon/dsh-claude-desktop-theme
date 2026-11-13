@@ -1,7 +1,7 @@
 /**
  * Colour arithmetic behind the configurable surfaces.
  *
- * Minimal Style ships one cool-neutral light palette; a user-supplied background therefore has
+ * Minimal Style ships one DeepSeek-blue light palette; a user-supplied background therefore has
  * to bring its own hover, selection and line steps, or a dark canvas would keep
  * light grey rows. Every value here is derived from the two configured colours
  * with fixed ratios, so the result is deterministic and testable — and no other
@@ -40,9 +40,9 @@ export interface Palette {
  * test parses that stylesheet and fails when the two drift apart.
  */
 export const BUILT_IN_SURFACES = Object.freeze({
-  canvas: '#f7f7f8',
-  sidebar: '#f2f2f3',
-  border: '#e3e3e6',
+  canvas: '#fbfcff',
+  sidebar: '#f7f9ff',
+  border: '#dde3f1',
 });
 
 /**
@@ -53,18 +53,18 @@ export const BUILT_IN_SURFACES = Object.freeze({
  * every surface pair.
  */
 export const BUILT_IN_DARK: Palette = Object.freeze({
-  canvas: '#101012',
-  sidebar: '#0d0d0f',
-  card: '#1b1b1e',
-  track: '#19191c',
-  raised: '#28282c',
-  hover: '#2d2d31',
-  hoverStrong: '#43434a',
-  selected: '#34343a',
-  border: '#323238',
-  borderStrong: '#414147',
-  borderSoft: '#29292d',
-  tableHeadLine: '#48484f',
+  canvas: '#13161d',
+  sidebar: '#10131a',
+  card: '#1d2028',
+  track: '#1b1e26',
+  raised: '#22252d',
+  hover: '#2b2f37',
+  hoverStrong: '#3a3f4d',
+  selected: '#252f4c',
+  border: '#23262e',
+  borderStrong: '#2c3038',
+  borderSoft: '#1f222a',
+  tableHeadLine: '#2a2e37',
 });
 
 const WHITE: Rgb = Object.freeze({ r: 255, g: 255, b: 255 });

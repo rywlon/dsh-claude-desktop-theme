@@ -53,9 +53,9 @@ body{margin:0;width:300px;height:200px;background:var(--ccd-sidebar);font-family
 .ST7X_W_root{height:100%;background:#fcfcfb}
 `;
 
-const SELECTED = 'rgb(227, 227, 230)';
-const HOVER = 'rgb(236, 236, 238)';
-const TEXT = 'rgb(23, 23, 26)';
+const SELECTED = 'rgb(230, 234, 247)';
+const HOVER = 'rgb(238, 240, 247)';
+const TEXT = 'rgb(19, 20, 22)';
 const NONE = 'rgba(0, 0, 0, 0)';
 
 test('the New Session row keeps the selected fill while its page is the current location', {
@@ -117,8 +117,8 @@ test('the New Session row keeps the selected fill while its page is the current 
            panel row is painted. */
         await park();
         assert.deepEqual(await fill('#new'), [SELECTED, TEXT]);
-        assert.deepEqual(await fill('#plugins'), [NONE, 'rgb(61, 61, 67)']);
-        assert.deepEqual(await fill('#routines'), [NONE, 'rgb(61, 61, 67)']);
+        assert.deepEqual(await fill('#plugins'), [NONE, 'rgb(63, 67, 78)']);
+        assert.deepEqual(await fill('#routines'), [NONE, 'rgb(63, 67, 78)']);
 
         /* Under the pointer the row answers with the hover step, as the panel
            rows do; the neighbouring panel row's hover leaves the fill alone. */

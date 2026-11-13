@@ -284,9 +284,9 @@ test('the transcript markdown overrides lay out the way the reference crop measu
       /* Quote: a 4px rule in the card-outline grey (the reference measures
          #e3e3e3 and 6 device px at @2x) with its text one step down in ink. */
       assert.equal(on.quoteRule, '4px');
-      assert.equal(on.quoteRuleColour, 'rgb(227, 227, 230)', 'the rule is the CCD outline, not the host mid grey');
+      assert.equal(on.quoteRuleColour, 'rgb(221, 227, 241)', 'the rule is the CCD outline, not the host mid grey');
       assert.equal(on.quotePadding, '15px');
-      assert.equal(on.quoteInk, 'rgb(95, 95, 102)', 'quote text is the secondary ink, not body ink');
+      assert.equal(on.quoteInk, 'rgb(101, 104, 113)', 'quote text is the secondary ink, not body ink');
 
       /* Body leading. The reference runs its 14px body on a 20px line where the
          host draws 24px — two lines of one paragraph sit 30.7 device px apart in
@@ -324,7 +324,7 @@ test('the transcript markdown overrides lay out the way the reference crop measu
          fill measures #efefef at @2x, which is this raised step. The row is the
          51 device px both shots measure, paid as the transcript's 20px line
          plus 6px of cell padding a side. */
-      assert.equal(on.tableHeadFill, 'rgb(235, 235, 237)', 'the head keeps the CCD raised fill');
+      assert.equal(on.tableHeadFill, 'rgb(244, 245, 249)', 'the head keeps the CCD raised fill');
       assert.equal(on.tableRow, 33, 'the row keeps the reference height under the tighter leading');
 
       /* With the gate off the sheet must not reach the host at all. */

@@ -52,7 +52,7 @@ test('one grey rounded native painter covers pages, menus and tool details, with
             const r=getComputedStyle(e,'::-webkit-scrollbar-track');const b=getComputedStyle(e,'::-webkit-scrollbar');
             return {width:b.width,height:b.height,radius:t.borderTopLeftRadius,color:t.backgroundColor,
               image:t.backgroundImage,margin:r.marginTop,standard:getComputedStyle(e).scrollbarWidth};})()`);
-          assert.deepEqual(facts, {width:'6px',height:'6px',radius:'999px',color:'rgb(143, 143, 150)',image:'none',margin:'0px',standard:'auto'}, id);
+          assert.deepEqual(facts, {width:'6px',height:'6px',radius:'999px',color:'rgb(201, 205, 214)',image:'none',margin:'0px',standard:'auto'}, id);
         }
         assert.equal(await page.evaluate(`getComputedStyle(document.getElementById('rail')).scrollbarWidth`), 'none');
         assert.equal(await page.evaluate(`document.querySelector('[data-ccd-scroll-layer],[data-ccd-scroll-thumb]')===null`), true);
@@ -73,7 +73,7 @@ test('one grey rounded native painter covers pages, menus and tool details, with
           assert.equal(await page.evaluate(`(()=>{const e=document.getElementById('${id}');return Math.abs(e.scrollLeft-(e.scrollWidth-e.clientWidth))<1})()`),true,`${id} reaches right`);
         }
         await page.evaluate(`document.body.setAttribute('data-ds-dark-theme','');document.getElementById('page').setAttribute('data-ccd-scrolling','')`);
-        assert.equal(await page.evaluate(`getComputedStyle(document.getElementById('page'),'::-webkit-scrollbar-thumb').backgroundColor`),'rgb(144, 144, 154)');
+        assert.equal(await page.evaluate(`getComputedStyle(document.getElementById('page'),'::-webkit-scrollbar-thumb').backgroundColor`),'rgb(169, 174, 185)');
         await page.evaluate('window.release()');
         assert.deepEqual(await page.evaluate('window.errors'), []);
       });

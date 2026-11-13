@@ -27,6 +27,39 @@ export const HOST_FONT_TOKENS = Object.freeze({
 });
 
 /**
+ * Host tokens the DeepSeek card paints: brand fills, buttons, links, layers and
+ * the bubble. Values are the deepseek card of `dsh-claude-style` so host-drawn
+ * controls read as the same skin as the plugin's own surfaces.
+ */
+const HOST_CARD_TOKENS: Readonly<Record<string, TokenModes>> = Object.freeze({
+  '--dsw-alias-bg-layer-1': pair('#fbfcff', '#1b1e26'),
+  '--dsw-alias-bg-layer-2': pair('#fbfcff', '#22252d'),
+  '--dsw-alias-bg-layer-3': pair('#fcfdff', '#2b2f37'),
+  '--dsw-alias-bg-overlay': pair('#fbfcff', '#22252d'),
+  '--dsw-alias-border-l1': pair('#eceff8', '#23262e'),
+  '--dsw-alias-border-l2': pair('#e2e7f4', '#2c3038'),
+  '--dsw-alias-brand-primary': pair('#4d6bfe', '#4d6bfe'),
+  '--dsw-alias-brand-text': pair('#fbfcff', '#f2f7ff'),
+  '--dsw-alias-button-primary-fill': pair('#4d6bfe', '#4d6bfe'),
+  '--dsw-alias-button-primary-hover': pair('#3d56e9', '#6a84ff'),
+  '--dsw-alias-button-info-fill': pair('#4d6bfe', '#4d6bfe'),
+  '--dsw-alias-button-info-hover': pair('#3d56e9', '#6a84ff'),
+  '--dsw-alias-button-elevated-fill': pair('#f4f5f9', '#22252d'),
+  '--dsw-alias-button-floating-fill': pair('#ffffff', '#22252d'),
+  '--dsw-alias-button-floating-hover': pair('#fcfdff', '#2b2f37'),
+  '--dsw-alias-interactive-bg-active': pair('rgba(95, 124, 255, .26)', 'rgba(77, 107, 254, .3)'),
+  '--dsw-alias-interactive-bg-hover-solid': pair('#f0f1f4', '#2b2f37'),
+  '--dsw-alias-state-business-primary': pair('#4d6bfe', '#4d6bfe'),
+  '--dsw-alias-state-business-tertiary': pair('#dce4f7', '#252f4c'),
+  '--dsw-alias-link': pair('#3e57e0', '#7594fd'),
+  '--dsw-alias-markdown-code-block': pair('#f4f5f9', '#1b1e26'),
+  '--dsw-alias-markdown-code-block-banner': pair('#f0f1f4', '#22252d'),
+  '--dsw-specific-input-major': pair('#ffffff', '#0e1117'),
+  '--dsw-specific-selector': pair('#fafbfe', '#2b2f37'),
+  '--dsw-specific-bubble': pair('#ecf0ff', '#262b36'),
+});
+
+/**
  * Fallback tails live in `theme/tokens.css` next to the built-in stacks, so the
  * composed value references them instead of copying a font list into TypeScript.
  */
@@ -116,6 +149,7 @@ export function resolveThemeTokens(config: StyleConfig): ThemeTokenOverrides {
   return {
     ...surfaceTokens(config),
     ...fontTokens(config),
+    ...HOST_CARD_TOKENS,
     [FONT_SCALE_VAR]: both(interfaceFontScale(config)),
   };
 }
