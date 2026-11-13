@@ -40,7 +40,7 @@ npm run check:package
 
 安装和升级会写 `~/.dsh/profiles/desktop`，装完完整退出并重开 DSH。本地 profile 同时只应启用一个 Claude 风格主题，和别的主题插件并存前先确认不会互相抢注入点。
 
-本机当前安装的是 `~/.dsh/theme-tarballs/dsh-claude-desktop-theme-0.10.4.tgz`，profile 依赖记为指向该 tarball 的 `file:` 路径；升级时把新 tarball 放进同一目录再 add 一次即可，源码仓库不必留在本地。改动前先备份 profile 的 `cordis.patch.yml` 和 `package.json`：旧配置里可能残留同一 id（`ui-skin-ccd-style`）的条目，会覆盖插件的默认配置。安装完还要把包名加进 profile `package.json` 的 `dsh.profile.bundles` 才会被加载。
+本机当前安装的是 `~/.dsh/theme-tarballs/dsh-claude-desktop-theme-0.10.5.tgz`，profile 依赖记为指向该 tarball 的 `file:` 路径；升级时把新 tarball 放进同一目录再 add 一次即可，源码仓库不必留在本地。改动前先备份 profile 的 `cordis.patch.yml` 和 `package.json`：旧配置里可能残留同一 id（`ui-skin-ccd-style`）的条目，会覆盖插件的默认配置。安装完还要把包名加进 profile `package.json` 的 `dsh.profile.bundles` 才会被加载。
 
 ## 发布
 
