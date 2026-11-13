@@ -1,7 +1,6 @@
 import type { Context } from '@deepseek-ai/cordis';
 import type { ReactElement } from 'react';
 import type { Disposer } from '../contracts/ports.ts';
-import { recordsInTranscript } from './mutation-scope.ts';
 
 /**
  * Public list slot declared by ui-settings-general's SettingsRoot.
@@ -42,37 +41,4 @@ export function mountSettingsSection(
     label,
     locale,
   }, component));
-}
-
-/**
- * SettingsRoot hardcodes icons by id, with a gear for extension sections.
- * It emits no section id on navigation buttons. Match our localized label only
- * inside the settings dialog navigation, and leave React's SVG intact.
- */
-export function mountSettingsSectionIcon(document: Document, labels: readonly string[]): Disposer {
-  const marked = new Set<Element>();
-  const update = () => {
-    const matches = new Set<Element>();
-    for (const button of document.querySelectorAll('[role="dialog"][data-shortcut-modal="settings"] nav button')) {
-      if (labels.includes(button.textContent?.trim() ?? '')) matches.add(button);
-    }
-    for (const button of marked) {
-      if (!matches.has(button)) {
-        button.removeAttribute('data-ccd-settings-icon');
-        marked.delete(button);
-      }
-    }
-    for (const button of matches) {
-      button.setAttribute('data-ccd-settings-icon', '');
-      marked.add(button);
-    }
-  };
-  const observer = new MutationObserver(records => { if (!recordsInTranscript(records)) update(); });
-  observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-  update();
-  return () => {
-    observer.disconnect();
-    for (const button of marked) button.removeAttribute('data-ccd-settings-icon');
-    marked.clear();
-  };
 }

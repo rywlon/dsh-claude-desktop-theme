@@ -6,8 +6,6 @@ import { ENTRY_ID } from '../../../shared/identity.ts';
 import { ConfigPage } from './ConfigPage.tsx';
 import { registerSettingsPage } from './register.ts';
 import css from './settings.css';
-import { mountSettingsSectionIcon } from '../../compat/settings-section.ts';
-import { zh, en } from './locales.ts';
 
 /**
  * Register this plugin in the main settings navigation.
@@ -30,7 +28,6 @@ export function mountSettingsPage(
   scope: CleanupScope,
 ): void {
   scope.add(dom.mountStyles(css));
-  scope.add(mountSettingsSectionIcon(document, [zh.nav, en.nav]));
   const registration = registerSettingsPage(
     ctx,
     ENTRY_ID,
