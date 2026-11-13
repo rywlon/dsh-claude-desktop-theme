@@ -1,13 +1,13 @@
 /**
  * Colour arithmetic behind the configurable surfaces.
  *
- * The plugin ships one light palette; a user-supplied background therefore has
+ * Minimal Style ships one cool-neutral light palette; a user-supplied background therefore has
  * to bring its own hover, selection and line steps, or a dark canvas would keep
  * light grey rows. Every value here is derived from the two configured colours
  * with fixed ratios, so the result is deterministic and testable — and no other
  * stylesheet gains a literal colour (see `scripts/check-architecture.mjs`).
  *
- * The dark palette is not derived: it is a fixed set of values measured for the
+ * The dark palette is not derived: it is a fixed set of values chosen for the
  * dark canvas and mirrored by `theme/tokens.css`, because a colour the user
  * picked for a light canvas says nothing about the dark one.
  */
@@ -40,9 +40,9 @@ export interface Palette {
  * test parses that stylesheet and fails when the two drift apart.
  */
 export const BUILT_IN_SURFACES = Object.freeze({
-  canvas: '#fcfcfb',
-  sidebar: '#fcfcfb',
-  border: '#e3e3e1',
+  canvas: '#f7f7f8',
+  sidebar: '#f2f2f3',
+  border: '#e3e3e6',
 });
 
 /**
@@ -53,18 +53,18 @@ export const BUILT_IN_SURFACES = Object.freeze({
  * every surface pair.
  */
 export const BUILT_IN_DARK: Palette = Object.freeze({
-  canvas: '#141414',
-  sidebar: '#111111',
-  card: '#222222',
-  track: '#1e1e1e',
-  raised: '#2c2c2c',
-  hover: '#303030',
-  hoverStrong: '#484848',
-  selected: '#353535',
-  border: '#383838',
-  borderStrong: '#484848',
-  borderSoft: '#303030',
-  tableHeadLine: '#484848',
+  canvas: '#101012',
+  sidebar: '#0d0d0f',
+  card: '#1b1b1e',
+  track: '#19191c',
+  raised: '#28282c',
+  hover: '#2d2d31',
+  hoverStrong: '#43434a',
+  selected: '#34343a',
+  border: '#323238',
+  borderStrong: '#414147',
+  borderSoft: '#29292d',
+  tableHeadLine: '#48484f',
 });
 
 const WHITE: Rgb = Object.freeze({ r: 255, g: 255, b: 255 });

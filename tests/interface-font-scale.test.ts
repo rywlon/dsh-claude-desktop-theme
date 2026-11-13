@@ -50,13 +50,13 @@ function cssFiles(directory: string): string[] {
   return files;
 }
 
-test('the interface type scale defaults to standard and survives the settings boundary', () => {
-  assert.equal(INTERFACE_FONT_SIZE_DEFAULT, '100');
-  assert.equal(resolveConfig().interfaceFontSize, '100');
+test('the interface type scale defaults to the tuned 120% and survives the settings boundary', () => {
+  assert.equal(INTERFACE_FONT_SIZE_DEFAULT, '120');
+  assert.equal(resolveConfig().interfaceFontSize, '120');
   assert.equal(resolveConfig({ interfaceFontSize: '120' }).interfaceFontSize, '120');
   assert.equal(adoptConfig({ interfaceFontSize: '130' }).interfaceFontSize, '130');
-  assert.equal(adoptConfig({ interfaceFontSize: 130 }).interfaceFontSize, '100');
-  assert.equal(adoptConfig({ interfaceFontSize: '70' }).interfaceFontSize, '100');
+  assert.equal(adoptConfig({ interfaceFontSize: 130 }).interfaceFontSize, '120');
+  assert.equal(adoptConfig({ interfaceFontSize: '70' }).interfaceFontSize, '120');
   assert.throws(() => resolveConfig({ interfaceFontSize: 110 }), /interfaceFontSize must be a string/);
   assert.throws(() => resolveConfig({ interfaceFontSize: '20' }), /interfaceFontSize is not a usable percentage/);
 });
@@ -71,7 +71,7 @@ test('the normalizer keeps one spelling and clamps nothing silently', () => {
 });
 
 test('the factor travels through the host override layer next to the surface tokens', () => {
-  assert.equal(interfaceFontScale(resolveConfig()), '1');
+  assert.equal(interfaceFontScale(resolveConfig()), '1.2');
   assert.equal(interfaceFontScale(resolveConfig({ interfaceFontSize: '110' })), '1.1');
   assert.equal(interfaceFontScale(resolveConfig({ interfaceFontSize: '160' })), '1.6');
   assert.deepEqual(resolveThemeTokens(resolveConfig({ interfaceFontSize: '120' }))['--ccd-font-scale'],

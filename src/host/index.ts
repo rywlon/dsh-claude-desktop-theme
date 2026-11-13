@@ -30,7 +30,7 @@ const FONT_NAME = new RegExp(`^[\\p{L}\\p{N} ._-]{0,${FONT_NAME_MAX_LENGTH}}$`, 
  * `adoptConfig` falls back to the defaults for a hand-edited patch file.
  */
 export const Config = z.object({
-  enabled: z.boolean().default(false).description('开启 / 关闭 Claude 主题').volatile(),
+  enabled: z.boolean().default(false).description('开启 / 关闭 Minimal Style').volatile(),
   debug: z.boolean().default(false).description('在控制台输出调试日志').volatile(),
   /* The interface scale has its own volatile node: the configuration page
      writes this field on its own, and a nested field inside another volatile

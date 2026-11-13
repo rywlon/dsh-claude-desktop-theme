@@ -16,10 +16,10 @@ test('pending input outranks live work; a stopped session remains ended after it
 });
 
 test('status grouping defaults on and survives the settings transport', () => {
-  assert.equal(resolveConfig().view.groupByStatus, true);
+  assert.equal(resolveConfig().view.groupByStatus, false);
   assert.equal(adoptConfig({ view: { groupByStatus: true } }).view.groupByStatus, true);
+  assert.equal(adoptConfig({ view: { groupByStatus: 'true' } }).view.groupByStatus, false);
   assert.equal(adoptConfig({ view: { groupByStatus: false } }).view.groupByStatus, false);
-  assert.equal(adoptConfig({ view: { groupByStatus: 'true' } }).view.groupByStatus, true);
   assert.throws(() => resolveConfig({ view: { groupByStatus: 'true' } }), /view.groupByStatus/);
 });
 

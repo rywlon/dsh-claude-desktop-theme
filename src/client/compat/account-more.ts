@@ -92,7 +92,7 @@ export function mountAccountMore(menu: HTMLElement): Disposer {
   for (const [index, [text, url]] of [
     [zh ? 'DeepSeek 网页聊天' : 'DeepSeek Chat', 'https://chat.deepseek.com/'],
     ['API Platform', 'https://platform.deepseek.com/'],
-    [zh ? '插件 GitHub · 求 Star ☆' : 'Plugin GitHub · Star us ☆', 'https://github.com/zkforge/dsh-claude-desktop-theme'],
+    [zh ? '插件 GitHub · 求 Star ☆' : 'Plugin GitHub · Star us ☆', 'https://github.com/rywlon/dsh-claude-desktop-theme'],
   ].entries()) {
     if (index === 2) panel.append(separator.cloneNode());
     const button = document.createElement('button');

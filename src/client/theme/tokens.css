@@ -8,10 +8,10 @@ html[data-dsh-ccd-style="true"] {
   --ccd-price-off-peak: #38734f;
   --ccd-price-peak: #996025;
   /* Reference companion and greeting, shared across both theme schemes. */
-  --ccd-claude-coral: #d87657;
-  --ccd-claude-shade: #bd6145;
+  --ccd-claude-coral: #4a4a52;
+  --ccd-claude-shade: #3a3a40;
   --ccd-claude-eye: #000000;
-  --ccd-claude-laptop: #888984;
+  --ccd-claude-laptop: #8b8b93;
   /* Geometry */
   /* Top of the blank-session greeting block. The reference puts the title a
      short step below the header instead of centring it, so the statistics card
@@ -47,7 +47,7 @@ html[data-dsh-ccd-style="true"] {
   --ccd-management-row-gap: 24px;
   --ccd-management-toolbar-gap: 8px;
   --ccd-management-primary-padding: 10px;
-  --ccd-command-tooltip-fill: #111111;
+  --ccd-command-tooltip-fill: #111113;
   --ccd-command-tooltip-ink: #ffffff;
   /* View-options reference: 20 device px corners at @2x. */
   --ccd-view-menu-radius: 10px;
@@ -172,12 +172,12 @@ html[data-dsh-ccd-style="true"] {
   --ccd-header-icon-size: 16px;
   --ccd-header-action-gap: 2px;
   --ccd-header-trailing-inset: 12px;
-  --ccd-header-menu-border: #d6d6d6;
-  --ccd-header-menu-separator: #e2e2e2;
+  --ccd-header-menu-border: #d8d8dc;
+  --ccd-header-menu-separator: #e8e8eb;
   --ccd-menu-danger: #c04742;
   --ccd-menu-danger-ink: #ffffff;
-  --ccd-header-trigger-hover: #f0f0ef;
-  --ccd-header-label-ink: #5a5a58;
+  --ccd-header-trigger-hover: #ebebed;
+  --ccd-header-label-ink: #55555c;
   /* Transcript edge fade. 24px is the band the host's own internal-request
      viewer uses for `fadeTop`／`fadeBottom`, so the whole interface softens its
      scroll viewport edges by the same amount. */
@@ -211,8 +211,8 @@ html[data-dsh-ccd-style="true"] {
 
   /* Claude Desktop 2.31226.1's active flat frame, confirmed by window capture:
      gray-10 canvas; sidebar mixes gray-20 and gray-10 equally in sRGB. */
-  --ccd-canvas: #fcfcfb;
-  --ccd-sidebar: #fcfcfb;
+  --ccd-canvas: #f7f7f8;
+  --ccd-sidebar: #f2f2f3;
   --ccd-card: #ffffff;
   --ccd-dialog-mask: rgba(0, 0, 0, .4);
   --ccd-dialog-shadow: 0 12px 24px rgba(0, 0, 0, .16), 0 2px 6px rgba(0, 0, 0, .08);
@@ -225,87 +225,87 @@ html[data-dsh-ccd-style="true"] {
   --ccd-dialog-focus-ring: var(--ccd-accent);
   /* Segmented-control track. The reference measures #f6f6f4 against a white
      page; the same step down from this canvas keeps the same contrast. */
-  --ccd-track: #f3f3f2;
-  --ccd-raised: #f0f0ef;
-  --ccd-hover: #f0f0ee;
+  --ccd-track: #f0f0f1;
+  --ccd-raised: #ebebed;
+  --ccd-hover: #ececee;
   /* Sampled from the supplied view-options reference, separate from the
      warmer surfaces used by Composer and the host's other menus. */
-  --ccd-view-menu-hover: #f5f5f5;
-  --ccd-view-menu-text: #0b0b0b;
-  --ccd-view-menu-muted: #9b9994;
-  --ccd-view-menu-border: #d7d7d6;
-  --ccd-view-menu-separator: #ebebeb;
-  --ccd-view-menu-accent: #2a78d6;
+  --ccd-view-menu-hover: #f4f4f6;
+  --ccd-view-menu-text: #0d0d0f;
+  --ccd-view-menu-muted: #98989f;
+  --ccd-view-menu-border: #dcdce0;
+  --ccd-view-menu-separator: #eaeaea;
+  --ccd-view-menu-accent: #6d6e70;
   --ccd-view-menu-shadow: 0 1px 3px rgba(0, 0, 0, .08), 0 8px 20px rgba(0, 0, 0, .12), 0 16px 32px rgba(0, 0, 0, .06);
   /* Font-select reference: neutral selected row, blue tick, soft close shadow. */
-  --ccd-font-menu-selected: #e5e5e5;
-  --ccd-font-menu-check: #165dc1;
+  --ccd-font-menu-selected: #e6e6ea;
+  --ccd-font-menu-check: #545557;
   --ccd-font-menu-shadow: 0 0 0 .5px rgb(0 0 0 / 4%), 0 2px 4px rgb(0 0 0 / 8%), 0 8px 16px rgb(0 0 0 / 12%);
   /* Sampled from the supplied search-palette reference: a darker pill for the
      current type, a lighter fill for the current row, grey rows elsewhere. */
-  --ccd-palette-tab-selected: #d9d9d9;
-  --ccd-palette-row-selected: #e5e5e5;
-  --ccd-palette-row-ink: #5e5e5e;
-  --ccd-selected: #ecebe8;
+  --ccd-palette-tab-selected: #dadadf;
+  --ccd-palette-row-selected: #e6e6ea;
+  --ccd-palette-row-ink: #606068;
+  --ccd-selected: #e3e3e6;
   /* The fill a control takes while it sits on a row that is already filled:
      a Session row paints `--ccd-selected` under the pointer, so its ⋮ takes
      this one to stay a step below what it stands on. Sampled from the supplied
      reference at @2x, where that row measures #edece9 under the control's own
      #e1e0dd — the same 12/255 step, and the relationship `theme/palette.ts`
      derives for a configured canvas. */
-  --ccd-hover-strong: #e1e0dd;
+  --ccd-hover-strong: #dbdbdf;
   /* The right panel's tab mark: the reference's own blue-tinted square,
      sampled at #d3e2f9 with the accent for its glyph. It is the one tinted seat
      in this plugin's surfaces, so it is stated rather than derived. */
-  --ccd-right-panel-glyph-bg: #d3e2f9;
+  --ccd-right-panel-glyph-bg: #e2e7f5;
   /* The Files pane's own ink, sampled off the reference at @2x. Its tree names
      and its empty state's title measure #0b0b0b — a step below this palette's
      `--ccd-text`, the ink the rest of the interface draws — and its tab title
      measures #52514f, between `--ccd-text` and `--ccd-text-secondary`. The tab
      mark's glyph is the one blue that is not this palette's accent: the
      reference draws it #304e91 on the #d3e2f9 square. */
-  --ccd-files-ink: #0b0b0b;
-  --ccd-right-panel-tab-ink: #52514f;
-  --ccd-files-chip-ink: #304e91;
+  --ccd-files-ink: #0d0d0f;
+  --ccd-right-panel-tab-ink: #55555c;
+  --ccd-files-chip-ink: #2f4a86;
   /* File header chips use the reference's neutral greys, separate from the
      warmer general-purpose hover surfaces. Geometry is in right-panel.css. */
-  --ccd-file-tab-selected: #e6e6e6;
-  --ccd-file-tab-hover: #f2f2f2;
-  --ccd-file-close-hover: #d9d9d9;
-  --ccd-file-close-pressed: #cecece;
+  --ccd-file-tab-selected: #e6e6e9;
+  --ccd-file-tab-hover: #f2f2f4;
+  --ccd-file-close-hover: #d9d9de;
+  --ccd-file-close-pressed: #ceced3;
 
   /* Lines */
-  --ccd-border: #e3e3e1;
-  --ccd-border-strong: #e0e0df;
+  --ccd-border: #e3e3e6;
+  --ccd-border-strong: #d9d9dd;
   /* Composer outline and soft lift sampled from the input reference. */
-  --ccd-composer-border: #c8c8c8;
+  --ccd-composer-border: #c8c8cd;
   --ccd-composer-shadow: 0 8px 24px rgb(0 0 0 / 6%);
-  --ccd-border-soft: #ebebe9;
+  --ccd-border-soft: #eeeef0;
   /* The rule under a table head reads one step stronger than the card outline
      in the reference (#d9d9d9 against #e3e3e3). */
-  --ccd-table-head-line: #d9d9d8;
+  --ccd-table-head-line: #dadade;
   /* The right panel's card outline, sampled at #d7d7d6 — one step stronger than
      the row outline above and the same ink the menu cards' own border carries,
      which is what makes a floating panel and a menu read as one material. */
-  --ccd-right-panel-border: #d7d7d6;
-  --ccd-browser-canvas: #f7f7f7;
-  --ccd-browser-dot: #d1d0ce;
+  --ccd-right-panel-border: #dcdce0;
+  --ccd-browser-canvas: #f5f5f6;
+  --ccd-browser-dot: #d2d2d8;
 
   /* Unified grey native scrollbar ink; track geometry lives in scrollbars.css. */
-  --ccd-scrollbar-thumb: #8f8f8a;
-  --ccd-scrollbar-thumb-hover: #6f6f6a;
+  --ccd-scrollbar-thumb: #8f8f96;
+  --ccd-scrollbar-thumb-hover: #6b6b73;
 
   /* Text */
-  --ccd-text: #1f1f1d;
-  --ccd-text-secondary: #6f6f6a;
-  --ccd-text-muted: #8f8f8a;
-  --ccd-text-placeholder: #89877f;
+  --ccd-text: #17171a;
+  --ccd-text-secondary: #5f5f66;
+  --ccd-text-muted: #8a8a91;
+  --ccd-text-placeholder: #96969d;
   /* One step below full strength: a row that is not the current one. The
      reference paints its inactive navigation rows at #4a4a47 — between this
      palette's --ccd-text and --ccd-text-secondary — and keeps the current row
      at full black, so the stack reads as one current entry plus quieter
      neighbours instead of three equally loud labels. */
-  --ccd-text-nav: #4a4a47;
+  --ccd-text-nav: #3d3d43;
   /* Archived Session row. The host fades that title with its own caption ink,
      but this plugin's row ink outranks the host pair, so the state needs a step
      of its own: one above --ccd-text-muted on the same warm ramp, which is the
@@ -313,8 +313,8 @@ html[data-dsh-ccd-style="true"] {
      that is current or under the pointer takes the second value, because the
      hover and selected fills sit a step below the sidebar the first one was
      measured on. */
-  --ccd-text-archived: #a0a09b;
-  --ccd-text-archived-hover: #8a8a85;
+  --ccd-text-archived: #a3a3aa;
+  --ccd-text-archived-hover: #8c8c94;
 
   /* New-session statistics card. The reference panel is a stacked translucent
      grey: the card is 5% black over the canvas and a stat tile (and an empty
@@ -322,14 +322,14 @@ html[data-dsh-ccd-style="true"] {
      equivalents. The four heat levels are the reference's own `hsl(217 70% L%)`
      with L = 72／64／56／48, i.e. "that day's value / the busiest day" in four
      equal steps. */
-  --ccd-stats-panel: #f0f0f0;
-  --ccd-stats-tile: #dadada;
+  --ccd-stats-panel: #f1f1f2;
+  --ccd-stats-tile: #dadadb;
   /* The card header's active tab: the reference paints `fill-ghost-hover`, the
      same 5% black as the card itself, over the card — one step lighter than a
      stat tile. */
-  --ccd-stats-tab: #e6e6e6;
-  --ccd-stats-label: #898781;
-  --ccd-stats-value: #0b0b0b;
+  --ccd-stats-tab: #e7e7e9;
+  --ccd-stats-label: #8a8a91;
+  --ccd-stats-value: #0d0d0f;
   --ccd-stats-heat-1: hsl(217 70% 72%);
   --ccd-stats-heat-2: hsl(217 70% 64%);
   --ccd-stats-heat-3: hsl(217 70% 56%);
@@ -351,8 +351,8 @@ html[data-dsh-ccd-style="true"] {
   --ccd-link: #2b61b5;
   --ccd-link-underline: #a7badd;
   --ccd-inline-code-text: #a8322d;
-  --ccd-inline-code-fill: #f1f1f0;
-  --ccd-inline-code-border: #e2e2e0;
+  --ccd-inline-code-fill: #f2f2f4;
+  --ccd-inline-code-border: #e4e4e7;
   --ccd-command-name: #087cff;
   --ccd-command-argument: #159d36;
 
@@ -403,10 +403,10 @@ html[data-dsh-ccd-style="true"] {
   --ccd-check-fill: #2f7cf3;
   --ccd-check-ink: #ffffff;
   /* Lavender ink keeps the light reference's crests visible on the pale page. */
-  --ccd-hero-space-dot: #87867f;
-  --ccd-hero-space-shot: #d2cdbf;
-  --ccd-hero-ripple-ink: #8574c4;
-  --ccd-hero-ripple-idle-ink: #9a9a9a;
+  --ccd-hero-space-dot: #8a8a91;
+  --ccd-hero-space-shot: #d5d5d9;
+  --ccd-hero-ripple-ink: #9aa0b0;
+  --ccd-hero-ripple-idle-ink: #999a9c;
 
   /* State colours that DSH already owns semantics for. */
   --ccd-diff-added: #508c48;
@@ -644,14 +644,14 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-plugin-installed-text: #a1dfb5;
   --ccd-price-off-peak: #a1c9aa;
   --ccd-price-peak: #dfb77d;
-  --ccd-hero-space-shot: #a8a294;
-  --ccd-hero-ripple-ink: #60bdeb;
-  --ccd-hero-ripple-idle-ink: #8e8e8e;
+  --ccd-hero-space-shot: #5e5e66;
+  --ccd-hero-ripple-ink: #8b93a8;
+  --ccd-hero-ripple-idle-ink: #8e8e96;
   /* Reference surfaces: near-black page and sidebar, charcoal popup and input.
      Hover and selection must remain visibly lighter than the popup. */
-  --ccd-canvas: #141414;
-  --ccd-sidebar: #111111;
-  --ccd-card: #222222;
+  --ccd-canvas: #101012;
+  --ccd-sidebar: #0d0d0f;
+  --ccd-card: #1b1b1e;
   --ccd-dialog-mask: rgba(0, 0, 0, .55);
   --ccd-dialog-shadow: 0 12px 24px rgba(0, 0, 0, .4), 0 2px 6px rgba(0, 0, 0, .25);
   --ccd-dialog-button-shadow: 0 1px 2px rgba(0, 0, 0, .2);
@@ -667,9 +667,9 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-menu-danger-ink: #ffffff;
   --ccd-header-trigger-hover: var(--ccd-hover);
   --ccd-header-label-ink: var(--ccd-text-secondary);
-  --ccd-track: #1e1e1e;
-  --ccd-raised: #2c2c2c;
-  --ccd-hover: #303030;
+  --ccd-track: #19191c;
+  --ccd-raised: #28282c;
+  --ccd-hover: #2d2d31;
   --ccd-view-menu-hover: var(--ccd-selected);
   --ccd-view-menu-text: var(--ccd-text);
   --ccd-view-menu-muted: var(--ccd-text-muted);
@@ -680,18 +680,18 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-font-menu-selected: var(--ccd-selected);
   --ccd-font-menu-check: var(--dsw-static-blue-450);
   --ccd-font-menu-shadow: 0 0 0 .5px rgb(0 0 0 / 12%), 0 2px 4px rgb(0 0 0 / 20%), 0 8px 16px rgb(0 0 0 / 30%);
-  --ccd-palette-tab-selected: #444444;
-  --ccd-palette-row-selected: #383838;
-  --ccd-palette-row-ink: #b5b5ad;
-  --ccd-selected: #353535;
+  --ccd-palette-tab-selected: #44444b;
+  --ccd-palette-row-selected: #3a3a41;
+  --ccd-palette-row-ink: #b6b6bf;
+  --ccd-selected: #34343a;
   /* The same step as the light side, in the direction this canvas recesses:
      the fill goes one step up from `selected` here — which happens to land on
      the strong-outline step below, a coincidence of the two ramps rather than
      the reason for the value. */
-  --ccd-hover-strong: #484848;
+  --ccd-hover-strong: #43434a;
   /* The tab mark's tint, dark side: the accent's own hue over this card, which
      is the #d3e2f9 relationship the light side measures, not its value. */
-  --ccd-right-panel-glyph-bg: #2b3a55;
+  --ccd-right-panel-glyph-bg: #333a4c;
   /* The Files pane's inks go back to the palette's own ramp here: the reference
      is a light-mode capture, and its three sampled values are only meaningful
      as relationships (a step below the body ink, a step above the muted one and
@@ -705,39 +705,39 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-file-close-pressed: var(--ccd-border-strong);
 
   /* Lines */
-  --ccd-border: #383838;
-  --ccd-border-strong: #484848;
-  --ccd-composer-border: #383838;
-  --ccd-composer-focus-border: #666663;
+  --ccd-border: #323238;
+  --ccd-border-strong: #414147;
+  --ccd-composer-border: #3a3a40;
+  --ccd-composer-focus-border: #67676f;
   --ccd-composer-shadow: var(--ccd-shadow-card);
-  --ccd-border-soft: #303030;
+  --ccd-border-soft: #29292d;
   /* The head rule stays the one line drawn stronger than the card outline. */
-  --ccd-table-head-line: #484848;
+  --ccd-table-head-line: #48484f;
   /* The card outline's dark side: one step above the row outline, as in the
      light palette. */
-  --ccd-right-panel-border: #484848;
-  --ccd-browser-canvas: #242423;
-  --ccd-browser-dot: #454542;
+  --ccd-right-panel-border: #48484f;
+  --ccd-browser-canvas: #222226;
+  --ccd-browser-dot: #45454c;
 
   /* Scrollbar ink, dark side: on this canvas the bar is the one piece of the
      chrome that has to read as raised, so it sits above every surface step
      here and lightens on hover — the mirror of the light palette, whose ink
      sits below every surface and darkens. */
-  --ccd-scrollbar-thumb: #918f89;
-  --ccd-scrollbar-thumb-hover: #b4b1ab;
+  --ccd-scrollbar-thumb: #90909a;
+  --ccd-scrollbar-thumb-hover: #b3b3bd;
 
   /* Text */
-  --ccd-text: #e8e8e6;
-  --ccd-text-secondary: #b5b5ad;
-  --ccd-text-muted: #999991;
+  --ccd-text: #ececef;
+  --ccd-text-secondary: #b6b6bf;
+  --ccd-text-muted: #9999a2;
   /* Navigation follows the reference's softer labels; selected rows use the
      stronger ink supplied by their own styles. */
-  --ccd-text-nav: #b5b5ad;
-  --ccd-text-placeholder: #999991;
+  --ccd-text-nav: #b6b6bf;
+  --ccd-text-placeholder: #9999a2;
   /* Archived rows, dark side: the same two steps below the row ink, kept
      readable against this sidebar and the selected fill that sits above it. */
-  --ccd-text-archived: #82807c;
-  --ccd-text-archived-hover: #a6a39c;
+  --ccd-text-archived: #84848c;
+  --ccd-text-archived-hover: #a5a5ad;
 
   /* Composer whale, dark side: the same mark, with the blue raised so it reads
      against this canvas; the belly keeps the light ink. */
@@ -746,11 +746,11 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
 
   /* Statistics card, dark side: the same stacked greys over this canvas, and
      the heat ramp raised one step so the steps stay visible on a dark panel. */
-  --ccd-stats-panel: #2c2c2a;
-  --ccd-stats-tile: #383835;
-  --ccd-stats-tab: #353535;
-  --ccd-stats-label: #918f89;
-  --ccd-stats-value: #f0efec;
+  --ccd-stats-panel: #2b2b2f;
+  --ccd-stats-tile: #38383d;
+  --ccd-stats-tab: #35353a;
+  --ccd-stats-label: #92929b;
+  --ccd-stats-value: #f0f0f3;
   --ccd-stats-heat-1: hsl(217 62% 78%);
   --ccd-stats-heat-2: hsl(217 64% 70%);
   --ccd-stats-heat-3: hsl(217 66% 62%);
@@ -770,8 +770,8 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-link: #86b0e8;
   --ccd-link-underline: #4a5c76;
   --ccd-inline-code-text: #f0918a;
-  --ccd-inline-code-fill: #35332f;
-  --ccd-inline-code-border: #454239;
+  --ccd-inline-code-fill: #34343a;
+  --ccd-inline-code-border: #45454c;
   --ccd-command-name: #7db3ff;
   --ccd-command-argument: #8ccf91;
 

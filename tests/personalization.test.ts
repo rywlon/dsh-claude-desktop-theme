@@ -7,13 +7,13 @@ import { claudeGreeting, mountHeroGreeting } from '../src/client/compat/hero-gre
 import { claudePose, CLAUDE_REACTION_MS } from '../src/client/features/composer-pet/claude-motion.ts';
 import { CLAUDE_IDLE, CLAUDE_TRACK, CLAUDE_FRAMES } from '../src/client/features/composer-pet/claude-frames.ts';
 
-test('missing personalization uses Claude defaults; explicit choices are independent', () => {
+test('missing personalization uses the Minimal Style defaults; explicit choices are independent', () => {
   assert.deepEqual(adoptConfig({}).personalization, DEFAULT_PERSONALIZATION);
   assert.deepEqual(resolveConfig({ personalization: { petStyle: 'whale' } }).personalization,
-    { heroBackground: 'ripples', petStyle: 'whale', runningStyle: 'claude', replySignatureStyle: 'claude', greetingStyle: 'claude', greetingName: '' });
+    { heroBackground: 'ripples', petStyle: 'whale', runningStyle: 'whale', replySignatureStyle: 'whale', greetingStyle: 'explore', greetingName: '' });
   assert.deepEqual(adoptConfig({ personalization: {
     greetingStyle: 'claude', greetingName: '  Kai\n  Zou  ',
-  } }).personalization, { ...DEFAULT_PERSONALIZATION, greetingName: 'Kai Zou' });
+  } }).personalization, { ...DEFAULT_PERSONALIZATION, greetingStyle: 'claude', greetingName: 'Kai Zou' });
 });
 
 test('off choices survive strict config, stored config and host schema independently', () => {

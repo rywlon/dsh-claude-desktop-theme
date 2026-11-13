@@ -135,10 +135,10 @@ test('surface colours have dark counterparts while artwork and tooltips keep fix
   const isColour = (value: string) => /^(?:#[0-9a-f]{3,8}|rgba?\(|hsla?\()/i.test(value);
   const artwork = new Map([
     // Tooltips deliberately use the same high-contrast palette in both themes.
-    ['ccd-command-tooltip-fill', '#111111'], ['ccd-command-tooltip-ink', '#ffffff'],
-    ['ccd-hero-space-dot', '#87867f'],
-    ['ccd-claude-coral', '#d87657'], ['ccd-claude-shade', '#bd6145'],
-    ['ccd-claude-eye', '#000000'], ['ccd-claude-laptop', '#888984'],
+    ['ccd-command-tooltip-fill', '#111113'], ['ccd-command-tooltip-ink', '#ffffff'],
+    ['ccd-hero-space-dot', '#8a8a91'],
+    ['ccd-claude-coral', '#4a4a52'], ['ccd-claude-shade', '#3a3a40'],
+    ['ccd-claude-eye', '#000000'], ['ccd-claude-laptop', '#8b8b93'],
   ]);
   for (const [name, value] of artwork) {
     assert.equal(lightVars.get(name), value);
@@ -187,9 +187,9 @@ test('colour arithmetic is deterministic and stays in range', () => {
 
 test('empty font overrides preserve the built-in palette and font stacks', () => {
   const tokens = resolveThemeTokens(resolveConfig({ fonts: { uiLatin: '', uiCjk: '', code: '' } }));
-  assert.deepEqual(tokens['--dsw-alias-bg-base'], { light: '#fcfcfb', dark: BUILT_IN_DARK.canvas });
-  assert.deepEqual(tokens['--dsw-specific-sidebar-fill'], { light: '#fcfcfb', dark: BUILT_IN_DARK.sidebar });
-  assert.deepEqual(tokens['--dsw-alias-border-l3'], { light: '#e3e3e1', dark: BUILT_IN_DARK.border });
+  assert.deepEqual(tokens['--dsw-alias-bg-base'], { light: BUILT_IN_SURFACES.canvas, dark: BUILT_IN_DARK.canvas });
+  assert.deepEqual(tokens['--dsw-specific-sidebar-fill'], { light: BUILT_IN_SURFACES.sidebar, dark: BUILT_IN_DARK.sidebar });
+  assert.deepEqual(tokens['--dsw-alias-border-l3'], { light: BUILT_IN_SURFACES.border, dark: BUILT_IN_DARK.border });
   assert.equal('--ccd-canvas' in tokens, false);
   assert.equal('--ccd-sidebar' in tokens, false);
   assert.equal('--dsw-font-family' in tokens, false);
@@ -226,7 +226,7 @@ test('a configured canvas brings its own light steps and leaves the dark palette
   }
   assert.ok(brightness(tokens['--ccd-card']?.light ?? base) > brightness(base), 'the card sits above the canvas');
   assert.equal('--ccd-sidebar' in tokens, false);
-  assert.deepEqual(tokens['--dsw-specific-sidebar-fill'], { light: '#fcfcfb', dark: BUILT_IN_DARK.sidebar });
+  assert.deepEqual(tokens['--dsw-specific-sidebar-fill'], { light: BUILT_IN_SURFACES.sidebar, dark: BUILT_IN_DARK.sidebar });
 });
 
 test('a configured sidebar stays independent of the canvas in both schemes', () => {

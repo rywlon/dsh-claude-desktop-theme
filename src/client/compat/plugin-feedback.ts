@@ -1,7 +1,7 @@
 import { hostBuildStatus } from './host-builds.ts';
 
 /** New-issue form of the plugin repository; title and body arrive as query parameters. */
-export const FEEDBACK_ISSUE_URL = 'https://github.com/zkforge/dsh-claude-desktop-theme/issues/new';
+export const FEEDBACK_ISSUE_URL = 'https://github.com/rywlon/dsh-claude-desktop-theme/issues/new';
 
 declare const __CCD_PLUGIN_VERSION__: string | undefined;
 

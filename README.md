@@ -1,10 +1,10 @@
 <div align="center">
 
-# DSH Claude Desktop Theme
+# DSH Minimal Style
 
-为 DeepSeek Harness（DSH）Desktop 换上 Claude Code Desktop 外观
+为 DeepSeek Harness（DSH）Desktop 换上一套极简中性的界面。Minimal Style 是本仓库维护的 fork，界面骨架源自 Claude Desktop 主题，但配色与默认设置已按本仓库自己的取向调整
 
-简体中文 · [English](https://github.com/zkforge/dsh-claude-desktop-theme/blob/main/README.en.md)
+简体中文 · [English](https://github.com/rywlon/dsh-claude-desktop-theme/blob/main/README.en.md)
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-3DA639?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="License"/>
@@ -13,12 +13,12 @@
   <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-0078D4?style=for-the-badge" alt="Platform"/>
 </p>
 
-[安装](#快速安装) · [界面预览](#界面预览) · [配置](#配置) · [架构](https://github.com/zkforge/dsh-claude-desktop-theme/blob/main/ARCHITECTURE.md) · [设计规范](https://github.com/zkforge/dsh-claude-desktop-theme/blob/main/DESIGN.md) · [安装指南](https://github.com/zkforge/dsh-claude-desktop-theme/blob/main/install.md) · [问题反馈](https://github.com/zkforge/dsh-claude-desktop-theme/issues)
+[安装](#快速安装) · [界面预览](#界面预览) · [配置](#配置) · [架构](https://github.com/rywlon/dsh-claude-desktop-theme/blob/main/ARCHITECTURE.md) · [设计规范](https://github.com/rywlon/dsh-claude-desktop-theme/blob/main/DESIGN.md) · [安装指南](https://github.com/rywlon/dsh-claude-desktop-theme/blob/main/install.md) · [问题反馈](https://github.com/rywlon/dsh-claude-desktop-theme/issues)
 
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp" width="1200" alt="新会话页：浅色主题、Claude 像素宠物、用量统计与字符水波纹">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp" width="1200" alt="新会话页：浅色主题、Claude 像素宠物、用量统计与字符水波纹">
 </p>
 
 ## 快速安装
@@ -28,33 +28,35 @@
 - **插件页**：「插件 → 添加插件」，输入 `dsh-claude-desktop-theme`
 - **终端**：`dsh plugin --profile desktop add dsh-claude-desktop-theme`
 
-源码安装见[安装指南](https://github.com/zkforge/dsh-claude-desktop-theme/blob/main/install.md)。
+源码安装见[安装指南](https://github.com/rywlon/dsh-claude-desktop-theme/blob/main/install.md)。
 
 ## 使用
 
-在「设置 → Claude 主题 → 模块 → 主页背景动效」选择「宠物畅游」，像素宇航员会缓缓跟随鼠标，点击空白处会划过流星。也可切回默认的字符水波纹或关闭背景动效。
+在「设置 → Minimal Style → 模块 → 主页背景动效」选择「宠物畅游」，像素宇航员会缓缓跟随鼠标，点击空白处会划过流星。也可切回默认的字符水波纹或关闭背景动效。
 
 会话中输入 `/clear` 可以清空当前对话上下文，继续使用同一个会话：会话 ID、名称、项目、模型、项目指令与技能目录保留，旧消息和工具结果不再发送给模型。原始日志仍在，「查看历史记录」可展开旧内容，查看不会恢复模型上下文。命令不调用模型、不生成摘要；请在回复结束且没有排队消息时执行。安装后需完整退出并重新打开 DSH，加载宿主命令。
 
 ## 界面预览
 
+> 预览图为早期版本（旧配色与默认字体）；当前版本已改为中性配色，默认字体与字号见下方配置表。
+
 以下展示 macOS 浅色与深色主题的完整窗口。首页使用 Claude 像素宠物与问候样式，开启水波纹和统计卡片；会话页展示终端、浏览器与文件栏，信息卡片单独展示环境、上下文分解与会话用量。两种宠物的点击回应与 Effort 拉到底的动效见下一节。
 
 | 界面 | 浅色 | 深色 |
 | --- | --- | --- |
-| 新会话页 | ![新会话页 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp) | ![新会话页 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-dark.webp) |
-| 会话页 | ![会话页 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/chat-light.webp) | ![会话页 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/chat-dark.webp) |
-| 右侧信息卡片 | ![右侧信息卡片完整窗口 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-light.webp) | ![右侧信息卡片完整窗口 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-dark.webp) |
-| 插件设置 | ![插件设置 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/settings-light.webp) | ![插件设置 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/settings-dark.webp) |
+| 新会话页 | ![新会话页 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp) | ![新会话页 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-dark.webp) |
+| 会话页 | ![会话页 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/chat-light.webp) | ![会话页 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/chat-dark.webp) |
+| 右侧信息卡片 | ![右侧信息卡片完整窗口 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-light.webp) | ![右侧信息卡片完整窗口 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-dark.webp) |
+| 插件设置 | ![插件设置 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/settings-light.webp) | ![插件设置 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/settings-dark.webp) |
 
 ### 组件特写
 
 | 组件 | 浅色 | 深色 |
 | --- | --- | --- |
-| 模型选择器 | ![模型选择器 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-light.webp) | ![模型选择器 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-dark.webp) |
-| DeepSeek 余额 | ![余额组件 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/account-balance-light.webp) | ![余额组件 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/account-balance-dark.webp) |
-| 上下文圆环与分解面板 | ![上下文圆环与分解面板 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-light.webp) | ![上下文圆环与分解面板 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-dark.webp) |
-| 会话右侧信息卡片 | ![会话信息卡片 · 浅色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/session-info-light.webp) | ![会话信息卡片 · 深色](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/session-info-dark.webp) |
+| 模型选择器 | ![模型选择器 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-light.webp) | ![模型选择器 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-dark.webp) |
+| DeepSeek 余额 | ![余额组件 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/account-balance-light.webp) | ![余额组件 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/account-balance-dark.webp) |
+| 上下文圆环与分解面板 | ![上下文圆环与分解面板 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-light.webp) | ![上下文圆环与分解面板 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-dark.webp) |
+| 会话右侧信息卡片 | ![会话信息卡片 · 浅色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/session-info-light.webp) | ![会话信息卡片 · 深色](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/session-info-dark.webp) |
 
 ## 细节动效
 
@@ -63,38 +65,38 @@
 <table>
 <tr>
 <td width="25%" align="center">
-<img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-spout.gif" width="150" alt="喷一口水：身体轻晃、闭眼，从头顶喷出水柱，水滴向两侧散开落下"><br/>
+<img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-spout.gif" width="150" alt="喷一口水：身体轻晃、闭眼，从头顶喷出水柱，水滴向两侧散开落下"><br/>
 <b>喷一口水</b><br/>
 身体轻晃、闭眼，从头顶喷出水柱，水滴向两侧散开落下
 </td>
 <td width="25%" align="center">
-<img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-hop.gif" width="150" alt="轻弹眨眼：蓄力、向上轻跳、落地回弹并眨眼"><br/>
+<img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-hop.gif" width="150" alt="轻弹眨眼：蓄力、向上轻跳、落地回弹并眨眼"><br/>
 <b>轻弹眨眼</b><br/>
 蓄力、向上轻跳、落地回弹并眨眼
 </td>
 <td width="25%" align="center">
-<img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-wag.gif" width="150" alt="摆尾回应：身体左右轻晃，尾巴与胸鳍摆动并眨眼"><br/>
+<img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-wag.gif" width="150" alt="摆尾回应：身体左右轻晃，尾巴与胸鳍摆动并眨眼"><br/>
 <b>摆尾回应</b><br/>
 身体左右轻晃，尾巴与胸鳍摆动并眨眼
 </td>
 <td width="25%" align="center">
-<img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-claude.gif" width="150" alt="Claude 像素宠物：取出笔记本电脑、敲键盘，再收起电脑恢复站姿"><br/>
+<img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-claude.gif" width="150" alt="Claude 像素宠物：取出笔记本电脑、敲键盘，再收起电脑恢复站姿"><br/>
 <b>Claude 像素宠物</b><br/>
 取出笔记本电脑、敲键盘，再恢复站姿
 </td>
 </tr>
 </table>
 
-<p>在「设置 → Claude 主题 → 个性化 → 宠物样式」中切换小鲸鱼或 Claude 像素宠物，点击宠物即可播放动作。</p>
+<p>在「设置 → Minimal Style → 个性化 → 宠物样式」中切换小鲸鱼或 Claude 像素宠物，点击宠物即可播放动作。</p>
 
 <table>
 <tr>
 <td width="50%" align="center">
-<img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/effort/effort-light.gif" width="260" alt="浅色 Effort 面板：滑杆停在 Max，实心填充淡出，像素流光从右端扫入并在轨道上持续流动"><br/>
+<img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/effort/effort-light.gif" width="260" alt="浅色 Effort 面板：滑杆停在 Max，实心填充淡出，像素流光从右端扫入并在轨道上持续流动"><br/>
 <b>Effort 拉到底 · 浅色</b>
 </td>
 <td width="50%" align="center">
-<img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/effort/effort-dark.gif" width="260" alt="深色 Effort 面板：同一条像素流光，亮紫像素落在深色轨道上"><br/>
+<img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/effort/effort-dark.gif" width="260" alt="深色 Effort 面板：同一条像素流光，亮紫像素落在深色轨道上"><br/>
 <b>Effort 拉到底 · 深色</b>
 </td>
 </tr>
@@ -104,14 +106,14 @@
 
 ## 配置
 
-打开侧栏「主题」或「设置 → Claude 主题」，改动即时生效：
+打开「设置 → Minimal Style」，改动即时生效：
 
 | 分组 | 可调项 |
 | --- | --- |
 | 模块 | 左侧栏、右侧栏（独立启停）、新建页、主页背景动效（字符水波纹、宠物畅游或关闭，默认水波纹）、聊天页、工具调用展示、输入框宠物、统计卡片（默认开启）、状态栏统计读数（默认关闭）、上下文分解面板 |
 | 外观 | 主题（浅色 / 深色 / 跟随系统）、会话背景色、侧栏背景色 |
 | 视图 | 显示 API 余额、显示模型图标、分开显示模型与思考强度、过程默认展开（默认开启）；DeepSeek Harness 品牌条目、顶栏子代理入口、顶栏团队入口、顶栏后台任务入口、显示空分组（默认均关闭） |
-| 个性化 | 宠物样式、输出中状态、回复签名、首页问候（默认 Claude 样式，宠物、签名与问候可分别关闭） |
+| 个性化 | 宠物样式、输出中状态、回复签名、首页问候（默认小鲸鱼与星芒问候，宠物、签名与问候可分别关闭） |
 | 字体 | 界面字号（标准 100% / 较大 110% / 大 120% / 特大 130%，手写配置可到 160%）、界面字体、代码与等宽字体；界面中文字体在设置页不列，需写进 profile 的 `cordis.patch.yml` |
 
 > [!NOTE]
@@ -123,6 +125,6 @@ DSH Desktop 版本声明范围为 `>=0.2.1-rc.3 <0.3.0-0`，允许后续 `0.2.x`
 
 ## 反馈与许可
 
-点击侧栏左下角账号旁的反馈按钮，填写描述后会打开预填好环境信息的 GitHub Issue；也可以直接通过 [Issue](https://github.com/zkforge/dsh-claude-desktop-theme/issues) 反馈问题，附上 DSH 版本、窗口尺寸和复现步骤。
+点击侧栏左下角账号旁的反馈按钮，填写描述后会打开预填好环境信息的 GitHub Issue；也可以直接通过 [Issue](https://github.com/rywlon/dsh-claude-desktop-theme/issues) 反馈问题，附上 DSH 版本、窗口尺寸和复现步骤。
 
-[MIT](./LICENSE) © 2026 zkforge。
+[MIT](./LICENSE) © 2026 zkforge（上游）。Minimal Style fork 由 rywlon 维护。

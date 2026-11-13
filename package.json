@@ -1,16 +1,16 @@
 {
   "name": "dsh-claude-desktop-theme",
-  "version": "0.10.9",
+  "version": "0.10.10",
   "license": "MIT",
-  "description": "Claude Code Desktop-style theme for DeepSeek Harness (DSH) Desktop on macOS and Windows, with light/dark themes, model/effort pickers and an interactive pixel whale",
-  "author": "zkforge",
+  "description": "Minimal Style — a minimal, neutral theme for DeepSeek Harness (DSH) Desktop (fork of the Claude Desktop theme), with light/dark palettes, an interface type scale, model/effort pickers and an interactive pixel whale",
+  "author": "rywlon (fork of zkforge)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zkforge/dsh-claude-desktop-theme.git"
+    "url": "git+https://github.com/rywlon/dsh-claude-desktop-theme.git"
   },
-  "homepage": "https://github.com/zkforge/dsh-claude-desktop-theme#readme",
+  "homepage": "https://github.com/rywlon/dsh-claude-desktop-theme#readme",
   "bugs": {
-    "url": "https://github.com/zkforge/dsh-claude-desktop-theme/issues"
+    "url": "https://github.com/rywlon/dsh-claude-desktop-theme/issues"
   },
   "keywords": [
     "dsh",

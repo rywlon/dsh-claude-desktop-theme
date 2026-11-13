@@ -64,7 +64,7 @@ function fakeContext() {
   const injected: string[] = [];
   const child: FakeChild = {
     locale: {
-      bind: () => key => key === 'nav' ? 'Claude 主题' : key,
+      bind: () => key => key === 'nav' ? 'Minimal Style' : key,
       register(ns, dicts) {
         dictionaries.push(`${ns}:${Object.keys(dicts).sort().join(',')}`);
         events.push('dictionary');
@@ -102,7 +102,7 @@ test('the page registers only as a localized settings section', () => {
   registerSettingsPage(fake.ctx, 'ui-skin-ccd-style', () => null);
   assert.deepEqual(fake.injected, ['slots,locale,layout']);
   assert.deepEqual(fake.dictionaries, [`${SETTINGS_NAMESPACE}:en,zh`]);
-  assert.deepEqual(fake.registrations.map(({ label }) => label?.()), ['Claude 主题']);
+  assert.deepEqual(fake.registrations.map(({ label }) => label?.()), ['Minimal Style']);
   assert.deepEqual(fake.registrations.map(({ label, ...options }) => options), [
     { name: 'settings.section', order: 20, id: 'ui-skin-ccd-style', locale: SETTINGS_NAMESPACE },
   ]);

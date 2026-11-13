@@ -25,7 +25,7 @@ export const VIEW_FIELDS = ['showEmptyGroups', 'groupByStatus', 'showHeaderSubag
 
 /** Interface font-size percentages the settings page offers. */
 export const INTERFACE_FONT_SIZE_STEPS = ['100', '110', '120', '130'] as const;
-export const INTERFACE_FONT_SIZE_DEFAULT = '100';
+export const INTERFACE_FONT_SIZE_DEFAULT = '120';
 /** The usable range; a hand-edited patch file outside it falls back to the default. */
 export const INTERFACE_FONT_SIZE_MIN = 80;
 export const INTERFACE_FONT_SIZE_MAX = 160;
@@ -47,7 +47,7 @@ export interface PersonalizationConfig {
   readonly greetingName: string;
 }
 export const DEFAULT_PERSONALIZATION: PersonalizationConfig = Object.freeze({
-  heroBackground: 'ripples', petStyle: 'claude', runningStyle: 'claude', replySignatureStyle: 'claude', greetingStyle: 'claude', greetingName: '',
+  heroBackground: 'ripples', petStyle: 'none', runningStyle: 'whale', replySignatureStyle: 'whale', greetingStyle: 'explore', greetingName: '',
 });
 
 export function normalizeGreetingName(value: unknown): string {
@@ -121,29 +121,29 @@ export const DEFAULT_APPEARANCE: AppearanceConfig = Object.freeze({
 });
 
 export const DEFAULT_FONTS: FontsConfig = Object.freeze({
-  uiLatin: 'Anthropic Sans Web',
+  uiLatin: 'LXGW WenKai',
   uiCjk: 'Anthropic Serif Web',
-  code: 'SF Mono',
+  code: 'Maple Mono NF CN',
 });
 
 /**
  * The view-options section's defaults.
  *
- * `showEmptyGroups` is off, which means the sidebar hides a Workspace that has
- * no Session under the current filter — the reference's own default for that
- * switch, and the reason the row in the view-options card reads as "off" on a
- * fresh install.
+ * `showEmptyGroups` stays on and `groupByStatus` off: these values mirror the
+ * tuned repository default (Minimal Style) rather than the upstream clone's
+ * reference measurements, so a fresh install opens on the same layout the
+ * maintainers use.
  */
 export const DEFAULT_VIEW: ViewConfig = Object.freeze({
-  showEmptyGroups: false,
-  groupByStatus: true,
-  showHeaderSubagents: false,
-  showHeaderTeam: false,
-  showHeaderJobs: false,
-  showSidebarBrand: false,
+  showEmptyGroups: true,
+  groupByStatus: false,
+  showHeaderSubagents: true,
+  showHeaderTeam: true,
+  showHeaderJobs: true,
+  showSidebarBrand: true,
   showModelIcons: true,
-  splitModelControls: false,
-  showApiBalance: true,
+  splitModelControls: true,
+  showApiBalance: false,
   expandConversationProcess: true,
 });
 

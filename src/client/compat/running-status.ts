@@ -18,7 +18,7 @@ export function runningPhase(root: Element): RunningPhase {
 }
 
 const labels: Record<RunningPhase, string> = {
-  waiting: 'Waiting for Claude…', thinking: 'Thinking…', tool: 'Using tools…',
+  waiting: 'Waiting for the assistant…', thinking: 'Thinking…', tool: 'Using tools…',
   responding: 'Responding…', approval: 'Waiting for approval…',
 };
 

@@ -1,17 +1,17 @@
 <div align="center">
 
-# DSH Claude Desktop Theme
+# DSH Minimal Style
 
-Bring the Claude Code Desktop look to DeepSeek Harness (DSH) Desktop.
+Bring a minimal, neutral interface to DeepSeek Harness (DSH) Desktop. Minimal Style is the fork maintained here: the layout started from the Claude Desktop theme, but the palette and defaults now follow this repository's own direction.
 
 [简体中文](README.md) · English
 
-[Install](#quick-install) · [Screenshots](#screenshots) · [Configuration](#configuration) · [Architecture](ARCHITECTURE.md) · [Installation guide](install.md) · [Report an issue](https://github.com/zkforge/dsh-claude-desktop-theme/issues)
+[Install](#quick-install) · [Screenshots](#screenshots) · [Configuration](#configuration) · [Architecture](ARCHITECTURE.md) · [Installation guide](install.md) · [Report an issue](https://github.com/rywlon/dsh-claude-desktop-theme/issues)
 
 </div>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp" width="1200" alt="New session in the light theme, with the Claude pixel companion, usage statistics and animated ripples">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp" width="1200" alt="New session in the light theme, with the Claude pixel companion, usage statistics and animated ripples">
 </p>
 
 ## Quick install
@@ -36,27 +36,27 @@ The previews show the macOS light and dark themes. The home page uses the Claude
 
 | Screen | Light | Dark |
 | --- | --- | --- |
-| New session | ![New session, light](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp) | ![New session, dark](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-dark.webp) |
-| Conversation | ![Conversation, light](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/chat-light.webp) | ![Conversation, dark](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/chat-dark.webp) |
-| Session information | ![Session information, light](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-light.webp) | ![Session information, dark](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-dark.webp) |
-| Settings | ![Settings, light](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/settings-light.webp) | ![Settings, dark](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/settings-dark.webp) |
-| Model picker | ![Model picker, light](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-light.webp) | ![Model picker, dark](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-dark.webp) |
-| Context breakdown | ![Context breakdown, light](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-light.webp) | ![Context breakdown, dark](https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-dark.webp) |
+| New session | ![New session, light](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-light.webp) | ![New session, dark](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/fullscreen-dark.webp) |
+| Conversation | ![Conversation, light](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/chat-light.webp) | ![Conversation, dark](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/chat-dark.webp) |
+| Session information | ![Session information, light](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-light.webp) | ![Session information, dark](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/session-info-fullscreen-dark.webp) |
+| Settings | ![Settings, light](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/settings-light.webp) | ![Settings, dark](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/settings-dark.webp) |
+| Model picker | ![Model picker, light](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-light.webp) | ![Model picker, dark](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/model-picker-dark.webp) |
+| Context breakdown | ![Context breakdown, light](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-light.webp) | ![Context breakdown, dark](https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/screenshots/context-panel-dark.webp) |
 
 Click the whale or Claude companion to play its reaction. Select the companion under **Settings → Claude Theme → Personalization → Pet style**.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-spout.gif" width="150" alt="Whale spouting water">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-hop.gif" width="150" alt="Whale hopping">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-wag.gif" width="150" alt="Whale wagging its tail">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/pet/pet-claude.gif" width="150" alt="Claude companion typing on a laptop">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-spout.gif" width="150" alt="Whale spouting water">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-hop.gif" width="150" alt="Whale hopping">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-wag.gif" width="150" alt="Whale wagging its tail">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/pet/pet-claude.gif" width="150" alt="Claude companion typing on a laptop">
 </p>
 
 The highest effort setting adds an animated pixel effect.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/effort/effort-light.gif" width="260" alt="Effort animation in the light theme">
-  <img src="https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/assets/effort/effort-dark.gif" width="260" alt="Effort animation in the dark theme">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/effort/effort-light.gif" width="260" alt="Effort animation in the light theme">
+  <img src="https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/assets/effort/effort-dark.gif" width="260" alt="Effort animation in the dark theme">
 </p>
 
 ## Configuration
@@ -81,6 +81,6 @@ Fully quit and reopen DSH after upgrading to load host interfaces and session pr
 
 ## Feedback and license
 
-Use the feedback button beside the account menu or [open an issue](https://github.com/zkforge/dsh-claude-desktop-theme/issues) with your DSH version, window size and reproduction steps.
+Use the feedback button beside the account menu or [open an issue](https://github.com/rywlon/dsh-claude-desktop-theme/issues) with your DSH version, window size and reproduction steps.
 
 [MIT](LICENSE) © 2026 zkforge.

@@ -46,23 +46,23 @@ test('header entries are independently optional and release to their native rend
   }
 });
 
-test('Host defaults hide all optional entries; saved independent values survive the settings transport', () => {
+test('Host defaults show all optional entries; saved independent values survive the settings transport', () => {
   const schema = Config as unknown as (value: unknown) => Record<string, { get(): unknown }>;
   for (const view of [undefined, { showHeaderSubagents: true }, { showHeaderTeam: true }, { showHeaderJobs: true },
     { showHeaderSubagents: true, showHeaderTeam: true, showHeaderJobs: true }]) {
     const cells = schema(view ? { view } : {});
     const served = adoptConfig(Object.fromEntries(Object.entries(cells).map(([key, cell]) => [key, cell.get()])));
-    assert.equal(served.view.showHeaderSubagents, view?.showHeaderSubagents ?? false);
-    assert.equal(served.view.showHeaderTeam, view?.showHeaderTeam ?? false);
-    assert.equal(served.view.showHeaderJobs, view?.showHeaderJobs ?? false);
+    assert.equal(served.view.showHeaderSubagents, view?.showHeaderSubagents ?? true);
+    assert.equal(served.view.showHeaderTeam, view?.showHeaderTeam ?? true);
+    assert.equal(served.view.showHeaderJobs, view?.showHeaderJobs ?? true);
   }
-  assert.equal(resolveConfig().view.showHeaderJobs, false);
+  assert.equal(resolveConfig().view.showHeaderJobs, true);
   assert.equal(resolveConfig({ view: { showHeaderJobs: true } }).view.showHeaderJobs, true);
-  assert.equal(adoptConfig({ view: { showHeaderJobs: 'true' } }).view.showHeaderJobs, false);
+  assert.equal(adoptConfig({ view: { showHeaderJobs: 'true' } }).view.showHeaderJobs, true);
   assert.throws(() => resolveConfig({ view: { showHeaderJobs: 'true' } }), /view.showHeaderJobs/);
-  assert.equal(resolveConfig().view.showHeaderSubagents, false);
-  assert.equal(resolveConfig().view.showHeaderTeam, false);
-  assert.equal(adoptConfig({ view: { showHeaderSubagents: 'true', showHeaderTeam: null } }).view.showHeaderSubagents, false);
-  assert.equal(adoptConfig({ view: { showHeaderSubagents: 'true', showHeaderTeam: null } }).view.showHeaderTeam, false);
+  assert.equal(resolveConfig().view.showHeaderSubagents, true);
+  assert.equal(resolveConfig().view.showHeaderTeam, true);
+  assert.equal(adoptConfig({ view: { showHeaderSubagents: 'true', showHeaderTeam: null } }).view.showHeaderSubagents, true);
+  assert.equal(adoptConfig({ view: { showHeaderSubagents: 'true', showHeaderTeam: null } }).view.showHeaderTeam, true);
   assert.throws(() => resolveConfig({ view: { showHeaderSubagents: 'true' } }), /view.showHeaderSubagents/);
 });

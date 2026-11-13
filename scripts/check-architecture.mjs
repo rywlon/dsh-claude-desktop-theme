@@ -111,7 +111,7 @@ for (const file of await list(resolve(root, 'src'))) {
 /* README is rendered on npm as well as GitHub, where a relative link to a repo
    file only resolves on GitHub; those stay absolute. The absolute form can still
    rot when an asset is renamed or removed, so its path is checked here. */
-const RAW_PREFIX = 'https://raw.githubusercontent.com/zkforge/dsh-claude-desktop-theme/main/';
+const RAW_PREFIX = 'https://raw.githubusercontent.com/rywlon/dsh-claude-desktop-theme/main/';
 
 const rootEntries = await readdir(root, { withFileTypes: true });
 const rootDocs = rootEntries

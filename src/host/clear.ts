@@ -93,7 +93,7 @@ export function mountClearCommand(ctx: Context, enabled: () => boolean): void {
       name: 'clear', description: '清空当前上下文，保留会话、项目与历史记录',
       handler: invocation => enabled()
         ? clearConversation(injected.sessionQuery, invocation, async session => { await sessions.flush(session); })
-        : { kind: 'error', text: '请先启用 Claude 主题。' },
+        : { kind: 'error', text: '请先启用 Minimal Style。' },
     });
   });
 }

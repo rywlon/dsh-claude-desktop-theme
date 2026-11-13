@@ -249,7 +249,7 @@ const slots = {
     if (options.name === 'settings.section') {
       assert.equal(options.id, 'ui-skin-ccd-style');
       assert.equal(options.order, 20);
-      assert.equal(options.label(), 'Claude 主题');
+      assert.equal(options.label(), 'Minimal Style');
       assert.equal(options.locale, 'ccdSettings');
       rowConfigPages.add(options);
       return () => rowConfigPages.delete(options);
@@ -317,7 +317,7 @@ const disabled = { enabled: false, features: Object.fromEntries(FEATURE_IDS.map(
 const locale = {
   bind(namespace) {
     assert.equal(namespace, 'ccdSettings');
-    return key => key === 'nav' ? 'Claude 主题' : key === 'panel' ? '主题' : key;
+    return key => key === 'nav' ? 'Minimal Style' : key === 'panel' ? '主题' : key;
   },
   register(namespace, dicts) {
     assert.equal(namespace, 'ccdSettings');
@@ -534,6 +534,7 @@ configForms.published({
   ...disabled,
   enabled: true,
   features: { ...disabled.features, conversation: true, 'new-session': true, 'composer-pet': true },
+  personalization: { heroBackground: 'ripples', petStyle: 'claude', runningStyle: 'claude', replySignatureStyle: 'claude', greetingStyle: 'claude', greetingName: '' },
 });
 assert.equal(blankPetSeats.size, 1);
 assert.equal(petScopes, 1);
@@ -550,7 +551,7 @@ assert.ok(documentListenersOpened > 0, 'the frame-wide seat must observe the car
    out of the list and leaves the real rows alone; the tag is a resource of the
    sidebar scope, so disabling the interface takes it back off the row. */
 const beforeSidebarStyles = styles.size;
-configForms.published({ ...disabled, enabled: true, features: { ...disabled.features, sidebar: true } });
+configForms.published({ ...disabled, enabled: true, view: { showSidebarBrand: false }, features: { ...disabled.features, sidebar: true } });
 assert.equal(blankRow.getAttribute('data-ccd-blank-session'), '', 'the blank Session row must be tagged');
 assert.equal(chatRow.getAttribute('data-ccd-blank-session'), null, 'a real Session row stays in the list');
 /* The sidebar feature mounts its column, account-menu and navigation artwork
@@ -570,7 +571,7 @@ assert.deepEqual(
   ['groupByStatus', 'port', 'setGroupByStatus', 'setShowEmptyGroups', 'showEmptyGroups'],
   'the seat injects the driver, the switch and its writer',
 );
-assert.equal([...viewOptionsSeats][0].inject().showEmptyGroups, false, 'the switch defaults off');
+assert.equal([...viewOptionsSeats][0].inject().showEmptyGroups, true, 'the switch defaults on');
 assert.equal(searchPaletteSeats.size, 1, 'the sidebar draws the search palette');
 assert.deepEqual(Object.keys([...searchPaletteSeats][0].inject()).sort(), ['port', 'report', 'state'],
   'the seat injects the host port and the open state the Search row drives');
@@ -580,7 +581,7 @@ assert.ok(beforeSidebarStyles > styles.size, 'the previous feature scope was rel
 // sidebar while keeping the left sidebar and its registrations active.
 for (const sidebar of [false, true]) {
   for (const right of [true, false, true, false]) {
-    configForms.published({ ...disabled, enabled: true,
+    configForms.published({ ...disabled, enabled: true, view: { showSidebarBrand: false },
       features: { ...disabled.features, sidebar, 'right-panel': right } });
     assert.equal(paneScopes, right ? 1 : 0, 'pane layout follows only the right-sidebar switch');
     assert.equal(editorScopes, sidebar ? 1 : 0, 'left-sidebar tools follow only the left-sidebar switch');

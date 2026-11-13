@@ -47,14 +47,14 @@ $ccdApp = if ($env:DSH_CCD_APP) { $env:DSH_CCD_APP } else { Join-Path $env:LOCAL
    dsh plugin --profile desktop add dsh-claude-desktop-theme
    ```
 
-3. 重载应用，在「设置 → Claude 主题」核对并重新设置自定义项。不要同时启用旧包和新包。
+3. 重载应用，在「设置 → Minimal Style」核对并重新设置自定义项。不要同时启用旧包和新包。
 
 包名迁移不会自动复制旧包的自定义配置。手动维护用户层覆盖配置时，将插件 `name: dsh-ccd-style` 改为 `name: dsh-claude-desktop-theme`；条目 id 仍为 `ui-skin-ccd-style`，请勿添加重复 id。未注册 `dsh` 时，使用上面的应用内置 CLI 路径。
 
 ## 从源码安装
 
 ```sh
-git clone https://github.com/zkforge/dsh-claude-desktop-theme.git
+git clone https://github.com/rywlon/dsh-claude-desktop-theme.git
 cd dsh-claude-desktop-theme
 ```
 
@@ -113,7 +113,7 @@ $ccdCli = Join-Path $ccdApp 'resources\runtime\cli\bin\dsh.cmd'
 
 安装或升级后完整退出并重新打开 DSH，以加载新的宿主接口和会话投影；只按 **⌘R** 重载窗口不会更新宿主。仅客户端样式调整时，macOS 可以用 **⌘R** 重载；Windows 从托盘菜单退出后重新打开应用。首次加载自动显示风格。升级保留此前的开关和配置。
 
-在「设置 → Claude 主题」调整：
+在「设置 → Minimal Style」调整：
 
 - 总开关与模块开关；默认开启：左侧栏、右侧栏、新建页、主页背景动效、聊天页、工具调用、输入框宠物、统计卡片、上下文分解面板；默认关闭：状态栏统计读数。左、右侧栏独立启停；关闭右侧栏模块会移除增强控件并恢复宿主右栏，文件与终端等功能仍可使用。
 - 在「模块 → 主页背景动效」选择「字符水波纹」（默认）、「宠物畅游」或「关闭」。宠物畅游时，像素宇航员会缓缓跟随鼠标，点击空白处可触发流星。两种动效都依赖新建页模块。
@@ -125,7 +125,7 @@ $ccdCli = Join-Path $ccdApp 'resources\runtime\cli\bin\dsh.cmd'
 - 按状态分组默认开启，但设置页没有这一项，只能在侧栏「视图选项 → 分组方式」切换；原有项目与单列表选项保留。「空闲」表示当前未运行且无待输入，不代表任务成功。顶部独立的「已置顶」分组支持拖入置顶、拖回普通状态分组取消置顶，折叠时仍可拖入；置顶与原生菜单同步并保存到宿主。
 - 字体三项：界面字体、界面中文字体、代码与等宽字体；设置页只列界面字体与代码字体，界面中文字体需在 profile 的 `cordis.patch.yml` 里配置，留空使用系统字体。
 
-宠物样式、回复签名与首页问候均可选择「关闭」，各自独立隐藏；关闭首页问候会同时隐藏文字与图标。默认使用 Claude 宠物、输出中状态、回复签名与首页问候；字体默认使用 Anthropic Sans Web、Anthropic Serif Web 与 SF Mono，未安装时沿字体栈回退。调试日志默认关闭。
+宠物样式、回复签名与首页问候均可选择「关闭」，各自独立隐藏；关闭首页问候会同时隐藏文字与图标。默认使用小鲸鱼输出中状态与回复签名、星芒首页问候、界面字号 120%；字体默认 LXGW WenKai、Anthropic Serif Web 与 Maple Mono NF CN，未安装时沿字体栈回退。调试日志默认关闭。
 
 改动即时生效，保存于当前 profile 的 `cordis.patch.yml`。颜色与字体留空时使用内置值。
 
@@ -143,7 +143,7 @@ dsh plugin --profile desktop update dsh-claude-desktop-theme
 
 未注册 `dsh` 时，替换为上面的应用内置 CLI 路径。源码安装则更新源码，重新执行对应平台的安装命令。升级后重载 DSH，保留已有开关和配置。
 
-临时恢复原生界面，在插件配置页关闭「开启 / 关闭 Claude 主题」。卸载使用同一应用、`DSH_HOME` 和 profile。
+临时恢复原生界面，在插件配置页关闭「开启 / 关闭 Minimal Style」。卸载使用同一应用、`DSH_HOME` 和 profile。
 
 macOS：
 

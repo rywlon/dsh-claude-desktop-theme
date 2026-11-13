@@ -69,14 +69,14 @@ test('a default configuration keeps every built-in', () => {
   assert.equal(adoptConfig({ features: { 'context-panel': false } }).features['context-panel'], false);
 });
 
-test('API balance defaults on, persists choices and rejects invalid writes', () => {
-  assert.equal(resolveConfig().view.showApiBalance, true);
-  assert.equal(adoptConfig({}).view.showApiBalance, true);
+test('API balance defaults off, persists choices and rejects invalid writes', () => {
+  assert.equal(resolveConfig().view.showApiBalance, false);
+  assert.equal(adoptConfig({}).view.showApiBalance, false);
   for (const showApiBalance of [true, false]) {
     assert.equal(resolveConfig({ view: { showApiBalance } }).view.showApiBalance, showApiBalance);
     assert.equal(adoptConfig({ view: { showApiBalance } }).view.showApiBalance, showApiBalance);
   }
-  assert.equal(adoptConfig({ view: { showApiBalance: 'false' } }).view.showApiBalance, true);
+  assert.equal(adoptConfig({ view: { showApiBalance: 'false' } }).view.showApiBalance, false);
   assert.throws(() => resolveConfig({ view: { showApiBalance: 'false' } }), /view.showApiBalance/);
 });
 
@@ -89,15 +89,15 @@ test('process expansion defaults on and preserves explicit off through the setti
   assert.throws(() => resolveConfig({ view: { expandConversationProcess: 'false' } }), /view.expandConversationProcess/);
 });
 
-test('sidebar branding defaults off, persists explicit choices and rejects invalid writes', () => {
-  assert.equal(resolveConfig().view.showSidebarBrand, false);
-  assert.equal(adoptConfig({}).view.showSidebarBrand, false);
+test('sidebar branding defaults on, persists explicit choices and rejects invalid writes', () => {
+  assert.equal(resolveConfig().view.showSidebarBrand, true);
+  assert.equal(adoptConfig({}).view.showSidebarBrand, true);
   for (const showSidebarBrand of [true, false]) {
     const options = { view: { showSidebarBrand } };
     assert.equal(resolveConfig(options).view.showSidebarBrand, showSidebarBrand);
     assert.equal(adoptConfig(options).view.showSidebarBrand, showSidebarBrand);
   }
-  assert.equal(adoptConfig({ view: { showSidebarBrand: 'true' } }).view.showSidebarBrand, false);
+  assert.equal(adoptConfig({ view: { showSidebarBrand: 'true' } }).view.showSidebarBrand, true);
   assert.throws(() => resolveConfig({ view: { showSidebarBrand: 'true' } }), /view.showSidebarBrand/);
 });
 
@@ -116,9 +116,9 @@ test('hero ripples default on and can be disabled independently of the new-sessi
 });
 
 
-test('split model controls default off and preserve explicit choices', () => {
-  assert.equal(resolveConfig().view.splitModelControls, false);
-  assert.equal(adoptConfig({}).view.splitModelControls, false);
+test('split model controls default on and preserve explicit choices', () => {
+  assert.equal(resolveConfig().view.splitModelControls, true);
+  assert.equal(adoptConfig({}).view.splitModelControls, true);
   for (const splitModelControls of [true, false]) {
     assert.equal(resolveConfig({ view: { splitModelControls } }).view.splitModelControls, splitModelControls);
   }

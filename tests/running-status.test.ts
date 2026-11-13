@@ -3,10 +3,10 @@ import { test } from 'node:test';
 import { adoptConfig, resolveConfig } from '../src/shared/config.ts';
 import { mountRunningStatus, runningDuration, runningPhase } from '../src/client/compat/running-status.ts';
 
-test('running presentation is independent, defaults to Claude and validates stored choices', () => {
-  assert.equal(adoptConfig({}).personalization.runningStyle, 'claude');
+test('running presentation is independent, defaults to the whale and validates stored choices', () => {
+  assert.equal(adoptConfig({}).personalization.runningStyle, 'whale');
   assert.equal(resolveConfig({ personalization: { runningStyle: 'claude' } }).personalization.runningStyle, 'claude');
-  assert.equal(adoptConfig({ personalization: { runningStyle: 'bad' } }).personalization.runningStyle, 'claude');
+  assert.equal(adoptConfig({ personalization: { runningStyle: 'bad' } }).personalization.runningStyle, 'whale');
   assert.throws(() => resolveConfig({ personalization: { runningStyle: 'bad' } }), /runningStyle/);
   assert.doesNotThrow(() => mountRunningStatus({} as Document, 'whale', () => {} )());
 });
@@ -73,7 +73,7 @@ test('presentation follows native clock ticks without replacing native nodes and
     const release = mountRunningStatus(document, 'claude', error => errors.push(error));
     const view = seat.children[1]!;
     assert.equal(view.children[1]?.textContent, '2s · ');
-    assert.equal(view.children[2]?.textContent, 'Waiting for Claude…');
+    assert.equal(view.children[2]?.textContent, 'Waiting for the assistant…');
     native.textContent = 'Deep diving for 3s ···';
     notify([{ target: native }] as unknown as MutationRecord[]);
     await new Promise<void>(resolve => queueMicrotask(resolve));
