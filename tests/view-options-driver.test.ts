@@ -225,8 +225,12 @@ function hostCard(): FakeElement {
   return list;
 }
 
-/** The sidebar's section header, its view-options trigger, and the host's menu. */
-function sidebar(batchedSelection = false): {
+/**
+ * The sidebar's section header, its view-options trigger, and the host's menu.
+ * @param batchedSelection - whether the host removes a chosen row on a later tick.
+ * @param droppedCloses - close clicks the host's stale handler ignores first.
+ */
+function sidebar(batchedSelection = false, droppedCloses = 0): {
   header: FakeElement; trigger: FakeElement; body: FakeElement; document: Document;
   mounted: () => boolean; clicked: string[];
 } {
@@ -239,21 +243,31 @@ function sidebar(batchedSelection = false): {
   header.append(trigger);
   body.append(header);
   documentElement.append(body);
+  /* The host's own handler, on an ancestor: React delegates at the root, so a
+     listener that stops propagation on the button never reaches this one. */
+  const card = hostCard();
+  let nativeOpen = false;
+  let dropped = droppedCloses;
+  body.addEventListener('click', () => {
+    if (nativeOpen && dropped > 0) { dropped -= 1; return; }
+    nativeOpen = !nativeOpen;
+    if (nativeOpen && card.parentElement === null) body.append(card);
+    else if (!nativeOpen) card.remove();
+  });
+  /* The host dismisses its own menu on Escape, as the real primitive does. */
   const document = {
     documentElement,
     body,
     querySelector: (selector: string) => documentElement.querySelector(selector),
     querySelectorAll: (selector: string) => documentElement.querySelectorAll(selector),
+    dispatchEvent: (event: { readonly type: string; readonly key?: string }) => {
+      if (event.type === 'keydown' && event.key === 'Escape' && nativeOpen) {
+        nativeOpen = false;
+        card.remove();
+      }
+      return true;
+    },
   } as unknown as Document;
-  /* The host's own handler, on an ancestor: React delegates at the root, so a
-     listener that stops propagation on the button never reaches this one. */
-  const card = hostCard();
-  let nativeOpen = false;
-  body.addEventListener('click', () => {
-    nativeOpen = !nativeOpen;
-    if (nativeOpen && card.parentElement === null) body.append(card);
-    else if (!nativeOpen) card.remove();
-  });
   /* What the host's own rows were chosen with, in the order they were clicked. */
   const clicked: string[] = [];
   for (const row of card.querySelectorAll('[role="menuitem"]')) {
@@ -283,6 +297,11 @@ function mount(document: Document): ReturnType<typeof createViewOptionsDriver> {
 /** Let the driver's asynchronous read finish; its own steps are microtasks. */
 async function settle(): Promise<void> {
   for (let tick = 0; tick < 12; tick += 1) await Promise.resolve();
+}
+
+/** Wait out the driver's own timer-based close retries. */
+async function retryWindow(): Promise<void> {
+  for (let tick = 0; tick < 4; tick += 1) await new Promise<void>(resolve => { setTimeout(resolve, 90); });
 }
 
 test('mount and host ARIA updates settle without starving the renderer', async () => {
@@ -389,6 +408,17 @@ test('initial inspection reads persisted settings without opening the plugin men
     await driver.inspect();
     assert.equal(notifications, 1, 'unchanged preferences do not churn observers');
   } finally { off(); driver.dispose(); }
+});
+
+test('a close click the host drops while committing is retried, not left on screen', async () => {
+  const { document, mounted } = sidebar(false, 1);
+  const driver = mount(document);
+  try {
+    FakeObserver.flush();
+    await retryWindow();
+    assert.equal(mounted(), false, 'the retried close removes the host card');
+    assert.equal(document.documentElement.hasAttribute(DRIVING_ATTRIBUTE), false, 'the off-screen marker is lifted');
+  } finally { driver.dispose(); }
 });
 
 test('a card that is not the pinned shape hands the click back to DSH', async () => {

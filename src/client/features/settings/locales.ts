@@ -28,7 +28,6 @@ export const zh = {
   'hint.personalization': '各项可独立切换；宠物点击后播放对应动作，问候语跟随界面语言，不显示姓名。原有模块开关仍控制显示。',
 
   'nav': 'Claude 主题',
-  'panel': '主题',
   'summary': 'CCD 风格界面 · 外观 · 字体',
   'section.general': '通用',
   'section.features': '模块',
@@ -134,7 +133,6 @@ export const en: Record<SettingsKey, string> = {
   'hint.personalization': 'Choose each style independently. Click the pet to play its reaction. The greeting follows the interface language without a name; module switches still control visibility.',
 
   'nav': 'Claude Theme',
-  'panel': 'Theme',
   'summary': 'CCD interface · appearance · typefaces',
   'section.general': 'General',
   'section.features': 'Modules',

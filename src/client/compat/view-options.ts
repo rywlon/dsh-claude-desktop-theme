@@ -197,10 +197,17 @@ export function createViewOptionsDriver(
     listener?.();
   };
 
-  /** Wait for the driven card to reach the document. */
+  /**
+   * Wait for the driven card to reach the document.
+   *
+   * DSH 0.2.2-rc.3 mounts this menu in a React transition, and on a cold start
+   * that transition can take noticeably longer than the 200 ms this used to
+   * allow. A card that arrives after the wait looks exactly like a refusal and
+   * the leftover menu would stay up, so the window is generous.
+   */
   const settle = async (): Promise<void> => {
     await Promise.resolve();
-    for (let attempt = 0; attempt < 20 && card() === null; attempt += 1) {
+    for (let attempt = 0; attempt < 300 && card() === null; attempt += 1) {
       await new Promise<void>(resolve => { setTimeout(resolve, 10); });
     }
   };
@@ -222,6 +229,10 @@ export function createViewOptionsDriver(
     }
     const list = card();
     if (list === null) {
+      /* A late arrival is still on screen: dismiss it rather than leaving the
+         reader with a menu nobody asked for. */
+      dismiss();
+      await settleClosed();
       document.documentElement.removeAttribute(DRIVING_ATTRIBUTE);
       return null;
     }
@@ -230,20 +241,50 @@ export function createViewOptionsDriver(
 
   /** Close a card this module opened, and lift the off-screen marker. */
   const settleClosed = async () => {
-    for (let attempt = 0; attempt < 20 && card() !== null; attempt += 1) {
+    for (let attempt = 0; attempt < 60 && card() !== null; attempt += 1) {
       await new Promise<void>(resolve => { setTimeout(resolve, 10); });
     }
   };
 
+  /** One click on the trigger that the host's own handler is allowed to see. */
+  const press = (node: HTMLElement) => {
+    driving = true;
+    try {
+      node.click();
+    } finally {
+      driving = false;
+    }
+  };
+
+  /**
+   * Ask the host to dismiss its menu the way its own keyboard handler does.
+   *
+   * Escape is idempotent: pressing it again on a closed menu does nothing, and
+   * pressing it while the host is still committing the open transition is
+   * harmless. DSH 0.2.2-rc.3 mounts this menu in a React transition, so a
+   * trigger click that arrives before the open state commits is read by the
+   * stale handler as another open — the menu stays up and the popup the reader
+   * was supposed to never see is left on screen. Escape has no such race.
+   */
+  const dismiss = () => {
+    if (typeof document.dispatchEvent !== 'function') return;
+    /* Node has no KeyboardEvent; the fixture's document only needs the shape. */
+    const event = typeof KeyboardEvent === 'function'
+      ? new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })
+      : ({ type: 'keydown', key: 'Escape', bubbles: true } as unknown as Event);
+    document.dispatchEvent(event);
+  };
+
   const endDrive = async (driven: Driven) => {
-    if (driven.opened && trigger !== null && card() !== null) {
-      driving = true;
-      try {
-        trigger.click();
-      } finally {
-        driving = false;
+    if (driven.opened && trigger !== null) {
+      for (let attempt = 0; attempt < 3 && card() !== null; attempt += 1) {
+        if (attempt > 0) await new Promise<void>(resolve => { setTimeout(resolve, 60); });
+        dismiss();
+        await settleClosed();
       }
-      await settleClosed();
+      /* A host that ignores Escape still closes on its own trigger; click once
+         at the end rather than leaving a menu the reader opened off screen. */
+      if (card() !== null && trigger !== null) press(trigger);
     }
     document.documentElement.removeAttribute(DRIVING_ATTRIBUTE);
   };
@@ -253,7 +294,18 @@ export function createViewOptionsDriver(
     const driven = await drive();
     if (driven === null) return null;
     try {
-      const card = readCard(document, driven.list);
+      /* The card is mounted before its rows finish: on DSH 0.2.2-rc.3 the
+         three groups appear over the enter transition, so a first look can
+         refuse the pinned shape while it is still incomplete. Give it a few
+         frames before treating a mismatch as a different build. */
+      let card = readCard(document, driven.list);
+      for (let attempt = 0; attempt < 4 && card === null && driven.opened; attempt += 1) {
+        await new Promise<void>(resolve => { setTimeout(resolve, 80); });
+        /* The host may replace the portal element while its transition runs;
+           read the element that is in the document now, not the first one. */
+        const latest = document.querySelector<HTMLElement>(host.viewOptionsMenu);
+        card = latest === null ? null : readCard(document, latest);
+      }
       return card === null ? null : { groups: card.groups };
     } finally {
       await endDrive(driven);
@@ -285,6 +337,15 @@ export function createViewOptionsDriver(
    * back to DSH when the host's card is not the shape this plugin knows.
    */
   const openWithValues = async () => {
+    /* Startup inspection already read the persisted values. Opening from that
+       snapshot keeps the click instant; the host's card is slow to mount on
+       DSH 0.2.2-rc.3 and reading it again here would stall the menu. */
+    if (preferences !== null) {
+      values = preferences;
+      open = true;
+      refresh();
+      return;
+    }
     const read = await readHost();
     if (read === null) {
       driving = true;

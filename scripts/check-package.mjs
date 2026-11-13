@@ -190,10 +190,6 @@ const viewOptionsSeats = new Set();
 const searchPaletteSeats = new Set();
 /** The row configuration page and its dictionary outlive the activation scope. */
 const rowConfigPages = new Set();
-/** The Theme panel's page and sidebar row outlive it too: the row is how the
-    interface is switched back on from the column. */
-const themePanels = new Set();
-const themeRows = new Set();
 /** Edit sidebar: the dialog's overlay seat, and the More card's hidden-panel
     rows and 编辑侧边栏… row. */
 const sidebarEditorSeats = new Set();
@@ -230,8 +226,6 @@ const slots = {
       'conversation.session.header.corner',
       'shell.overlay',
       'settings.section',
-      'main',
-      'sidebar.panellist',
       'sidebar.panellist.actions',
     ].includes(name), `unexpected slot: ${name}`);
     return register();
@@ -240,19 +234,6 @@ const slots = {
   entriesOfSlot: () => [],
   subscribe: () => () => {},
   register(options) {
-    if (options.name === 'main') {
-      assert.equal(options.key, 'ccd-theme');
-      assert.equal(options.locale, 'ccdSettings');
-      themePanels.add(options);
-      return () => themePanels.delete(options);
-    }
-    if (options.name === 'sidebar.panellist') {
-      assert.equal(options.id, 'ccd-theme');
-      assert.equal(options.order, 20);
-      assert.equal(options.label(), '主题');
-      themeRows.add(options);
-      return () => themeRows.delete(options);
-    }
     if (options.name === 'sidebar.panellist.actions') {
       // The hidden panels lead the More card; 编辑侧边栏… follows the host's rows (order 0).
       assert.deepEqual([options.id, options.order], options.id === 'ccd-hidden-panels'
@@ -493,8 +474,6 @@ assert.equal(attributes.has('data-dsh-ccd-style'), false, 'a disabled section mu
    the interface gets switched back on from inside the app. */
 assert.equal(styles.size, 1);
 assert.equal(rowConfigPages.size, 1, 'the configuration page must survive being disabled');
-assert.equal(themePanels.size, 1, 'the Theme panel must survive being disabled');
-assert.equal(themeRows.size, 1, 'the Theme row must survive being disabled');
 assert.deepEqual(dictionaries, ['ccdSettings']);
 assert.equal(settingsScopes, 1);
 // Re-enabling through the settings transport activates without a reload.
@@ -627,7 +606,6 @@ assert.equal(searchPaletteSeats.size, 0, 'disabling releases the search palette'
 assert.equal(sidebarEditorSeats.size, 0, 'disabling releases the Edit sidebar dialog');
 assert.equal(moreCardRows.size, 0, 'disabling gives the More card back to the host');
 assert.equal(editorScopes, 0);
-assert.equal(themeRows.size, 1, 'the Theme row stays while the interface is off');
 assert.equal(petScopes, 0);
 assert.equal(rowConfigPages.size, 1);
 assert.equal(settingsScopes, 1);
@@ -639,8 +617,6 @@ assert.equal(attributes.has('data-dsh-ccd-style'), false);
 assert.equal(styles.size, 0);
 assert.equal(paletteLayers, 0);
 assert.equal(rowConfigPages.size, 0, 'teardown releases the configuration page');
-assert.equal(themePanels.size, 0, 'teardown releases the Theme panel');
-assert.equal(themeRows.size, 0, 'teardown releases the Theme row');
 assert.equal(settingsScopes, 0);
 assert.deepEqual(dictionaries, []);
 /* The compat observers and listeners are resources like any other: none may
