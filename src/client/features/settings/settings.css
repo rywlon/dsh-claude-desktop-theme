@@ -24,6 +24,8 @@
   padding-bottom: 24px;
   color: var(--dsw-alias-label-primary);
   font: var(--dsw-font-s-14);
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 .ccd-settings-summary {
@@ -34,6 +36,8 @@
   margin: 12px 0;
   color: var(--dsw-alias-label-secondary);
   font: var(--dsw-font-s-14);
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 .ccd-settings-section {
@@ -51,6 +55,8 @@
   padding: 0 2px 4px;
   color: var(--dsw-alias-label-primary);
   font: var(--dsw-font-s-strong-14);
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 .ccd-settings-row {
@@ -75,12 +81,16 @@
 
 .ccd-settings-name {
   font: var(--dsw-font-s-14);
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 .ccd-settings-hint,
 .ccd-settings-note {
   color: var(--dsw-alias-label-caption);
   font: var(--dsw-font-xxs-12);
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 
 /* The caption under a group of rows (today: the two colour rows). Rows carry
@@ -337,6 +347,8 @@
   background: none;
   color: var(--dsw-alias-label-primary);
   font: var(--dsw-font-xs-13);
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   cursor: pointer;
   white-space: nowrap;
 }
@@ -397,6 +409,8 @@
   background: var(--dsw-alias-bg-layer-2);
   color: var(--dsw-alias-label-primary);
   font: var(--dsw-font-s-14);
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
   box-shadow: var(--ccd-view-menu-shadow, var(--dsw-elevation-prominent));
 }
 
@@ -418,6 +432,8 @@
   padding: 0 6px;
   color: var(--dsw-alias-label-caption);
   font: var(--dsw-font-xxs-12);
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 
 /* The list keeps the window's own scrollbar: `theme/scrollbars.css` lists this
@@ -446,6 +462,8 @@
   background: none;
   color: var(--dsw-alias-label-primary);
   font: var(--dsw-font-s-14);
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
   text-align: left;
   cursor: pointer;
 }
@@ -569,6 +587,8 @@
   padding: 0 2px;
   color: var(--dsw-alias-label-secondary);
   font: var(--dsw-font-xs-13);
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* Silent while nothing is being written. */
@@ -584,6 +604,8 @@
   background: var(--dsw-alias-brand-primary);
   color: var(--dsw-alias-label-primary-foreground);
   font: var(--dsw-font-xs-strong-13);
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   cursor: pointer;
 }
 

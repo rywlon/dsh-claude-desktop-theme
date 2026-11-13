@@ -159,7 +159,7 @@ Host `Config` 的 `.volatile()` 字段通过 DSH 设置服务投影到 `configFo
 
 ## 主题与宿主适配
 
-`theme/tokens.css` 集中声明尺寸、颜色、图形与字体变量；`palette.ts` 计算派生色，`tokens.ts` 合成 `{ light, dark }` token 对，由宿主 `theme.overrideTokens` 下发。配色跟随 DSH 的主题偏好，字体默认以 Geist 开头。界面字号是配置里的百分比，`tokens.ts` 把它折成 `--ccd-font-scale` 因子，与其他覆盖 token 一起写在 `body` 的内联层；chrome 字号变量（`--ccd-font-size-*`、管理页控件字号）在 `tokens.css` 的 `body` 块内以 `calc(Npx * var(--ccd-font-scale, 1))` 声明，消费它的规则也保持同一形式，因此运行时无需再改写样式表。对话正文不参与这个倍率：仍跟随宿主的 `--dsh-content-font-size`，`--ccd-font-size-h1`…`h3` 与 `--ccd-transcript-line-height` 留在根上。
+`theme/tokens.css` 集中声明尺寸、颜色、图形与字体变量；`palette.ts` 计算派生色，`tokens.ts` 合成 `{ light, dark }` token 对，由宿主 `theme.overrideTokens` 下发。配色跟随 DSH 的主题偏好，字体默认以 Geist 开头。界面字号是配置里的百分比，`tokens.ts` 把它折成 `--ccd-font-scale` 因子，与其他覆盖 token 一起写在 `body` 的内联层；chrome 字号变量（`--ccd-font-size-*`、管理页控件字号）在 `tokens.css` 的 `body` 块内以 `calc(Npx * var(--ccd-font-scale, 1))` 声明，消费它的规则也保持同一形式，因此运行时无需再改写样式表。对话正文也跟随这个倍率：正文字号以 `calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1))` 与宿主自身的字号设置相乘，两处控制叠加而不是互相覆盖；`--ccd-font-size-h1`…`h3` 与 `--ccd-transcript-line-height` 一并移到 `body` 块内缩放，行高与字号同步。设置页的宿主字体简写（`--dsw-font-s-14` 等）在各规则后补回同倍率的字号与行高，因此主题自己的管理页也跟着变。
 
 版本相关选择器集中在 `compat/host-dom.ts`。各适配模块量测宿主布局并发布属性或 CSS 变量，框架列宽和界面业务仍由宿主持有。
 

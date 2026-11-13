@@ -428,24 +428,6 @@ html[data-dsh-ccd-style="true"] {
      default every `calc(Npx * var(--ccd-font-scale, 1))` falls back to when the
      override layer is not mounted (tests, the pre-activation frame). */
   --ccd-font-scale: 1;
-  /* Transcript headings. The reference's ladder sits one step under the host's
-     (DSH draws h1/h2/h3 at 21/19/18px): its own crop measures a 19px h1 and a
-     16px h2 over the 14px body — 27 and 23 device px of CJK ink against the
-     21-device-px body line at @2x — and the h2 is confirmed independently by
-     the inline-code chip, whose 0.95em/1.2 rule this plugin already matches:
-     it lands on the reference's 33 device px exactly at 16px. h3 has no crop of
-     its own and takes the next step down. */
-  --ccd-font-size-h1: 19px;
-  --ccd-font-size-h2: 16px;
-  --ccd-font-size-h3: 15px;
-  /* Transcript leading. The host sets the assistant body at 14px/24px; the
-     reference runs the same 14px on a 20px line. Its own window measures a
-     30.7-device-px pitch between two lines of a paragraph where this plugin's
-     24px draws 36.6, and both shots put their body's CJK ink at 20 device px
-     with a 770px Composer at 1176 (1.53 device px per CSS px), so the two are
-     read at one scale. The reference's paragraph-to-paragraph gap is 46 device
-     px — this 20px line plus the 10px margin both sides already share. */
-  --ccd-transcript-line-height: 20px;
   /* The one step up from the host's own 400: used where a control has to read
      as a chosen value rather than as chrome (model, reasoning effort). */
   --ccd-font-weight-strong: 600;
@@ -601,12 +583,14 @@ html[data-dsh-ccd-style="true"] body {
    * Interface type scale.
    *
    * The settings percentage arrives as the factor `--ccd-font-scale` in this
-   * same body inline layer (theme/tokens.ts), so the chrome type steps are
-   * declared here rather than at the root: a custom property resolves where it
-   * is declared, and the root block cannot see the body's inline factor. The
-   * transcript keeps the host's content size, and its own steps
-   * (`--ccd-font-size-h1`…`--ccd-font-size-h3`, `--ccd-transcript-line-height`)
-   * stay at the root for that reason.
+   * same body inline layer (theme/tokens.ts), so every type step is declared
+   * here rather than at the root: a custom property resolves where it is
+   * declared, and the root block cannot see the body's inline factor.
+   *
+   * The transcript's base size still comes from the host (`--dsh-content-font-size`,
+   * DSH's own content setting); this layer only multiplies that string by the
+   * interface factor, so the two controls compose instead of replacing each
+   * other.
    */
   --ccd-font-size-body: calc(14px * var(--ccd-font-scale, 1));
   --ccd-font-size-muted: calc(13px * var(--ccd-font-scale, 1));
@@ -616,6 +600,24 @@ html[data-dsh-ccd-style="true"] body {
   --ccd-font-size-headline: calc(20px * var(--ccd-font-scale, 1));
   --ccd-management-control-font-size: calc(13px * var(--ccd-font-scale, 1));
   --ccd-management-control-line-height: calc(20px * var(--ccd-font-scale, 1));
+  /* Transcript headings. The reference's ladder sits one step under the host's
+     (DSH draws h1/h2/h3 at 21/19/18px): its own crop measures a 19px h1 and a
+     16px h2 over the 14px body — 27 and 23 device px of CJK ink against the
+     21-device-px body line at @2x — and the h2 is confirmed independently by
+     the inline-code chip, whose 0.95em/1.2 rule this plugin already matches:
+     it lands on the reference's 33 device px exactly at 16px. h3 has no crop of
+     its own and takes the next step down. */
+  --ccd-font-size-h1: calc(19px * var(--ccd-font-scale, 1));
+  --ccd-font-size-h2: calc(16px * var(--ccd-font-scale, 1));
+  --ccd-font-size-h3: calc(15px * var(--ccd-font-scale, 1));
+  /* Transcript leading. The host sets the assistant body at 14px/24px; the
+     reference runs the same 14px on a 20px line. Its own window measures a
+     30.7-device-px pitch between two lines of a paragraph where this plugin's
+     24px draws 36.6, and both shots put their body's CJK ink at 20 device px
+     with a 770px Composer at 1176 (1.53 device px per CSS px), so the two are
+     read at one scale. The reference's paragraph-to-paragraph gap is 46 device
+     px — this 20px line plus the 10px margin both sides already share. */
+  --ccd-transcript-line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /*

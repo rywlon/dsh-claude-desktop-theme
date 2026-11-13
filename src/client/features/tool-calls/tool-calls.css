@@ -15,8 +15,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-tool-group-toggle] {
   background: transparent;
   color: var(--ccd-text-secondary);
   font: inherit;
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 24px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(24px * var(--ccd-font-scale, 1));
   text-align: start;
   cursor: pointer;
 }
@@ -82,8 +82,8 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-tool
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is(.Q2dzhW_title, .Q2dzhW_summary, .Q2dzhW_fileLink, .-gRAhq_summary) {
   flex: 0 1 auto;
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 20px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* Reserve the title's natural width so long summaries cannot wrap labels. */
@@ -112,8 +112,8 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="sk
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="skill"] > div:first-child :is(span:has(+ [data-shimmer-decoration]), [data-shimmer-decoration] + span) {
   flex: 0 1 auto;
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 20px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="skill"] > div:first-child span:has(+ [data-shimmer-decoration]) {
@@ -151,16 +151,16 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-tool
   flex: none;
   margin-inline-end: 6px;
   color: var(--ccd-text-secondary);
-  font-size: var(--dsh-content-font-size, 14px);
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="present"] [data-disclosure-row] > span:last-child > span:first-child > span:nth-child(2),
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="cordis_define"] [data-disclosure-row] span[aria-hidden="true"] + span {
   flex: 0 1 auto;
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 20px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="present"][data-state="ok"] [data-disclosure-row] > span:last-child > span:first-child > span:nth-child(2) > span:last-child,
@@ -181,15 +181,15 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-tool
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-tool="cordis_run"], [data-tool="cordis_stop"], [data-tool="cordis_undefine"]) > div:first-child > span:nth-child(2) {
   margin-inline-end: 6px;
   color: var(--ccd-text-secondary);
-  font-size: var(--dsh-content-font-size, 14px);
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-tool="cordis_run"], [data-tool="cordis_stop"], [data-tool="cordis_undefine"]) > div:first-child > span:nth-child(4) {
   flex: 0 1 auto;
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 20px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* A created task's overlay button retains full-row navigation. Flatten only
@@ -212,9 +212,9 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="sc
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="schedule_create"] > div:first-of-type > span:nth-child(2) > span:first-child {
-  font-size: var(--dsh-content-font-size, 14px);
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="schedule_create"]:has(> button[aria-label]) > div:first-of-type::after {
@@ -243,7 +243,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-term
 /* Only the command has a box; terminal output sits directly on the list. */
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-terminal] {
   --dsl-terminal-font: calc(13px * var(--ccd-font-scale, 1))/calc(18px * var(--ccd-font-scale, 1)) var(--ccd-font-code);
-  --dsl-terminal-line-height: 18px;
+  --dsl-terminal-line-height: calc(18px * var(--ccd-font-scale, 1));
   --dsl-terminal-output-max-height: 360px;
   --dsl-terminal-command-whitespace: pre-wrap;
   color: var(--ccd-text-secondary);
@@ -544,7 +544,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
 /* Grep shares SearchBlock with glob, but its rows are real source line numbers
    grouped under native file disclosures. Keep those controls and copy intact. */
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] {
-  --dsl-search-line-height: 18px;
+  --dsl-search-line-height: calc(18px * var(--ccd-font-scale, 1));
   color: var(--ccd-text);
   font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
@@ -1018,8 +1018,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-file-action] {
   flex: none;
   margin-inline-end: 6px;
   color: var(--ccd-text-secondary);
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 20px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-file-summary-tone="file"] {
@@ -1172,6 +1172,6 @@ html[data-dsh-ccd-style="true"] [data-ccd-english-source] {
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="skill"] [data-ccd-english-label] {
   flex: none;
   margin-inline-end: 6px;
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 20px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }

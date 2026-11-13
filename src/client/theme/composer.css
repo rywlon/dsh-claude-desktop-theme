@@ -225,8 +225,8 @@ html[data-dsh-ccd-style="true"] .yhfFVG_hero .yhfFVG_input {
   /* Keep text clear of the controls, including when the editor scrolls. */
   padding: 0 var(--ccd-send-reserve) 0 var(--ccd-composer-add-reserve);
   font-family: var(--ccd-font-ui);
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 24px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(24px * var(--ccd-font-scale, 1));
   color: var(--ccd-text);
 }
 
@@ -241,8 +241,8 @@ html[data-dsh-ccd-style="true"] .yhfFVG_placeholder {
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--ccd-text-placeholder);
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 24px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(24px * var(--ccd-font-scale, 1));
 }
 
 /* Send / stop stay beside the input's bottom line. The row is their containing
@@ -757,8 +757,8 @@ html[data-dsh-ccd-style="true"] [data-voice-activity="feedback"] > [role="status
   width: max(0px, calc(anchor-size(--ccd-voice-feedback-seat width) - var(--ccd-composer-add-reserve) - 64px));
   height: 24px;
   color: var(--ccd-text-placeholder);
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 24px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(24px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .yhfFVG_card:has([data-voice-activity="feedback"]) :is(.yhfFVG_input, .yhfFVG_placeholder) {

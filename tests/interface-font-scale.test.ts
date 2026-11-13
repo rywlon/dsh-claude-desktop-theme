@@ -10,9 +10,10 @@ import { interfaceFontScale, resolveThemeTokens } from '../src/client/theme/toke
 
 /*
  * The interface type scale is one percentage in the plugin configuration and one
- * factor in the host override layer. The chrome steps are declared on `body`
- * (next to the factor) and every chrome rule multiplies a base size by it; the
- * transcript keeps the host's content size, so its own steps stay unscaled.
+ * factor in the host override layer. Every type step is declared on `body` (next
+ * to the factor) and every rule multiplies a base size by it; the transcript's
+ * base size still comes from the host's own content setting, so the two controls
+ * compose instead of one replacing the other.
  *
  * These tests pin both halves: the configuration boundary and the stylesheet
  * contract. A future rule that hard-codes a chrome size would slip past the
@@ -87,14 +88,24 @@ test('the chrome type steps are declared on body, where the factor lands', () =>
     ['--ccd-font-size-headline', '20'],
     ['--ccd-management-control-font-size', '13'],
     ['--ccd-management-control-line-height', '20'],
+    ['--ccd-font-size-h1', '19'],
+    ['--ccd-font-size-h2', '16'],
+    ['--ccd-font-size-h3', '15'],
+    ['--ccd-transcript-line-height', '20'],
   ] as const) {
     assert.match(body, new RegExp(`${token}: calc\\(${base}px \\* var\\(--ccd-font-scale, 1\\)\\)`, 'u'),
       `${token} must follow the interface scale`);
   }
-  /* The transcript's own steps stay out of the body block: running text keeps
-   * the host's content size, which DSH's own type setting governs. */
-  for (const token of ['--ccd-font-size-h1', '--ccd-transcript-line-height']) {
-    assert.doesNotMatch(body, new RegExp(`${token}\\s*:`, 'u'));
+  /* Nothing type-sized may stay at the root: a custom property resolves where it
+   * is declared, and the root block cannot see the body's inline factor. */
+  const root = cssRules(tokensSheet)
+    .filter(rule => rule.selector === 'html[data-dsh-ccd-style="true"]')
+    .map(rule => rule.body)
+    .join('\n');
+  for (const token of [
+    '--ccd-font-size-h1', '--ccd-font-size-h2', '--ccd-font-size-h3', '--ccd-transcript-line-height',
+  ]) {
+    assert.doesNotMatch(root, new RegExp(`${token}\\s*:`, 'u'), `${token} must be declared on body`);
   }
 });
 
@@ -111,18 +122,15 @@ test('no stylesheet hard-codes a chrome size outside the scale', () => {
     'chrome type sizes must be calc(Npx * var(--ccd-font-scale, 1)); only content sizes keep literal px');
 });
 
-test('a literal line-height stays with the host content size', () => {
-  /* The rules that leave running text to DSH keep its 15px/24px pairing: their
-   * line-height stays literal while the font-size reads --dsh-content-font-size.
-   * Any other literal line-height would scale the chrome's leading by nothing. */
+test('no stylesheet hard-codes a literal leading', () => {
+  /* Leading is part of the type setting: every px value is a calc step sitting
+   * on the same factor as its font-size, including the transcript rules whose
+   * base size comes from the host. */
   const literalLine = /(?<![\w-])line-height:\s*\d+(?:\.\d+)?px/u;
   const offenders: string[] = [];
   for (const path of cssFiles(CLIENT)) {
     const sheet = readFileSync(path, 'utf8').replace(/\/\*[\s\S]*?\*\//gu, '');
-    for (const [, body] of sheet.matchAll(/\{([^{}]*)\}/gu)) {
-      if (!literalLine.test(body ?? '')) continue;
-      if (!(body ?? '').includes('--dsh-content-font-size')) offenders.push(path.slice(CLIENT.length + 1));
-    }
+    if (literalLine.test(sheet)) offenders.push(path.slice(CLIENT.length + 1));
   }
-  assert.deepEqual(offenders, [], 'literal leading must belong to a host content-size rule');
+  assert.deepEqual(offenders, [], 'leading must be calc(Npx * var(--ccd-font-scale, 1))');
 });

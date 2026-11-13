@@ -233,9 +233,14 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) [data-slot
 html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_newSession,
 html[data-dsh-ccd-style="true"][data-platform="darwin"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_newSession {
   justify-content: flex-start;
-  height: var(--ccd-nav-row-height);
+  align-items: center;
+  /* The 26px navigation height is 3px + the 20px line + 3px, the same rhythm
+     the panel rows below use, so the row grows with the interface type scale
+     instead of clipping its label at the larger steps. */
+  height: auto;
+  min-height: var(--ccd-nav-row-height);
   margin: 0 0 var(--ccd-nav-gap);
-  padding: 0 8px;
+  padding: 3px 8px;
   border: 0;
   border-radius: var(--ccd-radius-row);
   background: transparent;
@@ -243,6 +248,7 @@ html[data-dsh-ccd-style="true"][data-platform="darwin"] ._3WPZCG_root:not(._3WPZ
   /* The reference sets navigation labels at the session rows' size. */
   font-size: var(--ccd-font-size-muted);
   font-weight: 400;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_newSession:hover,
@@ -285,6 +291,23 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_n
 
 html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_newSessionContent > svg {
   margin-inline: 1px;
+}
+
+/* DSH Desktop 0.2.2-rc.3 draws New Session inside a `newSessionRow` wrapper
+   that carries the sidebar gutter as a 4px inline margin. Left in place the
+   button spans 252px where the panel rows span 260px and its icon and label
+   sit 4px right of every navigation row below, which is the misalignment the
+   expanded layout is meant to avoid. Zero the wrapper's margin so the button
+   fills the same column; builds without the wrapper ignore it. */
+html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_newSessionRow {
+  margin: 0;
+}
+
+/* The same build wraps the icon and label in a mask span of its own. The flex
+   column inside still starts at the button's content box, so the label lands on
+   the panel rows' column; only the leading needs the row rhythm here. */
+html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_newSessionLabelMask {
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* The browsing region opens on the navigation stack's own row rhythm. The
@@ -468,9 +491,10 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) .ccd-sideb
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
-  height: var(--ccd-nav-row-height);
+  height: auto;
+  min-height: var(--ccd-nav-row-height);
   margin: 0 0 var(--ccd-nav-gap);
-  padding: 0 8px;
+  padding: 3px 8px;
   border: 0;
   border-radius: var(--ccd-radius-row);
   background: transparent;

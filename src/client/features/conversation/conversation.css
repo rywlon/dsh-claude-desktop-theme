@@ -572,8 +572,8 @@ html[data-dsh-ccd-style="true"] .ST7X_W_body:has([data-conversation-scroll][data
 }
 
 html[data-dsh-ccd-style="true"] .gKv1-q_root {
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 24px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(24px * var(--ccd-font-scale, 1));
   color: var(--ccd-text);
 }
 
@@ -927,8 +927,8 @@ html[data-dsh-ccd-style="true"] :is(.IzP3Va_bubble, [data-message-bubble]) {
   border-radius: var(--ccd-composer-radius);
   background: var(--ccd-raised);
   color: var(--ccd-text);
-  font-size: var(--dsh-content-font-size, 14px);
-  line-height: 22px;
+  font-size: calc(var(--dsh-content-font-size, 14px) * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .IzP3Va_userStack {
