@@ -136,7 +136,7 @@ test('surface colours have dark counterparts while artwork and tooltips keep fix
   const artwork = new Map([
     // Tooltips deliberately use the same high-contrast palette in both themes.
     ['ccd-command-tooltip-fill', '#111113'], ['ccd-command-tooltip-ink', '#ffffff'],
-    ['ccd-hero-space-dot', '#8a8a91'],
+    ['ccd-hero-space-dot', '#87867f'],
     ['ccd-claude-coral', '#4a4a52'], ['ccd-claude-shade', '#3a3a40'],
     ['ccd-claude-eye', '#000000'], ['ccd-claude-laptop', '#8b8b93'],
   ]);
@@ -144,6 +144,12 @@ test('surface colours have dark counterparts while artwork and tooltips keep fix
     assert.equal(lightVars.get(name), value);
     assert.equal(darkVars.get(name) ?? lightVars.get(name), value);
   }
+  /* The hero artwork is upstream's, so its two remaining tokens step down in
+     the dark scheme instead of holding one value. */
+  assert.equal(lightVars.get('ccd-hero-space-shot'), '#d2cdbf');
+  assert.equal(darkVars.get('ccd-hero-space-shot'), '#a8a294');
+  assert.equal(lightVars.get('ccd-hero-ripple-ink'), '#8574c4');
+  assert.equal(darkVars.get('ccd-hero-ripple-ink'), '#60bdeb');
   const missing = [...lightVars].filter(([name, value]) =>
     isColour(value) && !darkVars.has(name) && !artwork.has(name));
   assert.deepEqual(missing, [], 'the dark block leaves these tokens at their light value');
@@ -287,9 +293,12 @@ test('the Shiki syntax palette and the inline-code chip leave the Claude rust be
   assert.equal(dark.get('ccd-inline-code-fill'), '#262b36');
 });
 
-test('the hero ripple keeps the DeepSeek wave ink instead of the neutral page grey', () => {
+test('the hero artwork keeps upstream’s values', () => {
   const light = declarations(lightSheet);
   const dark = declarations(darkSheet);
-  assert.equal(light.get('ccd-hero-ripple-ink'), '#3b6ef0');
-  assert.equal(dark.get('ccd-hero-ripple-ink'), '#7fa6ff');
+  assert.equal(light.get('ccd-hero-ripple-ink'), '#8574c4');
+  assert.equal(dark.get('ccd-hero-ripple-ink'), '#60bdeb');
+  assert.equal(light.get('ccd-hero-space-dot'), '#87867f');
+  assert.equal(light.get('ccd-hero-space-shot'), '#d2cdbf');
+  assert.equal(dark.get('ccd-hero-space-shot'), '#a8a294');
 });

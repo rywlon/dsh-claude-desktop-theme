@@ -402,13 +402,12 @@ html[data-dsh-ccd-style="true"] {
      drawing a stroke. */
   --ccd-check-fill: #4d6bfe;
   --ccd-check-ink: #ffffff;
-  /* The character ripple keeps the DeepSeek card's own wave ink: the same
-     brand blue it uses for its crests, so the hero animation stays colourful
-     instead of fading into the neutral page. */
-  --ccd-hero-space-dot: #8a8a91;
-  --ccd-hero-space-shot: #d5d5d9;
-  --ccd-hero-ripple-ink: #3b6ef0;
-  --ccd-hero-ripple-idle-ink: #999a9c;
+  /* The hero artwork keeps upstream's values so the home animation draws
+     exactly as it does in the theme this fork started from. */
+  --ccd-hero-space-dot: #87867f;
+  --ccd-hero-space-shot: #d2cdbf;
+  --ccd-hero-ripple-ink: #8574c4;
+  --ccd-hero-ripple-idle-ink: #9a9a9a;
 
   /* State colours that DSH already owns semantics for. */
   --ccd-diff-added: #508c48;
@@ -646,9 +645,9 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-plugin-installed-text: #a1dfb5;
   --ccd-price-off-peak: #a1c9aa;
   --ccd-price-peak: #dfb77d;
-  --ccd-hero-space-shot: #5e5e66;
-  --ccd-hero-ripple-ink: #7fa6ff;
-  --ccd-hero-ripple-idle-ink: #8e8e96;
+  --ccd-hero-space-shot: #a8a294;
+  --ccd-hero-ripple-ink: #60bdeb;
+  --ccd-hero-ripple-idle-ink: #8e8e8e;
   /* Reference surfaces: near-black page and sidebar, charcoal popup and input.
      Hover and selection must remain visibly lighter than the popup. */
   --ccd-canvas: #13161d;
