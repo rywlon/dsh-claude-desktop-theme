@@ -23,9 +23,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-session-title] .ST7X_W_crumb {
   min-width: 0;
   padding: 0;
   color: var(--ccd-header-icon-color);
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 24px;
+  line-height: calc(24px * var(--ccd-font-scale, 1));
 }
 
 /* Keep the icon, title and chevron on the traffic lights' y=25 axis. */
@@ -70,7 +70,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-session-rename] {
   outline: none;
   background: transparent;
   color: var(--ccd-header-icon-color);
-  font: 500 13px/24px var(--ccd-font-ui);
+  font-weight: 500; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(24px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   -webkit-app-region: no-drag;
 }
 
@@ -135,8 +135,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-header-menu] {
   color: var(--ccd-view-menu-text);
   box-shadow: var(--ccd-view-menu-shadow);
   font-family: var(--ccd-font-ui);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   -webkit-app-region: no-drag;
 }
 
@@ -171,7 +171,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-header-menu] button[aria-expanded="tru
 html[data-dsh-ccd-style="true"] [data-ccd-header-menu] [data-ccd-menu-mark] {
   flex: none;
   color: var(--ccd-text-muted);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-header-menu] [aria-haspopup] [data-ccd-menu-mark] {
@@ -205,7 +205,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-header-dialog] {
   background: var(--ccd-card);
   color: var(--ccd-text);
   box-shadow: var(--ccd-view-menu-shadow);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-header-dialog] p { margin: 0 0 12px; }

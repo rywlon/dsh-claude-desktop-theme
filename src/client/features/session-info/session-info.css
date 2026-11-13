@@ -85,7 +85,7 @@ html[data-dsh-ccd-style="true"] [data-conversation-content][data-ccd-session-inf
   scrollbar-width: thin;
   pointer-events: auto;
   color: var(--ccd-text);
-  font: 13px/22px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(22px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   font-variant-numeric: tabular-nums;
   /* The card body keeps its reference width; the final 8px is the chat scrollbar lane. */
   padding: 9px 10px 12px;
@@ -150,7 +150,7 @@ html[data-dsh-ccd-style="true"] [data-conversation-content][data-ccd-session-inf
   border-radius: 6px;
   background: var(--ccd-command-tooltip-fill);
   color: var(--ccd-command-tooltip-ink);
-  font: 12px/18px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   overflow-wrap: anywhere;
   pointer-events: none;
 }
@@ -168,7 +168,7 @@ html[data-dsh-ccd-style="true"] [data-conversation-content][data-ccd-session-inf
 .ccd-info-environment .ccd-info-link:hover { text-decoration-color: currentColor; }
 .ccd-info-bar { display: flex; gap: 1px; height: 5px; margin: 5px 0 9px; overflow: hidden; border-radius: 3px; }
 .ccd-info-bar i { flex-basis: 0; min-width: 0; }
-.ccd-info-context-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px 46px; gap: 0; line-height: 21px; color: var(--ccd-info-secondary); }
+.ccd-info-context-row { display: grid; grid-template-columns: minmax(0, 1fr) 52px 46px; gap: 0; line-height: calc(21px * var(--ccd-font-scale, 1)); color: var(--ccd-info-secondary); }
 .ccd-info-context-row > span:first-child { display: flex; align-items: center; gap: 9px; padding-left: 1px; overflow: hidden; white-space: nowrap; }
 .ccd-info-context-row > span:not(:first-child) { text-align: right; }
 .ccd-info-context-row > span:last-child { color: var(--ccd-text); font-weight: 600; }
@@ -186,7 +186,7 @@ html[data-dsh-ccd-style="true"] [data-conversation-content][data-ccd-session-inf
 .ccd-info-group summary::-webkit-details-marker { display: none; }
 .ccd-info-group summary:hover { background: var(--ccd-hover); }
 .ccd-info-group summary > span:last-child { margin-left: auto; }
-.ccd-info-details { max-height: 170px; overflow: auto; padding: 0 5px 0 24px; line-height: 21px; }
+.ccd-info-details { max-height: 170px; overflow: auto; padding: 0 5px 0 24px; line-height: calc(21px * var(--ccd-font-scale, 1)); }
 .ccd-info-details .ccd-info-value > span:last-child { flex: none; }
 @media (hover: none) { .ccd-info-grip { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .ccd-session-cards[data-ccd-info-dragging] .ccd-info-card { transition: none; } }

@@ -73,7 +73,7 @@ test('the value chip reads its box from the chip tokens alone', () => {
   assert.match(body, /padding:\s*0 var\(--ccd-chip-padding-inline,\s*7px\)/u);
   /* The row's own height must not come back through the chip's box. */
   assert.ok(!/height:\s*var\(--ccd-control-row-height/u.test(body), body);
-  assert.match(body, /font-size:\s*12px/u);
+  assert.match(body, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(body, /color:\s*var\(--ccd-text-strong\)/u);
 });
 

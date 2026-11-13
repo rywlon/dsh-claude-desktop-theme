@@ -213,10 +213,10 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_b
 html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_brandName {
   height: 20px;
   gap: 5px;
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   font-weight: 600;
   letter-spacing: 0.01em;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_brandMark svg,
@@ -311,7 +311,7 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) ._3WPZCG_p
   border-radius: var(--ccd-radius-row);
   color: var(--ccd-text-nav);
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* Current row versus hover. The reference paints the row you are on one step
@@ -440,7 +440,7 @@ html[data-dsh-ccd-style="true"] ._3WPZCG_root:not(._3WPZCG_collapsed) .ccd-sideb
   color: var(--ccd-text-nav);
   font: inherit;
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   text-align: left;
   cursor: pointer;
 }
@@ -493,7 +493,7 @@ html[data-dsh-ccd-style="true"] .ccd-sidebar-search-shortcut kbd {
   border: 1px solid var(--ccd-border);
   border-radius: 4px;
   font: inherit;
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
 }
 
 /* Searching normally hides these native actions; keep View options available. */
@@ -843,7 +843,7 @@ html[data-dsh-ccd-style="true"] .jJkEga_sessionRow:not(.jJkEga_archived) > .jJkE
 
 html[data-dsh-ccd-style="true"] .jJkEga_sessionRow .jJkEga_title {
   font-size: var(--ccd-font-size-muted);
-  line-height: 18px;
+  line-height: calc(18px * var(--ccd-font-scale, 1));
   color: var(--ccd-text);
 }
 
@@ -888,7 +888,7 @@ html[data-dsh-ccd-style="true"] .jJkEga_searchResultTitle {
   margin-left: 0;
   color: var(--ccd-text);
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .jJkEga_searchResultMeta {
@@ -898,7 +898,7 @@ html[data-dsh-ccd-style="true"] .jJkEga_searchResultMeta {
 html[data-dsh-ccd-style="true"] :is(.jJkEga_searchResultWorkspace, .jJkEga_searchResultSnippet) {
   color: var(--ccd-text-muted);
   font-size: calc(var(--ccd-font-size-muted) - 1px);
-  line-height: 16px;
+  line-height: calc(16px * var(--ccd-font-scale, 1));
 }
 
 /* Without a snippet the project name can use the whole second line. */
@@ -1143,8 +1143,8 @@ html[data-dsh-ccd-style="true"] .ccd-sidebar-empty {
   padding: 12px;
   color: var(--ccd-text-muted);
   text-align: center;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .ccd-sidebar-empty-pixels {
@@ -1222,8 +1222,8 @@ html[data-dsh-ccd-style="true"] [data-menu-material] [data-slot="sidebar.workspa
   min-height: 24px;
   padding: 2px 8px;
   gap: 8px;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   color: var(--ccd-text);
 }
 
@@ -1288,8 +1288,8 @@ html[data-dsh-ccd-style="true"] [data-menu-material] [data-ccd-sidebar-session-s
   flex: none;
   margin-left: auto;
   color: var(--ccd-text-muted);
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* Status view reuses the flat list's native rows and all their actions. */
@@ -1323,7 +1323,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-status-order] {
 html[data-dsh-ccd-style="true"] [data-ccd-status-order] .jJkEga_title {
   min-width: 0;
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1373,7 +1373,7 @@ html[data-dsh-ccd-style="true"] .ccd-status-heading {
   font: inherit;
   font-size: calc(var(--ccd-font-size-muted) - 1px);
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   text-align: left;
   cursor: pointer;
 }
@@ -1433,7 +1433,7 @@ html[data-dsh-ccd-style="true"] .ccd-pin-hint {
   padding: 4px 8px;
   color: var(--ccd-text-secondary);
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"][data-ccd-pin-gesture] .ccd-status-heading[data-ccd-status-owned="pinned"] {
   padding-top: 8px;
@@ -1463,7 +1463,7 @@ html[data-dsh-ccd-style="true"] .ccd-pin-floating {
   font-family: var(--ccd-font-ui);
   font-size: var(--ccd-font-size-muted);
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1473,8 +1473,8 @@ html[data-dsh-ccd-style="true"] .ccd-pin-floating[data-action="unpin"] {
   background: color-mix(in srgb, var(--ccd-dialog-danger) 14%, var(--ccd-canvas));
   color: var(--ccd-dialog-danger);
   box-shadow: none;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] :is(.ccd-pin-floating, .ccd-pin-target-frame, [data-ccd-pin-title], [data-ccd-pin-warning])[hidden] {
   display: none;
@@ -1486,7 +1486,7 @@ html[data-dsh-ccd-style="true"] :is(.ccd-pin-floating, .ccd-pin-target-frame, [d
 }
 html[data-dsh-ccd-style="true"] .ccd-pin-error {
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   color: var(--ccd-text-secondary);
 }
 /* Empty Pinned is revealed on pickup; activity sections hide when empty. */
@@ -1517,7 +1517,7 @@ html[data-dsh-ccd-style="true"] .ccd-status-children > button {
   color: var(--ccd-text-secondary);
   font: inherit;
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;

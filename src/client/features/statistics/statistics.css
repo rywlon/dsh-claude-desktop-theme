@@ -70,9 +70,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-seg-btn {
   background: none;
   color: var(--ccd-stats-label);
   font-family: inherit;
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
@@ -120,8 +120,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tile {
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-label {
   overflow: hidden;
   color: var(--ccd-stats-label);
-  font-size: 12px;
-  line-height: 15px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(15px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -129,19 +129,19 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-label {
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-value {
   overflow: hidden;
   color: var(--ccd-stats-value);
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 580;
   font-variant-numeric: tabular-nums;
-  line-height: 19px;
+  line-height: calc(19px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 /* `Favorite model` prints one size down, as the reference does. */
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-value-small {
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 17px;
+  line-height: calc(17px * var(--ccd-font-scale, 1));
 }
 
 /* Contribution heatmap: 26 columns of 7 square cells, 3px gutters. */
@@ -190,8 +190,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-note {
   margin: 0;
   padding-top: 4px;
   color: var(--ccd-stats-label);
-  font-size: 11px;
-  line-height: 17px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
+  line-height: calc(17px * var(--ccd-font-scale, 1));
 }
 
 /* Models view: the chart group keeps the reference's 5px rhythm. */
@@ -216,7 +216,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-chart {
   height: 160px;
   padding: 8px 10px 5px 3px;
   color: var(--ccd-stats-label);
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   line-height: 1;
 }
 
@@ -302,8 +302,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-legend-row {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(15px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-legend-row[hidden] {
@@ -342,8 +342,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-legend-percent 
 
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-empty {
   color: var(--ccd-stats-label);
-  font-size: 12px;
-  line-height: 15px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(15px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-more {
@@ -353,8 +353,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-more {
   background: none;
   color: var(--ccd-stats-label);
   font-family: inherit;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(15px * var(--ccd-font-scale, 1));
   cursor: pointer;
 }
 
@@ -378,9 +378,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tooltip {
   border-radius: 6px;
   background: var(--ccd-stats-tip-bg);
   color: var(--ccd-stats-tip-fg);
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 16px;
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   pointer-events: none;
 }
@@ -395,7 +395,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tip-row {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }

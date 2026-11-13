@@ -13,7 +13,7 @@ html[data-dsh-ccd-style="true"] [data-forge-worktree] :is(button, label) {
   box-sizing: border-box;
   height: var(--ccd-control-row-height);
   border-radius: var(--ccd-chip-radius);
-  font: 400 13px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   color: inherit;
 }
 html[data-dsh-ccd-style="true"] [data-forge-worktree] button {

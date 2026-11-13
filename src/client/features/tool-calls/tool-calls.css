@@ -242,7 +242,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-term
 
 /* Only the command has a box; terminal output sits directly on the list. */
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-terminal] {
-  --dsl-terminal-font: 13px/18px var(--ccd-font-code);
+  --dsl-terminal-font: calc(13px * var(--ccd-font-scale, 1))/calc(18px * var(--ccd-font-scale, 1)) var(--ccd-font-code);
   --dsl-terminal-line-height: 18px;
   --dsl-terminal-output-max-height: 360px;
   --dsl-terminal-command-whitespace: pre-wrap;
@@ -354,7 +354,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-terminal
 /* Path and actions sit outside the code frame; the file's numbered source
    retains the host's highlighter, copy/wrap controls and real line numbers. */
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-read] {
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-read] > [data-code-block-banner] {
@@ -376,7 +376,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-read] > 
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-read] > [data-code-block-banner] [title] {
   color: var(--ccd-text-secondary);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   white-space: normal;
   overflow-wrap: anywhere;
 }
@@ -387,7 +387,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] :is([data-read
   border: 1px solid var(--ccd-border);
   border-radius: 9px;
   background: var(--ccd-card);
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-read] > [data-code-block-banner] + div > div > span[aria-hidden="true"] {
@@ -462,7 +462,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-ccd-skil
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-ccd-skill-content] {
   margin: 0;
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
   color: var(--ccd-text);
 }
 
@@ -498,7 +498,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
   border: 0;
   border-radius: 0;
   background: transparent;
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="paths"] > div:first-child {
@@ -506,7 +506,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
   gap: 8px;
   padding: 2px 0 7px;
   background: transparent;
-  font: 12px/20px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="paths"] > div + div {
@@ -546,7 +546,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] {
   --dsl-search-line-height: 18px;
   color: var(--ccd-text);
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div:first-child {
@@ -555,7 +555,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
   padding: 2px 0 7px;
   background: transparent;
   color: var(--ccd-text-secondary);
-  font: 12px/20px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div:first-child > :is(span, button) {
@@ -575,7 +575,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div + div:not(:has(> div)) {
   padding: 8px 10px;
   color: var(--ccd-text-secondary);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div + div > div > div {
@@ -593,7 +593,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
   min-width: 0;
   padding: 5px 0;
   color: var(--ccd-text);
-  font: 12px/20px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div + div > div > button > span:first-child {
@@ -606,13 +606,13 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div + div > div > button > span + span {
   color: var(--ccd-text-secondary);
-  font: 11px/18px var(--ccd-font-code);
+  font-size: calc(11px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-search="matches"] > div + div > button {
   padding: 4px 0;
   color: var(--ccd-text-secondary);
-  font: 12px/20px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 /* Structured ToolDetails results (agents, inspections and other tool records)
@@ -625,7 +625,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool] [c
   border-radius: 9px;
   background: var(--ccd-card);
   color: var(--ccd-text);
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
   overflow: hidden;
 }
 
@@ -704,13 +704,13 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="jo
   margin: 0;
   padding: 4px 8px 8px;
   background: transparent;
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="job_output"] li > [class*="_description"] {
   margin: 4px 0;
   color: var(--ccd-text-secondary);
-  font: 12px/18px var(--ccd-font-code);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 /* Live calls use the same description/chevron as expanded completed calls.
@@ -761,7 +761,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-tool-group-toggle] {
    independent open state remain owned by the host. */
 html[data-dsh-ccd-style="true"] [data-variant="think"] {
   color: var(--ccd-text-secondary);
-  font: 14px/24px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(24px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-variant="think"]:not([data-expanded]) {
@@ -827,7 +827,7 @@ html[data-dsh-ccd-style="true"] [data-variant="think"] [data-disclosure-header] 
   border-radius: 9px;
   background: var(--ccd-card);
   color: var(--ccd-text-secondary);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   max-height: min(320px, 50vh);
   overflow: auto;
   overscroll-behavior: contain;
@@ -844,7 +844,7 @@ html[data-dsh-ccd-style="true"] [data-variant="think"] [data-disclosure-header] 
 html[data-dsh-ccd-style="true"] [data-ccd-tool-group-member] [data-variant="think"],
 html[data-dsh-ccd-style="true"] [data-ccd-tool-group-member] [data-variant="think"]:not([data-expanded]) {
   min-height: 20px;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-tool-group-member] [data-variant="think"] [data-disclosure-row] {
@@ -864,7 +864,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-tool="as
   border-radius: 9px;
   background: var(--ccd-card);
   color: var(--ccd-text);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   max-height: min(320px, 50vh);
   overflow: auto;
   overscroll-behavior: contain;
@@ -896,7 +896,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [class*="_ioCa
   border-radius: 9px;
   background: var(--ccd-card);
   color: var(--ccd-text);
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [class*="_ioCard"] > div {
@@ -912,7 +912,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [class*="_ioCa
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [class*="_ioCard"] > div > span:first-child {
   position: static;
   color: var(--ccd-text-secondary);
-  font: 12px/18px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [class*="_ioCard"] > div > span:last-child {
@@ -950,7 +950,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-tool-roll-out] {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  line-height: 24px;
+  line-height: calc(24px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-tool-roll-out] {
@@ -1036,7 +1036,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-file-row] [data-disclosure-row] [class
 html[data-dsh-ccd-style="true"] :is([data-ccd-file-summary-tone="added"], [data-ccd-file-summary-tone="removed"], [data-ccd-file-row] [data-disclosure-row] [class*="_diffAdded"], [data-ccd-file-row] [data-disclosure-row] [class*="_diffRemoved"]) {
   display: inline-block;
   padding: 1px 4px;
-  font: 11px/16px var(--ccd-font-code);
+  font-size: calc(11px * var(--ccd-font-scale, 1)); line-height: calc(16px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
   vertical-align: baseline;
 }
 
@@ -1077,7 +1077,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-diff] {
   border-radius: 0;
   background: transparent;
   overflow: visible;
-  font: 13px/18px var(--ccd-font-code);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-diff] > [data-code-block-banner] {
@@ -1104,7 +1104,7 @@ html[data-dsh-ccd-style="true"] [data-chat-flow-kind="tool-call"] [data-diff] > 
   margin-top: 8px;
   padding: 2px 0 7px;
   color: var(--ccd-text-secondary);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   white-space: normal;
   overflow-wrap: anywhere;
 }

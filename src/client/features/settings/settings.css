@@ -243,7 +243,7 @@
   color: inherit;
   font: inherit;
   font-weight: 500;
-  line-height: 26px;
+  line-height: calc(26px * var(--ccd-font-scale, 1));
 }
 
 .ccd-settings-colour-text::placeholder {
@@ -549,7 +549,7 @@
   min-height: 28px;
   padding: 4px 12px;
   border-radius: 8px;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 .ccd-settings-font-menu .ccd-settings-menu-item:is([aria-selected='true'], [data-active='true'], :hover, :focus-visible) {
@@ -655,9 +655,9 @@ html[data-dsh-ccd-style="true"] [data-shortcut-modal="settings"] .Dws9Sa_actions
 
 .ccd-theme-panel-title {
   margin: 0;
-  font-size: 26px;
+  font-size: calc(26px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 36px;
+  line-height: calc(36px * var(--ccd-font-scale, 1));
   letter-spacing: -.6px;
 }
 
@@ -698,9 +698,9 @@ html[data-dsh-ccd-style="true"] [data-shortcut-modal="settings"] .Dws9Sa_actions
 .ccd-theme-panel .ccd-settings-title {
   margin-bottom: 4px;
   padding: 0;
-  font-size: 15px;
+  font-size: calc(15px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 .ccd-theme-panel .ccd-settings-row {
@@ -718,8 +718,8 @@ html[data-dsh-ccd-style="true"] [data-shortcut-modal="settings"] .Dws9Sa_actions
 }
 
 .ccd-theme-panel :is(.ccd-settings-name, .ccd-settings-hint, .ccd-settings-note) {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 .ccd-theme-panel :is(.ccd-settings-hint, .ccd-settings-note) {
@@ -772,9 +772,9 @@ html[data-dsh-ccd-style="true"] [data-shortcut-modal="settings"] .Dws9Sa_actions
   border: 0;
   background: var(--ccd-track, var(--dsw-alias-interactive-bg-hover));
   color: var(--ccd-text, var(--dsw-alias-label-primary));
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 .ccd-theme-panel .ccd-settings-button-quiet:hover {

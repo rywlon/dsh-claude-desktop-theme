@@ -25,7 +25,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-panel-hidden] {
   background: var(--ccd-card);
   box-shadow: var(--ccd-dialog-shadow);
   color: var(--ccd-text);
-  font: 400 var(--ccd-font-size-body)/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: var(--ccd-font-size-body); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   pointer-events: auto;
 }
 
@@ -61,9 +61,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-panel-hidden] {
 
 .ccd-sidebar-editor-head h2 {
   margin: 0;
-  font-size: 16px;
+  font-size: calc(16px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 24px;
+  line-height: calc(24px * var(--ccd-font-scale, 1));
 }
 
 .ccd-sidebar-editor-close {
@@ -186,7 +186,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-panel-hidden] {
   border-radius: 8px;
   background: var(--ccd-text-strong);
   color: var(--ccd-text-inverse);
-  font: 500 var(--ccd-font-size-body)/20px var(--ccd-font-ui);
+  font-weight: 500; font-size: var(--ccd-font-size-body); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   cursor: pointer;
 }
 

@@ -204,19 +204,19 @@ html[data-dsh-ccd-style="true"] :is(
 html[data-dsh-ccd-style="true"] :is(
   [data-ccd-plugin-part="manager-cardTitle"],
   [data-ccd-plugin-part="market-cardOpen"]
-) { font: 600 14px/22px var(--ccd-font-ui); }
+) { font-weight: 600; font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(22px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui); }
 html[data-dsh-ccd-style="true"] :is(
   [data-ccd-plugin-part="manager-cardDesc"],
   [data-ccd-plugin-part="market-description"],
   [data-ccd-plugin-part="market-meta"]
-) { font: 400 13px/20px var(--ccd-font-ui); }
+) { font-weight: 400; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui); }
 /* Native market/filter/add menus are portaled outside the page. Account menus
    retain their own layout; multi-line installation entries keep their height. */
 html[data-dsh-ccd-style="true"]:has([data-ccd-plugin-page], [data-ccd-schedule]) [data-menu-material]:not([data-ccd-account-menu]) [role="menuitem"] {
   min-height: 30px;
   padding: 4px 8px;
   border-radius: 8px;
-  font: 400 13px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 /* The native Add menu is portaled. Its own content identifies it without

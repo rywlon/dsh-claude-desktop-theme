@@ -152,8 +152,8 @@ test('the card’s non-option rows keep the same 24px rhythm', () => {
   assert.ok(rule.selector.includes(`${MARKER} [data-menu-material]${ACCOUNT} [role="listbox"] > [role="presentation"]`), rule.selector);
   /* One 20px line with 2px above and below, in the control-label step. */
   assert.match(rule.body, /padding:\s*2px 8px/u);
-  assert.match(rule.body, /font-size:\s*12px/u);
-  assert.match(rule.body, /line-height:\s*20px/u);
+  assert.match(rule.body, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
+  assert.match(rule.body, /line-height:\s*calc\(20px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(rule.body, /color:\s*var\(--ccd-text-secondary\)/u);
 });
 

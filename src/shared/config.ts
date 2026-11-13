@@ -23,6 +23,13 @@ export const FONT_FIELDS = ['uiLatin', 'uiCjk', 'code'] as const;
 /** Fields of the view-options section. */
 export const VIEW_FIELDS = ['showEmptyGroups', 'groupByStatus', 'showHeaderSubagents', 'showHeaderTeam', 'showHeaderJobs', 'showSidebarBrand', 'showModelIcons', 'splitModelControls', 'showApiBalance', 'expandConversationProcess'] as const;
 
+/** Interface font-size percentages the settings page offers. */
+export const INTERFACE_FONT_SIZE_STEPS = ['100', '110', '120', '130'] as const;
+export const INTERFACE_FONT_SIZE_DEFAULT = '100';
+/** The usable range; a hand-edited patch file outside it falls back to the default. */
+export const INTERFACE_FONT_SIZE_MIN = 80;
+export const INTERFACE_FONT_SIZE_MAX = 160;
+
 export type AppearanceField = typeof APPEARANCE_FIELDS[number];
 export type FontField = typeof FONT_FIELDS[number];
 export type ViewField = typeof VIEW_FIELDS[number];
@@ -73,6 +80,8 @@ function personalization(input: Partial<Record<keyof PersonalizationConfig, unkn
 
 export interface StyleConfig {
   readonly enabled: boolean;
+  /** Interface type scale as a percentage; chrome text only, transcript body stays the host's. */
+  readonly interfaceFontSize: string;
   readonly debug: boolean;
   readonly features: FeatureFlags;
   readonly appearance: AppearanceConfig;
@@ -83,6 +92,7 @@ export interface StyleConfig {
 
 export interface StyleOptions {
   readonly enabled?: boolean;
+  readonly interfaceFontSize?: unknown;
   readonly debug?: boolean;
   readonly features?: Partial<FeatureFlags>;
   readonly appearance?: Partial<Record<AppearanceField, unknown>>;
@@ -163,6 +173,24 @@ export function normalizeColour(value: unknown): string {
 }
 
 /**
+ * Normalize the interface type scale to a whole percentage inside the usable range.
+ *
+ * The value is stored as text so the settings control and a hand-edited patch
+ * file share one spelling; anything outside 80–160 is refused rather than
+ * clamped, so the caller's default-or-error path stays explicit.
+ * @param value - raw value of any type.
+ * @returns the percentage as text, or an empty string when it is not usable.
+ */
+export function normalizeInterfaceFontSize(value: unknown): string {
+  if (typeof value !== 'string') return '';
+  const trimmed = value.trim();
+  if (!/^\d{1,3}$/u.test(trimmed)) return '';
+  const percent = Number(trimmed);
+  if (percent < INTERFACE_FONT_SIZE_MIN || percent > INTERFACE_FONT_SIZE_MAX) return '';
+  return String(percent);
+}
+
+/**
  * Normalize one user-entered font family name.
  *
  * A comma or a parenthesis would turn the value into a stack or a `url()`; the
@@ -223,6 +251,12 @@ export function resolveConfig(input: StyleOptions = {}): StyleConfig {
       throw new TypeError(`${key} must be boolean`);
     }
   }
+  let interfaceFontSize = INTERFACE_FONT_SIZE_DEFAULT;
+  if (input.interfaceFontSize !== undefined) {
+    if (typeof input.interfaceFontSize !== 'string') throw new TypeError('interfaceFontSize must be a string');
+    interfaceFontSize = normalizeInterfaceFontSize(input.interfaceFontSize);
+    if (interfaceFontSize === '') throw new TypeError('interfaceFontSize is not a usable percentage');
+  }
   const view = { ...DEFAULT_VIEW };
   for (const field of VIEW_FIELDS) {
     const value = input.view?.[field];
@@ -233,6 +267,7 @@ export function resolveConfig(input: StyleOptions = {}): StyleConfig {
   }
   return Object.freeze({
     enabled: input.enabled ?? false,
+    interfaceFontSize,
     debug: input.debug ?? false,
     features: Object.freeze(features),
     appearance: resolveSection('appearance', APPEARANCE_FIELDS, DEFAULT_APPEARANCE, normalizeColour, input.appearance, true),
@@ -274,6 +309,7 @@ export function adoptConfig(value: unknown): StyleConfig {
   }
   return resolveConfig({
     ...(typeof input.enabled === 'boolean' ? { enabled: input.enabled } : {}),
+    interfaceFontSize: normalizeInterfaceFontSize(input.interfaceFontSize) || INTERFACE_FONT_SIZE_DEFAULT,
     ...(typeof input.debug === 'boolean' ? { debug: input.debug } : {}),
     features,
     appearance: pickFields(APPEARANCE_FIELDS, section(input.appearance), normalizeColour),

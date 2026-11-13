@@ -20,13 +20,13 @@ html[data-dsh-ccd-style="true"] ._header_o6lrb_71 {
 
 html[data-dsh-ccd-style="true"] ._title_o6lrb_79 {
   color: var(--ccd-text);
-  font: 500 16px/22px var(--ccd-font-ui);
+  font-weight: 500; font-size: calc(16px * var(--ccd-font-scale, 1)); line-height: calc(22px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] ._description_o6lrb_106 {
   margin-top: 4px;
   color: var(--ccd-text-secondary);
-  font: 400 14px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 /* Only compact confirmations reduce the native body spacing. Feedback forms
@@ -39,7 +39,7 @@ html[data-dsh-ccd-style="true"] ._footer_o6lrb_123 > button {
   min-height: 32px;
   padding: 4px 12px;
   border-radius: 8px;
-  font: 400 14px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 /* The compact confirmation reference is 400px wide, with 24px insets.
@@ -55,7 +55,7 @@ html[data-dsh-ccd-style="true"] ._confirmation_cjd8z_1 ._warningIcon_cjd8z_32 {
 
 html[data-dsh-ccd-style="true"] ._warning_cjd8z_19 {
   color: var(--ccd-text-secondary);
-  font: 400 14px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] ._modalAction_cjd8z_67 {

@@ -38,8 +38,6 @@ html[data-dsh-ccd-style="true"] {
   /* Shared controls on Customize and Scheduled tasks. */
   --ccd-management-control-height: 26px;
   --ccd-management-control-radius: 7px;
-  --ccd-management-control-font-size: 13px;
-  --ccd-management-control-line-height: 20px;
   --ccd-management-search-height: var(--ccd-management-control-height);
   --ccd-management-action-size: var(--ccd-management-control-height);
   --ccd-management-icon-size: 18px;
@@ -425,12 +423,11 @@ html[data-dsh-ccd-style="true"] {
   --ccd-code-fallback: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
   --ccd-font-ui: var(--ccd-font-fallback);
   --ccd-font-code: var(--ccd-code-fallback);
-  --ccd-font-size-body: 14px;
-  --ccd-font-size-muted: 13px;
-  /* Blank-session title. The reference's own type scale puts the greeting on
-     `--cds-font-size-title` (1.25rem, ~20px) with a 25px leading at weight 400,
-     which is a good deal quieter than the 26px this used to be. */
-  --ccd-font-size-headline: 20px;
+  /* Interface type scale factor. The settings value is written as an inline
+     custom property on body (theme/tokens.ts); this declaration is the neutral
+     default every `calc(Npx * var(--ccd-font-scale, 1))` falls back to when the
+     override layer is not mounted (tests, the pre-activation frame). */
+  --ccd-font-scale: 1;
   /* Transcript headings. The reference's ladder sits one step under the host's
      (DSH draws h1/h2/h3 at 21/19/18px): its own crop measures a 19px h1 and a
      16px h2 over the 14px body — 27 and 23 device px of CJK ink against the
@@ -600,6 +597,25 @@ html[data-dsh-ccd-style="true"] body {
      `--dsw-alias-border-l3`, which theme/tokens.ts already retints), so an
      empty session shows the same hollow ring the host would draw at 0%. */
   --ccd-context-ring-track: var(--dsw-alias-border-l3);
+  /*
+   * Interface type scale.
+   *
+   * The settings percentage arrives as the factor `--ccd-font-scale` in this
+   * same body inline layer (theme/tokens.ts), so the chrome type steps are
+   * declared here rather than at the root: a custom property resolves where it
+   * is declared, and the root block cannot see the body's inline factor. The
+   * transcript keeps the host's content size, and its own steps
+   * (`--ccd-font-size-h1`…`--ccd-font-size-h3`, `--ccd-transcript-line-height`)
+   * stay at the root for that reason.
+   */
+  --ccd-font-size-body: calc(14px * var(--ccd-font-scale, 1));
+  --ccd-font-size-muted: calc(13px * var(--ccd-font-scale, 1));
+  /* Blank-session title. The reference's own type scale puts the greeting on
+     `--cds-font-size-title` (1.25rem, ~20px) with a 25px leading at weight 400,
+     which is a good deal quieter than the 26px this used to be. */
+  --ccd-font-size-headline: calc(20px * var(--ccd-font-scale, 1));
+  --ccd-management-control-font-size: calc(13px * var(--ccd-font-scale, 1));
+  --ccd-management-control-line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /*

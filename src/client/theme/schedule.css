@@ -18,8 +18,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="heading"] {
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="heading"] h1 {
   grid-column: 1 / -1;
   margin: 0;
-  font-size: 26px;
-  line-height: 36px;
+  font-size: calc(26px * var(--ccd-font-scale, 1));
+  line-height: calc(36px * var(--ccd-font-scale, 1));
   font-weight: 600;
   letter-spacing: -.6px;
 }
@@ -94,8 +94,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-filter-open] [data-ccd-schedule-part="
 html[data-dsh-ccd-style="true"] .ccd-schedule-filter-title {
   padding: 3px 7px 6px;
   color: var(--ccd-text-muted);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="filters"] > [role="group"] {
   display: flex;
@@ -114,7 +114,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="filters"] button {
   background: transparent;
   color: var(--ccd-text);
   font-size: var(--ccd-management-control-font-size);
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="filters"] button:hover,
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="filters"] button:focus-visible { background: var(--ccd-hover); }
@@ -184,7 +184,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="empty"] {
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="empty"] > svg { display: none; }
 html[data-dsh-ccd-style="true"] .ccd-schedule-stopwatch { display: block; width: 86px; height: 94px; color: var(--ccd-text-strong); margin-bottom: 24px; }
 html[data-dsh-ccd-style="true"] .ccd-schedule-stopwatch svg { display: block; width: 100%; height: 100%; }
-html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="empty"] h2 { color: var(--ccd-text-muted); font-size: 13px; font-weight: 400; margin: 0 0 14px; }
+html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="empty"] h2 { color: var(--ccd-text-muted); font-size: calc(13px * var(--ccd-font-scale, 1)); font-weight: 400; margin: 0 0 14px; }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="empty"] button {
   background: var(--ccd-text-strong);
   color: var(--ccd-text-inverse);
@@ -222,9 +222,9 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-template-icon {
   border-radius: 10px;
   background: var(--ccd-hover);
   color: var(--ccd-text-secondary);
-  font-size: 25px;
+  font-size: calc(25px * var(--ccd-font-scale, 1));
 }
-html[data-dsh-ccd-style="true"] .ccd-schedule-template-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; font-size: 13px; line-height: 20px; }
+html[data-dsh-ccd-style="true"] .ccd-schedule-template-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); }
 html[data-dsh-ccd-style="true"] .ccd-schedule-template-name { font-weight: 600; }
 html[data-dsh-ccd-style="true"] .ccd-schedule-template-description { color: var(--ccd-text-secondary); }
 html[data-dsh-ccd-style="true"] .ccd-schedule-template-frequency {
@@ -232,8 +232,8 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-template-frequency {
   align-items: center;
   gap: 7px;
   color: var(--ccd-text-muted);
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-frequency-clock,
 html[data-dsh-ccd-style="true"] .ccd-schedule-frequency-clock svg {
@@ -352,9 +352,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="list"] > ul > li > butt
 }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="list"] > ul > li > button:not(.ccd-schedule-card-more) > span > span:first-child {
   color: inherit;
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="list"] > ul > li > button:not(.ccd-schedule-card-more) > span {
   min-width: 0;
@@ -365,16 +365,16 @@ html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="list"] .ccd-schedule-ca
   margin-top: 4px;
   overflow: hidden;
   color: var(--ccd-text-secondary);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule-part="list"] > ul > li > button:not(.ccd-schedule-card-more) > span > span:not(.ccd-schedule-card-prompt) + span {
   margin-top: 6px;
   color: var(--ccd-text-muted);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-schedule="mine"]:has([data-ccd-schedule-part="list"] > ul > li) .ccd-schedule-templates {
   display: none;
@@ -440,13 +440,13 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-card-menu button {
   border-radius: 8px;
   background: transparent;
   color: var(--ccd-menu-danger);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   text-align: left;
   cursor: pointer;
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-card-menu button:is(:hover, :focus-visible) { background: var(--ccd-menu-danger); color: var(--ccd-menu-danger-ink); }
 html[data-dsh-ccd-style="true"] .ccd-schedule-card-menu svg { width: 18px; height: 18px; }
-html[data-dsh-ccd-style="true"] .ccd-schedule-card-error { display: block; margin-top: 6px; color: var(--ccd-menu-danger); font-size: 13px; }
+html[data-dsh-ccd-style="true"] .ccd-schedule-card-error { display: block; margin-top: 6px; color: var(--ccd-menu-danger); font-size: calc(13px * var(--ccd-font-scale, 1)); }
 
 /* Direct card deletion: a centered confirmation, without opening task details. */
 html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog {
@@ -459,10 +459,10 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog {
   background: var(--ccd-card);
   color: var(--ccd-text);
   box-shadow: var(--ccd-dialog-shadow);
-  font: 14px/20px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog::backdrop { background: var(--ccd-dialog-mask); }
-html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog h2 { margin: 0 0 4px; font: 500 16px/22px var(--ccd-font-ui); }
+html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog h2 { margin: 0 0 4px; font-weight: 500; font-size: calc(16px * var(--ccd-font-scale, 1)); line-height: calc(22px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui); }
 html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog p { margin: 0; color: var(--ccd-text-secondary); overflow-wrap: anywhere; }
 html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog p[role]:not(:empty) { margin-top: 12px; }
 html[data-dsh-ccd-style="true"] .ccd-schedule-delete-dialog p[role="alert"] { color: var(--ccd-menu-danger); }
@@ -494,7 +494,7 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-detail {
   /* The breadcrumb shares the title-bar row with the window controls. */
   padding: 15px var(--ccd-management-page-inset) 40px;
   color: var(--ccd-text);
-  font: 14px/22px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(22px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-detail-crumbs {
   display: flex;
@@ -502,9 +502,9 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-detail-crumbs {
   gap: 8px;
   min-width: 0;
   margin: 0 0 36px -14px;
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   -webkit-app-region: no-drag;
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-detail-crumbs button {
   flex: none;
@@ -530,8 +530,8 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-detail-header {
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-detail-header h1 {
   margin: 0 0 12px;
-  font-size: 26px;
-  line-height: 36px;
+  font-size: calc(26px * var(--ccd-font-scale, 1));
+  line-height: calc(36px * var(--ccd-font-scale, 1));
   font-weight: 600;
   letter-spacing: -.6px;
   overflow-wrap: anywhere;
@@ -546,8 +546,8 @@ html[data-dsh-ccd-style="true"] .ccd-schedule-detail-body {
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-detail-field h2 {
   margin: 0 0 10px;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: calc(15px * var(--ccd-font-scale, 1));
+  line-height: calc(22px * var(--ccd-font-scale, 1));
   font-weight: 600;
 }
 html[data-dsh-ccd-style="true"] .ccd-schedule-detail-field p { margin: 0; color: var(--ccd-text); overflow-wrap: anywhere; }

@@ -17,6 +17,9 @@ export const HOST_SURFACE_TOKENS = Object.freeze({
   border: '--dsw-alias-border-l3',
 });
 
+/** The interface type scale's factor; body inline, read by the size tokens in theme/tokens.css. */
+export const FONT_SCALE_VAR = '--ccd-font-scale';
+
 /** Host typography tokens; both drive app-wide stacks. */
 export const HOST_FONT_TOKENS = Object.freeze({
   ui: '--dsw-font-family',
@@ -95,11 +98,24 @@ function fontTokens(config: StyleConfig): Record<string, TokenModes> {
 }
 
 /**
+ * Turn the stored percentage into the factor the stylesheet multiplies by.
+ * @param config - the adopted configuration section.
+ * @returns the factor as a string, e.g. `1.1` for 110.
+ */
+export function interfaceFontScale(config: StyleConfig): string {
+  return String(Number.parseInt(config.interfaceFontSize, 10) / 100);
+}
+
+/**
  * Resolve the whole override layer for one configuration.
  * @param config - the adopted configuration section.
  * @returns token overrides keyed by custom-property name; never empty, because
  * the host surface tokens always travel with the plugin's own canvas.
  */
 export function resolveThemeTokens(config: StyleConfig): ThemeTokenOverrides {
-  return { ...surfaceTokens(config), ...fontTokens(config) };
+  return {
+    ...surfaceTokens(config),
+    ...fontTokens(config),
+    [FONT_SCALE_VAR]: both(interfaceFontScale(config)),
+  };
 }

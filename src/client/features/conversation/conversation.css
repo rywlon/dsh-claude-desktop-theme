@@ -94,8 +94,8 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-clock="end"] button:has(>
 html[data-dsh-ccd-style="true"] [data-turn-tail] [data-clock="end"] > span:last-child {
   gap: 6px;
   margin-left: 6px;
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-turn-tail] [data-clock="end"] button[aria-haspopup="dialog"] {
@@ -142,7 +142,7 @@ html[data-dsh-ccd-style="true"] [role="dialog"]:has(> [data-turn-usage-details])
   box-shadow: var(--ccd-view-menu-shadow);
   backdrop-filter: none;
   color: var(--ccd-text-secondary);
-  font: 400 12px/18px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [role="dialog"]:has(> [data-turn-usage-details]) > div:first-child {
@@ -150,9 +150,9 @@ html[data-dsh-ccd-style="true"] [role="dialog"]:has(> [data-turn-usage-details])
   gap: 12px;
   margin-bottom: 12px;
   color: var(--ccd-text);
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [role="dialog"]:has(> [data-turn-usage-details]) > div[aria-hidden="true"] {
@@ -176,7 +176,7 @@ html[data-dsh-ccd-style="true"] [data-turn-usage-details] > dd {
 html[data-dsh-ccd-style="true"] [data-turn-usage-details] > dd > span {
   display: block;
   color: var(--ccd-text-muted);
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   white-space: normal;
 }
 
@@ -324,9 +324,9 @@ html[data-dsh-ccd-style="true"] .ST7X_W_tabs .ST7X_W_tab {
   background: transparent;
   color: var(--ccd-text-secondary);
   font-family: var(--ccd-font-ui);
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 28px;
+  line-height: calc(28px * var(--ccd-font-scale, 1));
   pointer-events: auto;
 }
 
@@ -654,17 +654,17 @@ html[data-dsh-ccd-style="true"] .gKv1-q_root ._markdown_1ypvv_5:not([data-markdo
 
 html[data-dsh-ccd-style="true"] .gKv1-q_root ._markdown_1ypvv_5:not([data-markdown-variant="compact"]) h1 {
   font-size: var(--ccd-font-size-h1);
-  line-height: 26px;
+  line-height: calc(26px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .gKv1-q_root ._markdown_1ypvv_5:not([data-markdown-variant="compact"]) h2 {
   font-size: var(--ccd-font-size-h2);
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .gKv1-q_root ._markdown_1ypvv_5:not([data-markdown-variant="compact"]) h3 {
   font-size: var(--ccd-font-size-h3);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .gKv1-q_root ._markdown_1ypvv_5:not([data-markdown-variant="compact"]) :is(h4, h5, h6) {
@@ -954,7 +954,7 @@ html[data-dsh-ccd-style="true"] .ccd-running-content {
   align-items: center;
   min-height: 24px;
   color: var(--ccd-text-secondary);
-  font: 400 12px/24px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(24px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   font-variant-numeric: tabular-nums;
   white-space: pre-wrap;
 }
@@ -998,7 +998,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] button[cla
 }
 
 html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] [class*="_title"] {
-  font: 400 13px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files]:not([data-single="true"]) button[class*="_header"] :is([class*="_tile"], [class*="_stat"]) {
@@ -1018,7 +1018,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] ul button[
   border-radius: 6px;
   gap: 8px;
   color: var(--ccd-text);
-  font: 14px/20px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] ul [class*="_path"] {
@@ -1048,7 +1048,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] :is([class
   display: inline-flex;
   flex: none;
   gap: 4px;
-  font: 12px/20px var(--ccd-font-code);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-code);
 }
 
 /* Native list expansion uses the same compact row as files and review,
@@ -1068,7 +1068,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] > button[c
   border-radius: 6px;
   background: transparent;
   color: var(--ccd-text);
-  font: 14px/20px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   text-align: start;
   cursor: pointer;
 }
@@ -1103,7 +1103,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] [data-ccd-
   border-radius: 6px;
   background: transparent;
   color: var(--ccd-text);
-  font: 14px/20px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   text-align: start;
   cursor: pointer;
 }
@@ -1147,7 +1147,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] [data-ccd-
   padding: 6px 12px;
   border-bottom: 1px solid var(--ccd-border);
   color: var(--ccd-text);
-  font: 400 13px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files][data-ccd-changes-single] button[class*="_header"] {
@@ -1168,7 +1168,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] [data-ccd-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font: 14px/20px var(--ccd-font-ui);
+  font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 /* The reference footer has an inset hover seat and a short, arrowless hint.
@@ -1186,7 +1186,7 @@ html[data-dsh-ccd-style="true"] [data-turn-tail] [data-changed-files] [data-ccd-
   background: var(--ccd-text-strong);
   color: var(--ccd-text-inverse);
   box-shadow: var(--ccd-dialog-shadow);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1227,7 +1227,7 @@ html[data-dsh-ccd-style="true"] [data-changed-files] [data-ccd-changes-title-sou
 }
 
 html[data-dsh-ccd-style="true"] [data-changed-files] [data-ccd-changes-title] {
-  font: 400 13px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 /* Dark reference user bubbles share the input surface's neutral fill. */

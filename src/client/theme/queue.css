@@ -54,7 +54,7 @@ html[data-dsh-ccd-style="true"] [data-queue-dock] li + li {
 html[data-dsh-ccd-style="true"] [data-queue-dock] :is([class$="_count"], [class$="_preview"], [class$="_fileName"], [role="status"]) {
   font-family: inherit;
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-queue-dock] :is([class$="_preview"], [class$="_fileName"]) {
@@ -105,7 +105,7 @@ html[data-dsh-ccd-style="true"] [data-queue-dock] textarea {
   background: var(--ccd-canvas);
   color: var(--ccd-text);
   font: inherit;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-queue-dock] textarea:focus {

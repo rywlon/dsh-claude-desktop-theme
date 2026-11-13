@@ -1,7 +1,8 @@
 import z from '@deepseek-ai/schemastery';
 import type { Context } from '@deepseek-ai/cordis';
 import {
-  DEFAULT_APPEARANCE, DEFAULT_FEATURES, DEFAULT_FONTS, DEFAULT_VIEW, DEFAULT_PERSONALIZATION, FONT_NAME_MAX_LENGTH,
+  DEFAULT_APPEARANCE, DEFAULT_FEATURES, DEFAULT_FONTS, DEFAULT_VIEW, DEFAULT_PERSONALIZATION,
+  FONT_NAME_MAX_LENGTH, INTERFACE_FONT_SIZE_DEFAULT,
 } from '../shared/config.ts';
 import { mountStatistics } from './stats/service.ts';
 import { mountContextBreakdown } from './context/service.ts';
@@ -31,6 +32,13 @@ const FONT_NAME = new RegExp(`^[\\p{L}\\p{N} ._-]{0,${FONT_NAME_MAX_LENGTH}}$`, 
 export const Config = z.object({
   enabled: z.boolean().default(false).description('开启 / 关闭 Claude 主题').volatile(),
   debug: z.boolean().default(false).description('在控制台输出调试日志').volatile(),
+  /* The interface scale has its own volatile node: the configuration page
+     writes this field on its own, and a nested field inside another volatile
+     section would be refused by Cordis. */
+  interfaceFontSize: z.string().default(INTERFACE_FONT_SIZE_DEFAULT)
+    .description('界面字号百分比（100 为标准，可调 80–160）')
+    .pattern(/^(?:8\d|9\d|1[0-5]\d|160)$/u)
+    .volatile(),
   features: z.object({
     sidebar: z.boolean().default(DEFAULT_FEATURES.sidebar),
     'right-panel': z.boolean().default(DEFAULT_FEATURES['right-panel']),

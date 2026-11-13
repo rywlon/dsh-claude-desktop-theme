@@ -27,7 +27,7 @@
   background: var(--ccd-card);
   box-shadow: var(--ccd-dialog-shadow);
   color: var(--ccd-text);
-  font: 400 var(--ccd-font-size-body)/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: var(--ccd-font-size-body); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   /* The seat it is registered in is click-through; the modal card is hit
      tested in the top layer, and this states it rather than relying on that. */
   pointer-events: auto;
@@ -77,7 +77,7 @@
   outline: none;
   background: transparent;
   color: var(--ccd-text);
-  font: 400 var(--ccd-font-size-muted)/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: var(--ccd-font-size-muted); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   caret-color: var(--ccd-text);
 }
 
@@ -124,7 +124,7 @@
   border-radius: 7px;
   background: transparent;
   color: var(--ccd-text);
-  font: 400 var(--ccd-font-size-muted)/24px var(--ccd-font-ui);
+  font-weight: 400; font-size: var(--ccd-font-size-muted); line-height: calc(24px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   white-space: nowrap;
   cursor: pointer;
 }
@@ -150,8 +150,8 @@
   height: 26px;
   padding: 0 12px;
   color: var(--ccd-text-secondary);
-  font-size: 11px;
-  line-height: 26px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
+  line-height: calc(26px * var(--ccd-font-scale, 1));
   user-select: none;
 }
 
@@ -214,7 +214,7 @@
   min-width: 0;
   overflow: hidden;
   color: var(--ccd-text-muted);
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -230,7 +230,7 @@
 
 .ccd-search-palette-meta {
   color: var(--ccd-text-secondary);
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   white-space: nowrap;
 }
 
@@ -295,7 +295,7 @@
   border-radius: 6px;
   background: transparent;
   color: var(--ccd-text);
-  font: 400 var(--ccd-font-size-muted)/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: var(--ccd-font-size-muted); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   text-align: left;
   cursor: pointer;
 }
@@ -329,8 +329,8 @@
   overflow: hidden;
   border-top: 1px solid var(--ccd-border-soft);
   color: var(--ccd-text-secondary);
-  font-size: 11px;
-  line-height: 16px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   user-select: none;
 }
@@ -352,7 +352,7 @@
   border: 1px solid var(--ccd-border);
   border-radius: 4px;
   color: var(--ccd-text-secondary);
-  font: 400 10px/13px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(10px * var(--ccd-font-scale, 1)); line-height: calc(13px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 .ccd-search-palette-footer kbd:first-of-type {

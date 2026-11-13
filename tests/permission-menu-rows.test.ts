@@ -104,8 +104,8 @@ test('the name, the sentence and the mark are placed by hand', () => {
   /* The document's 弱化墨: the reference measures its sentence at #898782, a
      clear step under the name it sits below. */
   assert.match(description, /color:\s*var\(--ccd-text-muted\)/u);
-  assert.match(description, /font-size:\s*12px/u);
-  assert.match(description, /line-height:\s*16px/u);
+  assert.match(description, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
+  assert.match(description, /line-height:\s*calc\(16px \* var\(--ccd-font-scale, 1\)\)/u);
   /* One line, and it is what sizes the card: the reference's card is as wide as
      its longest sentence, and a wrapping sentence would instead let the card
      settle on the widest *name*. */
@@ -136,8 +136,8 @@ test('the badge is the reference’s pill, on the rows and not on the chip', () 
   assert.match(body, /margin-top:\s*0/u);
   assert.match(body, /padding:\s*0 5px/u);
   assert.match(body, /border-radius:\s*4px/u);
-  assert.match(body, /font-size:\s*12px/u);
-  assert.match(body, /line-height:\s*16px/u);
+  assert.match(body, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
+  assert.match(body, /line-height:\s*calc\(16px \* var\(--ccd-font-scale, 1\)\)/u);
   /* The host's superscript type — 8px at weight 600 with letter-spacing — is
      what a pill is not, so every one of those is stated back. */
   assert.match(body, /font-weight:\s*400/u);
@@ -157,7 +157,7 @@ test('the group’s name sits above the rows, in the host’s own heading row', 
      it (~29px between the card's top edge and the first row). */
   assert.match(head, /padding-block:\s*6px 2px/u);
   /* Type, ink and start padding stay the family heading rule's. */
-  assert.match(head, /font-size:\s*12px/u);
+  assert.match(head, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(head, /font-weight:\s*500/u);
   assert.match(head, /color:\s*var\(--ccd-text-muted\)/u);
 });

@@ -17,7 +17,7 @@ html[data-dsh-ccd-style="true"] .ccd-model-controls { display: flex; align-items
  * mounted without tokens.css still draws a chip rather than collapsing the
  * control to its text.
  */
-.ccd-model-trigger { display: inline-flex; flex: 1 1 auto; align-items: center; justify-content: center; gap: 6px; min-width: 0; overflow: hidden; height: var(--ccd-chip-height, 20px); padding: 0 var(--ccd-chip-padding-inline, 7px); border: 0; border-radius: var(--ccd-chip-radius, 6px); background: transparent; color: var(--ccd-text-strong); font: inherit; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.ccd-model-trigger { display: inline-flex; flex: 1 1 auto; align-items: center; justify-content: center; gap: 6px; min-width: 0; overflow: hidden; height: var(--ccd-chip-height, 20px); padding: 0 var(--ccd-chip-padding-inline, 7px); border: 0; border-radius: var(--ccd-chip-radius, 6px); background: transparent; color: var(--ccd-text-strong); font: inherit; font-size: calc(12px * var(--ccd-font-scale, 1)); cursor: pointer; white-space: nowrap; }
 .ccd-model-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 /*
  * The effort is the name's quiet companion in the same chip: secondary ink, and
@@ -29,7 +29,7 @@ html[data-dsh-ccd-style="true"] .ccd-model-controls { display: flex; align-items
  * The split layout (view.splitModelControls) puts the effort in a chip of its
  * own beside the name, the same chip box, never shrinking, opening the slider.
  */
-.ccd-effort-trigger { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; height: var(--ccd-chip-height, 20px); padding: 0 var(--ccd-chip-padding-inline, 7px); border: 0; border-radius: var(--ccd-chip-radius, 6px); background: transparent; font: inherit; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.ccd-effort-trigger { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; height: var(--ccd-chip-height, 20px); padding: 0 var(--ccd-chip-padding-inline, 7px); border: 0; border-radius: var(--ccd-chip-radius, 6px); background: transparent; font: inherit; font-size: calc(12px * var(--ccd-font-scale, 1)); cursor: pointer; white-space: nowrap; }
 .ccd-effort-trigger [data-peak] { color: var(--ccd-effort-color-1); }
 .ccd-model-trigger:hover, .ccd-model-trigger[aria-expanded="true"], .ccd-effort-trigger:hover, .ccd-effort-trigger[aria-expanded="true"] { background: var(--ccd-hover); }
 .ccd-model-trigger:disabled, .ccd-effort-trigger:disabled { opacity: .55; cursor: default; }
@@ -59,7 +59,7 @@ html[data-dsh-ccd-style="true"] .ccd-model-controls .ccd-effort-trigger { color:
  * gives them; everything the card decides for itself — how tall a row is, what
  * a heading is worth, where an editable face's line steps — is below.
  */
-.ccd-model-panel, .ccd-model-error { position: fixed; z-index: 1000; box-sizing: border-box; width: min(240px, calc(100vw - 24px)); max-height: calc(100vh - 24px); overflow: hidden; padding: 6px; border: 1px solid var(--ccd-border); border-radius: 12px; background: var(--ccd-card); color: var(--ccd-text); box-shadow: var(--ccd-effort-shadow); font: 13px/1.4 var(--ccd-font-ui); }
+.ccd-model-panel, .ccd-model-error { position: fixed; z-index: 1000; box-sizing: border-box; width: min(240px, calc(100vw - 24px)); max-height: calc(100vh - 24px); overflow: hidden; padding: 6px; border: 1px solid var(--ccd-border); border-radius: 12px; background: var(--ccd-card); color: var(--ccd-text); box-shadow: var(--ccd-effort-shadow); font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: 1.4; font-family: var(--ccd-font-ui); }
 /*
  * The scrolling viewport is the option list, not the card. A directory with
  * dozens of models once grew the card to its viewport clamp, covering the
@@ -103,7 +103,7 @@ html[data-dsh-ccd-style="true"] .ccd-model-controls .ccd-effort-trigger { color:
  * document's scale has no 11px step). It is appearance only: the heading stays
  * out of the button flow and the keyboard never reaches it.
  */
-.ccd-model-provider { margin-top: 4px; padding: 2px 8px; color: var(--ccd-text-secondary); font-size: 12px; line-height: 20px; }
+.ccd-model-provider { margin-top: 4px; padding: 2px 8px; color: var(--ccd-text-secondary); font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); }
 .ccd-model-provider:first-child { margin-top: 0; }
 /*
  * One row is 24px (DESIGN.md §6.7): a 13px label on a 20px line with 2px above
@@ -114,7 +114,7 @@ html[data-dsh-ccd-style="true"] .ccd-model-controls .ccd-effort-trigger { color:
  * button leaves `box-sizing` to the page, so the same declarations would build
  * a 28px row under the content-box default.
  */
-.ccd-model-options button { display: flex; align-items: center; justify-content: space-between; gap: 8px; box-sizing: border-box; width: 100%; min-height: 24px; padding: 2px 8px; border: 0; border-radius: 6px; background: transparent; color: inherit; text-align: left; font: inherit; line-height: 20px; cursor: pointer; }
+.ccd-model-options button { display: flex; align-items: center; justify-content: space-between; gap: 8px; box-sizing: border-box; width: 100%; min-height: 24px; padding: 2px 8px; border: 0; border-radius: 6px; background: transparent; color: inherit; text-align: left; font: inherit; line-height: calc(20px * var(--ccd-font-scale, 1)); cursor: pointer; }
 /*
  * The row you are on versus the row you are pointing at: the mark says which
  * model is in use, the fill says where the pointer (or the keyboard) is.
@@ -151,14 +151,14 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] .ccd-model-options butt
 .ccd-model-name-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ccd-model-options button:hover .ccd-model-glyph, .ccd-model-options button:focus-visible .ccd-model-glyph { color: var(--ccd-text-strong); }
 .ccd-model-glyph svg { width: 16px; height: 16px; }
-.ccd-model-glyph-fallback { color: var(--ccd-text-strong); font-size: 11px; line-height: 1; }
+.ccd-model-glyph-fallback { color: var(--ccd-text-strong); font-size: calc(11px * var(--ccd-font-scale, 1)); line-height: 1; }
 /*
  * The main card: a heading, up to four rows, then the two rows that open a card
  * beside it. Digit hints and values take secondary ink; an open row keeps the
  * pointer's fill. The container takes focus on open so Escape and the digits
  * work before any row is reached, and draws nothing for it.
  */
-.ccd-model-heading { padding: 2px 8px; color: var(--ccd-text-secondary); font-size: 12px; line-height: 20px; }
+.ccd-model-heading { padding: 2px 8px; color: var(--ccd-text-secondary); font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); }
 .ccd-model-options:focus { outline: none; }
 .ccd-model-divider { height: 1px; margin: 4px 8px; background: var(--ccd-border-soft); }
 .ccd-model-hint, .ccd-model-value, .ccd-model-chevron { flex: 0 0 auto; color: var(--ccd-text-secondary); }
@@ -201,7 +201,7 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] .ccd-model-options butt
  * 8px gap — and the retry is a bare accent label: the card has no room for the
  * host's filled button, and flat ink is the document's default control (§二.1).
  */
-.ccd-model-note { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin: 0; padding: 2px 8px; color: var(--ccd-text-secondary); line-height: 20px; }
+.ccd-model-note { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin: 0; padding: 2px 8px; color: var(--ccd-text-secondary); line-height: calc(20px * var(--ccd-font-scale, 1)); }
 .ccd-model-retry { padding: 0; border: 0; border-radius: 6px; background: none; color: var(--ccd-accent); font: inherit; cursor: pointer; }
 .ccd-model-retry:hover { text-decoration: underline; }
 .ccd-model-retry:focus-visible { outline: 2px solid var(--ccd-accent); outline-offset: 2px; }
@@ -212,8 +212,8 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] .ccd-model-options butt
  * hairline "Recommended" badge and the tier in use the accent check.
  */
 .ccd-effort-menu { width: min(260px, calc(100vw - 24px)); }
-.ccd-effort-help { margin: 0; padding: 4px 8px 6px; color: var(--ccd-text-secondary); font-size: 12px; line-height: 18px; }
-.ccd-effort-badge { flex: 0 0 auto; padding: 0 6px; border: 1px solid var(--ccd-border); border-radius: 999px; color: var(--ccd-text-secondary); font-size: 11px; line-height: 16px; }
+.ccd-effort-help { margin: 0; padding: 4px 8px 6px; color: var(--ccd-text-secondary); font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); }
+.ccd-effort-badge { flex: 0 0 auto; padding: 0 6px; border: 1px solid var(--ccd-border); border-radius: 999px; color: var(--ccd-text-secondary); font-size: calc(11px * var(--ccd-font-scale, 1)); line-height: calc(16px * var(--ccd-font-scale, 1)); }
 @container ccd-composer (max-width: 420px) { .ccd-model-trigger, .ccd-effort-trigger { padding-inline: 4px; } }
 
 /* Price information stays quiet until the model is hovered or focused. */

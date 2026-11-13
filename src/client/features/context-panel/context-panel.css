@@ -40,7 +40,7 @@
      the card; the groups own their own overflow instead. */
   overflow: visible;
   color: var(--ccd-view-menu-text);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   font-variant-numeric: tabular-nums;
   /* The seat it is registered in is click-through; a top-layer surface is hit
      tested on its own, and this states it rather than relying on that. */
@@ -239,7 +239,7 @@ html[data-dsh-ccd-style="true"] .ccd-context-panel[data-menu-material] {
   /* `font` is a shorthand and resets `line-height` with the rest of the font,
      so the row's own leading has to be stated after it. */
   font: inherit;
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   line-height: var(--ccd-context-row-height);
   text-align: left;
   cursor: default;

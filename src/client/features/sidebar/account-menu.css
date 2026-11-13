@@ -29,7 +29,7 @@ html[data-dsh-ccd-style="true"] .ZogL4G_trigger:not([data-collapsed="true"]) {
   gap: 6px;
   color: var(--ccd-text-secondary);
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] .ZogL4G_trigger:not([data-collapsed="true"]) .ZogL4G_avatar {
@@ -147,7 +147,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-account-menu]::before {
   color: var(--ccd-text-muted);
   font-size: var(--ccd-font-size-muted);
   font-weight: 400;
-  line-height: 18px;
+  line-height: calc(18px * var(--ccd-font-scale, 1));
   /* The header is painted content, not an element the host lays text into, so
      the trigger's own ellipsis never reaches it: without these the name runs
      out of the card and the window edge cuts it. Keep it on the header's one
@@ -163,7 +163,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-account-menu] [role="menuitem"] {
   border-radius: var(--ccd-radius-row);
   color: var(--ccd-text);
   font-size: var(--ccd-font-size-muted);
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-account-menu] [role="menuitem"]:hover,
@@ -232,7 +232,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-balance-hint] {
   color: var(--ccd-text-strong);
   box-shadow: var(--ccd-effort-shadow);
   text-align: left;
-  font: 12px/1.5 var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: 1.5; font-family: var(--ccd-font-ui);
   cursor: default;
 }
 html[data-dsh-ccd-style="true"] [data-ccd-balance-hint]::backdrop { background: transparent; pointer-events: none; }
@@ -257,7 +257,7 @@ html[data-dsh-ccd-style="true"] .ccd-balance-period-row .ccd-balance-period { ma
 html[data-dsh-ccd-style="true"] .ccd-balance-note {
   margin: 8px 0 0;
   color: var(--ccd-text-muted);
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   line-height: 1.45;
 }
 
@@ -265,7 +265,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-balance-amount] {
   margin-inline-start: auto;
   color: var(--ccd-text);
   font-variant-numeric: tabular-nums;
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
 }
 
 /* A quiet balance ledger anchored above the account separator. The slot is a
@@ -283,7 +283,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-account-balance][data-ccd-balance-card
   padding: 6px;
   border-radius: var(--ccd-radius-row);
   color: var(--ccd-text-secondary);
-  font: 12px/18px var(--ccd-font-ui);
+  font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(18px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 html[data-dsh-ccd-style="true"] [data-ccd-balance-card]:hover {
   background: var(--ccd-hover);
@@ -308,15 +308,15 @@ html[data-dsh-ccd-style="true"] [data-ccd-balance-card] [data-ccd-balance-amount
   white-space: nowrap;
   text-overflow: ellipsis;
   color: var(--ccd-text);
-  font-size: 16px;
+  font-size: calc(16px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
   letter-spacing: 0;
   text-align: end;
 }
 html[data-dsh-ccd-style="true"] [data-ccd-balance-card][data-balance-state="unavailable"] [data-ccd-balance-amount] {
-  font-size: 11px;
-  line-height: 16px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   letter-spacing: 0;
   color: var(--ccd-text-secondary);
 }
@@ -328,8 +328,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-balance-details] {
   justify-content: flex-start;
   gap: 2px 8px;
   min-width: 0;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   font-variant-numeric: tabular-nums;
 }
 html[data-dsh-ccd-style="true"] [data-ccd-balance-details] .ccd-balance-period { margin: 0; }
@@ -345,9 +345,9 @@ html[data-dsh-ccd-style="true"] .ccd-balance-period {
   border-radius: 4px;
   background: color-mix(in srgb, currentColor 12%, transparent);
   color: var(--ccd-price-off-peak);
-  font-size: 11px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 16px;
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   white-space: nowrap;
 }
 html[data-dsh-ccd-style="true"] .ccd-balance-period[data-peak="true"] { color: var(--ccd-price-peak); }
@@ -467,7 +467,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-account-theme] {
   padding: 4px 10px 8px;
   color: var(--ccd-text-muted);
   font-size: var(--ccd-font-size-muted);
-  line-height: 18px;
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-account-theme]::before {
@@ -528,7 +528,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog] {
   background: var(--ccd-card);
   color: var(--ccd-text);
   box-shadow: var(--ccd-view-menu-shadow);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog]::backdrop {
@@ -537,9 +537,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog]::backdrop {
 
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog] h2 {
   margin: 0 0 10px;
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog] textarea {
@@ -571,8 +571,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog] textarea:focus
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog] p {
   margin: 8px 0 14px;
   color: var(--ccd-text-muted);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-feedback-dialog] div {

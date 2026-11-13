@@ -19,7 +19,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-page] > * {
 /* Keep the back action in the content area, below the window title bar. */
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-page="detail"], [data-ccd-plugin-page="more"]) {
   padding: 47px var(--ccd-management-page-inset) 40px;
-  font: 400 14px/22px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(14px * var(--ccd-font-scale, 1)); line-height: calc(22px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-detail"] {
   display: grid;
@@ -143,16 +143,16 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-pageHeading"] {
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-pageTitle"] {
   flex: none;
   margin: 0;
-  font-size: 26px;
+  font-size: calc(26px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 36px;
+  line-height: calc(36px * var(--ccd-font-scale, 1));
   letter-spacing: -.6px;
 }
 /* Keep the host's explanatory tooltip available to keyboard and pointer users. */
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-pageIntro"] {
   min-width: 0;
   margin: 0;
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-pageIntro"] > span {
   overflow: hidden;
@@ -257,7 +257,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="market-marketButton"] {
   max-width: 100%;
   margin: 2px 0 0 auto;
   color: var(--ccd-text-secondary);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="market-search"] {
   box-sizing: border-box;
@@ -314,9 +314,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-installedPanel"] 
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-group"] { gap: 0; }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-groupHead"] { margin-bottom: 12px; }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-groupTitle"] {
-  font-size: 15px;
+  font-size: calc(15px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 22px;
+  line-height: calc(22px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cards"], [data-ccd-plugin-part="market-cards"]) {
   display: grid;
@@ -364,7 +364,7 @@ html[data-dsh-ccd-style="true"] .ccd-plugin-list-heading {
   padding: 8px 12px;
   align-items: center;
   color: var(--ccd-text-secondary);
-  font: 500 13px/20px var(--ccd-font-ui);
+  font-weight: 500; font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
 }
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardIcon"], [data-ccd-plugin-part="market-icon"]) {
   display: inline-flex;
@@ -385,7 +385,7 @@ html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardIcon"], [
 html[data-dsh-ccd-style="true"] [data-plugin-group="basic"] [data-ccd-plugin-part="manager-cardHead"] { grid-template-columns: 24px minmax(0, calc(38% - 36px)) minmax(0, 1fr); }
 html[data-dsh-ccd-style="true"] .ccd-plugin-list-heading-basic { grid-template-columns: 38% minmax(0, 1fr); }
 html[data-dsh-ccd-style="true"] .ccd-plugin-list-heading-basic > :last-child { display: none; }
-html[data-dsh-ccd-style="true"] .ccd-plugin-version { flex: none; color: var(--ccd-text-muted); font: 400 12px/20px var(--ccd-font-ui); }
+html[data-dsh-ccd-style="true"] .ccd-plugin-version { flex: none; color: var(--ccd-text-muted); font-weight: 400; font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui); }
 /* Keep the native More action beside its section title and preserve navigation. */
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="manager-groupHead"] {
   display: flex;
@@ -403,20 +403,20 @@ html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardMain"] > 
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardDesc"], [data-ccd-plugin-part="market-description"]) { grid-column: 3; grid-row: 1; min-width: 0; margin: 0; }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="market-meta"] { grid-column: 3; grid-row: 2; }
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardTitle"], [data-ccd-plugin-part="market-cardOpen"]) {
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   font-weight: 600;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardDesc"], [data-ccd-plugin-part="market-description"]) {
   -webkit-line-clamp: 1;
   color: var(--ccd-text-secondary);
-  font-size: 13px;
-  line-height: 18px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="market-meta"] {
   color: var(--ccd-text-muted);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-cardEnd"], [data-ccd-plugin-part="market-cardEnd"]) {
   align-self: center;
@@ -450,8 +450,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-plugin-part="market-cardEnd"] [data-cc
   opacity: 1;
 }
 html[data-dsh-ccd-style="true"] :is([data-ccd-plugin-part="manager-detailTitle"], [data-ccd-plugin-part="market-detailTitle"]) {
-  font-size: 26px;
-  line-height: 36px;
+  font-size: calc(26px * var(--ccd-font-scale, 1));
+  line-height: calc(36px * var(--ccd-font-scale, 1));
   font-weight: 600;
   letter-spacing: -.6px;
 }

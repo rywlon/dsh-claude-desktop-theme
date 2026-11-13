@@ -264,7 +264,7 @@ html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page
   outline: none;
   color: var(--ccd-files-ink);
   font: inherit;
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page]) [data-ccd-files-filter] > input::placeholder {
@@ -324,8 +324,8 @@ html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page
   gap: 5px;
   border-radius: var(--ccd-chip-radius);
   color: var(--ccd-files-ink);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page]) [data-files-body] :is([data-files-entry] > button, [data-files-entry] > div > button):hover {
@@ -434,8 +434,8 @@ html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page
   background: none;
   color: var(--ccd-text-muted);
   font: inherit;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   text-align: left;
   cursor: pointer;
 }
@@ -463,8 +463,8 @@ html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page
 html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page]) [data-ccd-files-nomatch] {
   padding: 0 8px;
   color: var(--ccd-text-muted);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page]) [data-ccd-files-nomatch][hidden] {
@@ -501,16 +501,16 @@ html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page
 html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page]) [data-ccd-files-empty-title] {
   margin: 12px 0 0;
   color: var(--ccd-files-ink);
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 19px;
+  line-height: calc(19px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] :is([data-sidebar-right-panel], [data-files-page]) [data-ccd-files-empty-body] {
   margin: 4px 0 0;
   color: var(--ccd-text-muted);
-  font-size: 12px;
-  line-height: 15px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(15px * var(--ccd-font-scale, 1));
 }
 
 /* --- the panel's panes --------------------------------------------------- */
@@ -549,7 +549,7 @@ html[data-dsh-ccd-style="true"] [data-sidebar-right-panel] [data-ccd-pane] [data
 html[data-dsh-ccd-style="true"] [data-sidebar-right-panel] [data-ccd-pane] [data-dockkit-float-title] {
   padding-inline: 0;
   color: var(--ccd-right-panel-tab-ink);
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-sidebar-right-panel] [data-ccd-pane] [data-dockkit-float-title]:hover {
@@ -843,8 +843,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-pane-caption] {
   align-items: center;
   min-width: 0;
   gap: 4px;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-pane-caption] > span:not([data-ccd-files-mark]) {
   min-width: 0;
@@ -916,8 +916,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-pane-menu] {
   color: var(--ccd-text);
   box-shadow: var(--ccd-view-menu-shadow);
   font: inherit;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] p[data-ccd-pane-menu] {
   padding: 10px 12px;
@@ -977,8 +977,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-browser-toolbar] input {
   background: var(--ccd-card);
   color: var(--ccd-text);
   font-family: var(--ccd-font-ui);
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-browser-toolbar] input:focus {
   outline: 1px solid var(--ccd-accent);
@@ -1008,8 +1008,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-browser-wait] {
   background-image: radial-gradient(var(--ccd-browser-dot) .75px, transparent .75px);
   background-size: 16px 16px;
   color: var(--ccd-right-panel-tab-ink);
-  font-size: 13px;
-  line-height: 19px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(19px * var(--ccd-font-scale, 1));
   pointer-events: none;
 }
 html[data-dsh-ccd-style="true"] [data-ccd-browser-wait-mark] {
@@ -1110,8 +1110,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-pane-tab] {
   border-radius: 6px;
   background: transparent;
   color: var(--ccd-right-panel-tab-ink);
-  font-size: 13px;
-  line-height: 18px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-pane-tab]:is(:hover, :focus-within) {
   background: var(--ccd-file-tab-hover);
@@ -1187,8 +1187,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-browser-menu] {
   background: var(--ccd-card);
   color: var(--ccd-view-menu-text);
   font-family: var(--ccd-font-ui);
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-browser-menu] button {
   box-sizing: border-box;
@@ -1287,7 +1287,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-browser-navigation] > button:disabled 
 }
 html[data-dsh-ccd-style="true"] [data-ccd-browser-toolbar] input {
   padding-inline: 8px;
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
 }
 html[data-dsh-ccd-style="true"] [data-ccd-browser-toolbar] button[type="submit"] {
   display: none;
@@ -1314,8 +1314,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-preview-path] {
   white-space: nowrap;
   color: var(--ccd-right-panel-tab-ink);
   font-family: var(--ccd-font-ui);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* Match the file preview's wrap and renderer controls to the pane toolbar. */

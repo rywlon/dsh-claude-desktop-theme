@@ -61,7 +61,7 @@ test('the card is the family’s surface, in the reference’s box', () => {
   assert.match(box.body, /min-width:\s*200px/u);
   assert.match(box.body, /max-width:\s*320px/u);
   assert.match(box.body, /padding:\s*4px/u);
-  assert.match(box.body, /font:\s*13px\/20px\s+var\(--ccd-font-ui\)/u);
+  assert.match(box.body, /font-size:\s*calc\(13px \* var\(--ccd-font-scale, 1\)\);\s*line-height:\s*calc\(20px \* var\(--ccd-font-scale, 1\)\)/u);
   /* The UA hides a closed popover with `display: none`, so the card's own
      display may only apply while it is open. */
   const open = ruleFor(sheet, '.ccd-view-options:popover-open');
@@ -94,8 +94,8 @@ test('a row is the family’s 24px cell with a value column and a mark', () => {
 
 test('the value column is one step down, and the marks are the family’s', () => {
   const value = ruleFor(sheet, '.ccd-view-row-value');
-  assert.match(value.body, /font-size:\s*12px/u);
-  assert.match(value.body, /line-height:\s*16px/u);
+  assert.match(value.body, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
+  assert.match(value.body, /line-height:\s*calc\(16px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(value.body, /color:\s*var\(--ccd-view-menu-muted\)/u);
   assert.match(value.body, /max-width:\s*160px/u);
   assert.match(value.body, /text-overflow:\s*ellipsis/u);

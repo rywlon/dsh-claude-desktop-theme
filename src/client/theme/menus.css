@@ -190,9 +190,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-command-menu] [role="option"][id^="dsh
 html[data-dsh-ccd-style="true"] [data-ccd-command-menu] [role="option"] {
   min-height: 24px;
   padding: 2px 8px;
-  font-size: 14px;
+  font-size: calc(14px * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-command-token] {
@@ -227,8 +227,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-add-menu] [role="menuitem"] {
   color: inherit;
   text-align: start;
   font: inherit;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   cursor: pointer;
 }
 
@@ -246,9 +246,9 @@ html[data-dsh-ccd-style="true"] [data-ccd-add-menu] svg {
 html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-command-menu] [data-ccd-command-heading] {
   padding: 2px 8px;
   color: var(--ccd-text-secondary);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-command-tooltip] {
@@ -263,8 +263,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-command-tooltip] {
   color: var(--ccd-command-tooltip-ink);
   box-shadow: var(--ccd-effort-shadow);
   font-family: inherit;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
   overflow-wrap: anywhere;
   pointer-events: none;
 }
@@ -342,8 +342,8 @@ html[data-dsh-ccd-style="true"] [data-menu-material]:not([data-ccd-account-menu]
   box-sizing: border-box;
   padding: 2px 8px;
   color: var(--ccd-text-secondary);
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* The card's two internal hairlines — a data separator and the pinned footer's
@@ -424,7 +424,7 @@ html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [
   color: var(--ccd-text-strong);
   font-size: var(--ccd-choice-label-size, 12px);
   font-weight: 400;
-  line-height: 20px;
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* The second line, in the document's 弱化墨: the reference measures its sentence at
@@ -438,8 +438,8 @@ html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [
   grid-area: 2 / 1 / 3 / -1;
   overflow: hidden;
   color: var(--ccd-text-muted);
-  font-size: 12px;
-  line-height: 16px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -476,10 +476,10 @@ html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [
   border-radius: 4px;
   background: var(--ccd-track);
   color: var(--ccd-text-secondary);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   font-weight: 400;
   letter-spacing: normal;
-  line-height: 16px;
+  line-height: calc(16px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [role="menuitem"][data-ccd-permission-mode] .wXeviG_optionLabel {
@@ -501,9 +501,9 @@ html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-agent-menu] ._view
 html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] ._viewport_4ub78_19 > [data-ccd-permission-heading] {
   padding-block: 6px 2px;
   color: var(--ccd-text-muted);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: 18px;
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 
 /* Bare-digit shortcuts align with the name, after the selected check. */
@@ -511,7 +511,7 @@ html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-agent-menu] [data-
 html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [data-ccd-permission-shortcut] {
   grid-area: 1 / 3;
   color: var(--ccd-text-muted);
-  font: 400 12px/20px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(12px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
@@ -549,7 +549,7 @@ html[data-dsh-ccd-style="true"] [data-menu-material] [data-ccd-menu-search] {
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: 13px;
+  font-size: calc(13px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-menu-material] [data-ccd-menu-search]::placeholder {
@@ -569,8 +569,8 @@ html[data-dsh-ccd-style="true"] [data-menu-material] [data-ccd-menu-note]:not([h
   box-sizing: border-box;
   padding: 2px 8px;
   color: var(--ccd-text-secondary);
-  font-size: 12px;
-  line-height: 20px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-menu-material] [data-ccd-branch-row][aria-disabled="true"] {
@@ -588,7 +588,7 @@ html[data-dsh-ccd-style="true"] [data-menu-material] [data-ccd-branch-row] > [da
   margin-left: auto;
   overflow: hidden;
   color: var(--ccd-text-secondary);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -659,7 +659,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-plan-label]::before {
 html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [data-ccd-plan-error] {
   padding: 4px 8px;
   color: var(--ccd-text-muted);
-  font-size: 12px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
 }
 
 html[data-dsh-ccd-style="true"] [data-menu-material][data-ccd-permission-menu] [data-ccd-permission-mode][hidden] {

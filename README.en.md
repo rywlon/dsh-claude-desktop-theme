@@ -69,7 +69,7 @@ Open **Theme** in the sidebar or **Settings → Claude Theme**. Changes take eff
 | Appearance | System, light or dark theme, conversation background and sidebar background |
 | View | API balance, model icons, separate model and effort controls, conversation process, sidebar brand, header entries and empty groups |
 | Personalization | Companion, running status, reply signature and home greeting styles |
-| Typefaces | Interface and code fonts. The Chinese interface font can be set in the profile's `cordis.patch.yml`. |
+| Typefaces | Interface type scale (100 / 110 / 120 / 130%, up to 160% by hand-editing the patch file), interface and code fonts. The Chinese interface font can be set in the profile's `cordis.patch.yml`. |
 
 Custom background colours apply in light mode. The default font stacks begin with Anthropic Sans Web, Anthropic Serif Web and SF Mono. The repository includes fonts for local installation under `assets/fonts/`.
 

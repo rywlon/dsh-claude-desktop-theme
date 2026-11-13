@@ -3,7 +3,7 @@ import type { MouseEvent, ReactElement } from 'react';
 import type {
   ConfigFormPort, SettingsPathOp, ThemePreference, ThemePreferencePort,
 } from '../../contracts/ports.ts';
-import { adoptConfig, APPEARANCE_FIELDS, DEFAULT_FONTS } from '../../../shared/config.ts';
+import { adoptConfig, APPEARANCE_FIELDS, DEFAULT_FONTS, INTERFACE_FONT_SIZE_STEPS } from '../../../shared/config.ts';
 import type { AppearanceField, FeatureId, FontField } from '../../../shared/config.ts';
 import { hostBuildStatus } from '../../compat/host-builds.ts';
 import { commitColour, commitFont, setOperation, unsetOperation } from './edits.ts';
@@ -45,6 +45,14 @@ const FONT_LABELS: Record<FontField, SettingsKey> = {
   uiLatin: 'field.uiLatin',
   uiCjk: 'field.uiCjk',
   code: 'field.code',
+};
+
+/** Labels for the interface type scale's steps. */
+const INTERFACE_FONT_SIZE_LABELS: Record<string, SettingsKey> = {
+  '100': 'size.standard',
+  '110': 'size.large',
+  '120': 'size.larger',
+  '130': 'size.largest',
 };
 
 /** Rows the page shows; `uiCjk` stays available through the patch file. */
@@ -445,6 +453,16 @@ export function ConfigPage(props: ConfigPageProps): ReactElement {
             />
           );
         })}
+        <ChoiceRow
+          id="ccd-settings-interface-font-size"
+          label={translate('field.interfaceFontSize')}
+          value={served.interfaceFontSize}
+          options={INTERFACE_FONT_SIZE_STEPS.map(percent => ({
+            value: percent,
+            label: translate(INTERFACE_FONT_SIZE_LABELS[percent] ?? 'size.standard'),
+          }))}
+          onChange={value => void write([setOperation(['interfaceFontSize'], value)])}
+        />
       </section>
 
       <p className="ccd-settings-status" role="status">{statusKey === null ? '' : translate(statusKey)}</p>

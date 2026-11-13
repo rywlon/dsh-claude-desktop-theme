@@ -45,7 +45,7 @@
      submenu outside this surface and prevents pointer input from reaching it. */
   overflow: visible;
   color: var(--ccd-view-menu-text);
-  font: 13px/20px var(--ccd-font-ui);
+  font-size: calc(13px * var(--ccd-font-scale, 1)); line-height: calc(20px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   /* The seat it is registered in is click-through; a top-layer surface is hit
      tested on its own, and this states it rather than relying on that. */
   pointer-events: auto;
@@ -128,8 +128,8 @@ html[data-dsh-ccd-style="true"] .ccd-view-submenu[data-menu-material] {
   max-width: 160px;
   overflow: hidden;
   color: var(--ccd-view-menu-muted);
-  font-size: 12px;
-  line-height: 16px;
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   text-overflow: ellipsis;
 }

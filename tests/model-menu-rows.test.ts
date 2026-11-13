@@ -80,7 +80,7 @@ test('the card is the document’s popup surface', () => {
   assert.match(body, /box-shadow:\s*var\(--ccd-effort-shadow\)/u);
   /* The card's measure is the document's 13px step, and it is the one place
      that decides it: the rows and the heading inherit from here. */
-  assert.match(body, /font:\s*13px\//u);
+  assert.match(body, /font-size:\s*calc\(13px \* var\(--ccd-font-scale, 1\)\)/u);
 });
 
 test('the option list is the scrolling viewport, at the settings menu’s ceiling', () => {
@@ -104,7 +104,7 @@ test('one row is 24px: a 20px label line with 2px above and below', () => {
   assert.match(body, /box-sizing:\s*border-box/u);
   assert.match(body, /min-height:\s*24px/u);
   assert.match(body, /padding:\s*2px 8px/u);
-  assert.match(body, /line-height:\s*20px/u);
+  assert.match(body, /line-height:\s*calc\(20px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(body, /border-radius:\s*6px/u);
   /* The card's own 13px measure is the label's, and the row must not restate
      it: the panel's `font` shorthand is the one place that decides. */
@@ -131,8 +131,8 @@ test('the pointer’s state is the flat fill and the keyboard’s is the documen
 
 test('the provider heading is a quiet label within the same row rhythm', () => {
   const body = exactRule(controls, '.ccd-model-provider').body;
-  assert.match(body, /font-size:\s*12px/u);
-  assert.match(body, /line-height:\s*20px/u);
+  assert.match(body, /font-size:\s*calc\(12px \* var\(--ccd-font-scale, 1\)\)/u);
+  assert.match(body, /line-height:\s*calc\(20px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(body, /padding:\s*2px 8px/u);
   assert.match(body, /color:\s*var\(--ccd-text-secondary\)/u);
   assert.ok(!/background/u.test(body), body);
@@ -189,7 +189,7 @@ test('the search cell paints no ring, and its hint text is muted', () => {
 test('the cells that are not choices wear the rows’ geometry', () => {
   const body = ruleFor(controls, '.ccd-model-note').body;
   assert.match(body, /padding:\s*2px 8px/u);
-  assert.match(body, /line-height:\s*20px/u);
+  assert.match(body, /line-height:\s*calc\(20px \* var\(--ccd-font-scale, 1\)\)/u);
   assert.match(body, /margin:\s*0/u);
   const retry = ruleFor(controls, '.ccd-model-retry').body;
   assert.match(retry, /color:\s*var\(--ccd-accent\)/u);

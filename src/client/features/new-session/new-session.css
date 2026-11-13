@@ -55,7 +55,7 @@ html[data-dsh-ccd-style="true"] .ST7X_W_root[data-phase="hero"] .bocITq_titleGro
   color: var(--ccd-text);
   font-size: var(--ccd-font-size-headline);
   font-weight: 400;
-  line-height: 26px;
+  line-height: calc(26px * var(--ccd-font-scale, 1));
   letter-spacing: -0.01em;
 }
 
@@ -64,8 +64,8 @@ html[data-dsh-ccd-style="true"] .ST7X_W_root[data-phase="hero"] .bocITq_previewB
   padding: 0 6px;
   border-radius: 6px;
   color: var(--ccd-text-secondary);
-  font-size: 11px;
-  line-height: 20px;
+  font-size: calc(11px * var(--ccd-font-scale, 1));
+  line-height: calc(20px * var(--ccd-font-scale, 1));
 }
 
 /* Keep the composer off the window edge exactly as the reference does: the
@@ -115,7 +115,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-greeting] {
   gap: 7px;
   min-width: 0;
   color: var(--ccd-text-strong);
-  font: 400 20px/26px var(--ccd-font-ui);
+  font-weight: 400; font-size: calc(20px * var(--ccd-font-scale, 1)); line-height: calc(26px * var(--ccd-font-scale, 1)); font-family: var(--ccd-font-ui);
   letter-spacing: -0.01em;
 }
 html[data-dsh-ccd-style="true"] [data-ccd-greeting] > svg {
