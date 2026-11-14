@@ -16,7 +16,7 @@ git merge upstream/main
 
 上游 0.10.5 起包含 `.github/workflows/host-compat.yml`（真实宿主冒烟 CI）。本 fork 暂未纳入该文件：本机 `gh` token 只有 `gist`、`read:org`、`repo` scope，推送会因缺少 `workflow` scope 被 GitHub 拒绝。要启用时，先去 GitHub 网页端手工添加该文件（或执行 `gh auth refresh -h github.com -s workflow` 后再推送），然后运行 `npm run test:host`。
 
-README 与其它文档里的绝对链接仍指向上游仓库：这样 fork 的文档保持一致，也满足 [scripts/check-architecture.mjs](scripts/check-architecture.mjs) 里写死的 `zkforge` raw 前缀。要把文档改指本 fork 时，需同步修改该脚本的 `RAW_PREFIX`。
+README 与其它文档里的绝对链接指向本 fork（`rywlon/dsh-claude-desktop-theme`），[scripts/check-architecture.mjs](scripts/check-architecture.mjs) 的 `RAW_PREFIX` 也同步指向本 fork；上游仓库只在 README 的出处说明与 git remote 里出现。
 
 ## 本地验证
 
@@ -50,7 +50,7 @@ npm run test:host -- --tarball <刚才 pack 出来的 tgz>
 
 安装和升级会写 `~/.dsh/profiles/desktop`，装完完整退出并重开 DSH。本地 profile 同时只应启用一个 Claude 风格主题，和别的主题插件并存前先确认不会互相抢注入点。
 
-本机当前安装的是 `~/.dsh/theme-tarballs/dsh-claude-desktop-theme-0.10.7.tgz`，profile 依赖记为指向该 tarball 的 `file:` 路径；本地同时保留一份源码检出在 `~/Developer/dsh-claude-desktop-theme`（`origin` 可推、`upstream` 指上游），日常改动都在检出里做。每次改动后的循环：
+本机当前安装的是 `~/.dsh/theme-tarballs/dsh-claude-desktop-theme-0.10.17.tgz`，profile 依赖记为指向该 tarball 的 `file:` 路径；本地同时保留一份源码检出在 `~/Developer/dsh-claude-desktop-theme`（`origin` 可推、`upstream` 指上游），日常改动都在检出里做。`~/.dsh/theme-tarballs/` 只保留最近 3 个版本的 tarball（更老的会删掉，回滚粒度以这 3 个为准）。每次改动后的循环：
 
 1. 跑上面的非浏览器验证；完整 `npm test` 依赖 Chrome，本机受限环境起不来时以 CI 为准。
 2. 先改 `package.json` 的版本号再构建——版本号会编进构建产物。
@@ -59,6 +59,13 @@ npm run test:host -- --tarball <刚才 pack 出来的 tgz>
 5. 提交并 push 到 `origin main`，等 GitHub Actions 的 `npm run check` 通过。
 
 改动前先备份 profile 的 `cordis.patch.yml` 和 `package.json`：旧配置里可能残留同一 id（`ui-skin-ccd-style`）的条目，会覆盖插件的默认配置。安装完还要把包名加进 profile `package.json` 的 `dsh.profile.bundles` 才会被加载。
+
+## 本机已知事项
+
+- 插件市场（dshmarket）的主题开关对本插件有死锁：关掉时会把 bundle 从 `dsh.profile.bundles` 移除，而重新打开要求热挂载成功、本插件的宿主半边做不到。本机给 `~/.dsh/profiles/desktop/node_modules/dshmarket/lib/themes.js` 打过 `ccd-fork-patch` 补丁，并用幂等脚本 `~/.dsh/theme-tarballs/repair-ccd-theme.sh` 兜底；dshmarket 升级会覆盖补丁，重跑该脚本即可（月检任务也会检查）。主题开关优先用 DSH 设置里的开关，不要用市场里的主题开关。
+- 主题设置只出现在 `设置 → Minimal Style`；插件不注册侧栏面板行，所以侧栏与「更多」里没有「主题」入口。
+- 本机不跑浏览器用例（Chrome 每次启动都会弹钥匙串授权），浏览器覆盖以 CI 为准。
+- 侧栏 pin/隐藏状态由 DSH 持久化；如果以后再加侧栏入口，要先想清楚“取消常驻后重启又回来”的问题。
 
 ## 发布
 
