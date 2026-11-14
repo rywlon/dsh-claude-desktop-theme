@@ -275,7 +275,7 @@ test('both configuration sections travel in one override layer', () => {
   assert.equal(typeof tokens['--ds-font-family-code'], 'object');
 });
 
-test('the Shiki syntax palette and the inline-code chip leave the Claude rust behind', () => {
+test('the Shiki syntax palette stays vivid while inline code stays quiet', () => {
   const tokens = resolveThemeTokens(adoptConfig({}));
   const syntax = Object.keys(tokens).filter(name => name.startsWith('--shiki-token-'));
   assert.equal(syntax.length, 9, 'all nine syntax roles travel with the skin');
@@ -287,10 +287,10 @@ test('the Shiki syntax palette and the inline-code chip leave the Claude rust be
 
   const light = declarations(lightSheet);
   const dark = declarations(darkSheet);
-  assert.equal(light.get('ccd-inline-code-text'), '#3b56d9');
-  assert.equal(dark.get('ccd-inline-code-text'), '#9db4ff');
-  assert.equal(light.get('ccd-inline-code-fill'), '#f1f3fa');
-  assert.equal(dark.get('ccd-inline-code-fill'), '#262b36');
+  assert.equal(light.get('ccd-inline-code-text'), '#3f434e');
+  assert.equal(dark.get('ccd-inline-code-text'), '#c6ccd8');
+  assert.equal(light.get('ccd-inline-code-fill'), '#f0f1f4');
+  assert.equal(dark.get('ccd-inline-code-fill'), '#22252d');
 });
 
 test('the hero artwork keeps upstream’s values', () => {
