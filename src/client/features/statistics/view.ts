@@ -4,8 +4,10 @@
  * Two views share one snapshot. `Overview` draws 182 days (26 columns × 7 rows)
  * ending on the Saturday of the current week, with the day rows running
  * Sunday-first — the window the reference computes — and levels of
- * `ceil(count / busiest day * 4)`; days after today are transparent rather than
- * empty, which is why the card data marks them instead of giving them a level.
+ * `ceil(tokens / busiest day * 4)`, scaled by the tokens each day produced
+ * rather than by its prompt count; days after today are transparent rather
+ * than empty, which is why the card data marks them instead of giving them a
+ * level.
  * `Models` draws one bar per day that produced tokens, stacked by model and
  * scaled to the axis the reference derives from the busiest day.
  *
@@ -33,6 +35,21 @@ export const HEAT_DAYS = HEAT_COLUMNS * HEAT_ROWS;
 
 /** Placeholder the reference shows for a metric it has no data for. */
 const EMPTY = '\u2014';
+
+/**
+ * Fold the snapshot's `day × model` token rows into one token total per day,
+ * the series the heatmap colours.
+ *
+ * @param rows - per-day, per-model token rows.
+ * @returns the day keys with their combined tokens, oldest first.
+ */
+export function tokenDays(rows: StatsSnapshot['modelDays']): readonly StatsDay[] {
+  const totals = new Map<string, number>();
+  for (const [date, , tokens] of rows) {
+    totals.set(date, (totals.get(date) ?? 0) + tokens);
+  }
+  return [...totals].map(([date, tokens]) => [date, tokens] as const);
+}
 
 /** The reference's own tabs, in its order. */
 export const STATS_TABS: readonly StatsOption<StatsTabId>[] = [
@@ -169,7 +186,7 @@ export function buildOverview(
 ): StatsOverviewData {
   const copy = STATS_COPY[language];
   const totals = snapshot.ranges[range];
-  const window = heatWindow(snapshot.days, now);
+  const window = heatWindow(tokenDays(snapshot.modelDays), now);
   const tiles: StatsTile[] = [
     { label: copy.tiles[0], value: formatCount(totals.sessions) },
     { label: copy.tiles[1], value: formatCount(totals.messages) },

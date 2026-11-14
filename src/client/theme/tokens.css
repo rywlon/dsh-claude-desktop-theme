@@ -322,20 +322,18 @@ html[data-dsh-ccd-style="true"] {
      equivalents. The four heat levels are the reference's own `hsl(217 70% L%)`
      with L = 72／64／56／48, i.e. "that day's value / the busiest day" in four
      equal steps. */
-  --ccd-stats-panel: color-mix(in srgb, var(--ccd-text) 4%, var(--ccd-card));
-  --ccd-stats-tile: color-mix(in srgb, var(--ccd-text) 15%, var(--ccd-card));
+  --ccd-stats-panel: #f1f1f2;
+  --ccd-stats-tile: #dadadb;
   /* The card header's active tab: the reference paints `fill-ghost-hover`, the
      same 5% black as the card itself, over the card — one step lighter than a
      stat tile. */
-  --ccd-stats-tab: color-mix(in srgb, var(--ccd-text) 10%, var(--ccd-card));
+  --ccd-stats-tab: #e7e7e9;
   --ccd-stats-label: #8a8a91;
   --ccd-stats-value: #0d0d0f;
-  --ccd-stats-heat-base: color-mix(in srgb, var(--ccd-text) 11%, transparent);
-  --ccd-stats-heat-ink: #3b6ecf;
-  --ccd-stats-heat-1: color-mix(in srgb, var(--ccd-stats-heat-ink) 20%, transparent);
-  --ccd-stats-heat-2: color-mix(in srgb, var(--ccd-stats-heat-ink) 40%, transparent);
-  --ccd-stats-heat-3: color-mix(in srgb, var(--ccd-stats-heat-ink) 65%, transparent);
-  --ccd-stats-heat-4: color-mix(in srgb, var(--ccd-stats-heat-ink) 100%, transparent);
+  --ccd-stats-heat-1: hsl(217 70% 72%);
+  --ccd-stats-heat-2: hsl(217 70% 64%);
+  --ccd-stats-heat-3: hsl(217 70% 56%);
+  --ccd-stats-heat-4: hsl(217 70% 48%);
   /* The `Models` view colours its bars and legend by rank:
      `hsl(217 70% min(88, 58 + 7n)%)`, which flattens into these six shades. */
   --ccd-stats-model-1: hsl(217 70% 58%);
@@ -346,8 +344,8 @@ html[data-dsh-ccd-style="true"] {
   --ccd-stats-model-6: hsl(217 70% 88%);
   /* Tooltips are the reference's dark popup in both themes; on a dark panel it
      steps up to a mid grey so the box keeps its contrast. */
-  --ccd-stats-tip-bg: var(--ccd-text);
-  --ccd-stats-tip-fg: var(--ccd-card);
+  --ccd-stats-tip-bg: #0c0c0c;
+  --ccd-stats-tip-fg: #f7f7f5;
 
   /* Assistant Markdown palette matched to the CCD transcript reference. */
   --ccd-link: #3b56d9;
@@ -749,17 +747,15 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
 
   /* Statistics card, dark side: the same stacked greys over this canvas, and
      the heat ramp raised one step so the steps stay visible on a dark panel. */
-  --ccd-stats-panel: color-mix(in srgb, var(--ccd-text) 4%, var(--ccd-card));
-  --ccd-stats-tile: color-mix(in srgb, var(--ccd-text) 15%, var(--ccd-card));
-  --ccd-stats-tab: color-mix(in srgb, var(--ccd-text) 10%, var(--ccd-card));
+  --ccd-stats-panel: #2b2b2f;
+  --ccd-stats-tile: #38383d;
+  --ccd-stats-tab: #35353a;
   --ccd-stats-label: #92929b;
   --ccd-stats-value: #f0f0f3;
-  --ccd-stats-heat-base: color-mix(in srgb, var(--ccd-text) 11%, transparent);
-  --ccd-stats-heat-ink: #8fa4ff;
-  --ccd-stats-heat-1: color-mix(in srgb, var(--ccd-stats-heat-ink) 20%, transparent);
-  --ccd-stats-heat-2: color-mix(in srgb, var(--ccd-stats-heat-ink) 40%, transparent);
-  --ccd-stats-heat-3: color-mix(in srgb, var(--ccd-stats-heat-ink) 65%, transparent);
-  --ccd-stats-heat-4: color-mix(in srgb, var(--ccd-stats-heat-ink) 100%, transparent);
+  --ccd-stats-heat-1: hsl(217 62% 78%);
+  --ccd-stats-heat-2: hsl(217 64% 70%);
+  --ccd-stats-heat-3: hsl(217 66% 62%);
+  --ccd-stats-heat-4: hsl(217 70% 54%);
   /* Model ramp, raised for the dark panel; six distinct steps, as the light
      theme's clamped ramp produces. */
   --ccd-stats-model-1: hsl(217 62% 70%);
@@ -768,8 +764,8 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-stats-model-4: hsl(217 68% 84%);
   --ccd-stats-model-5: hsl(217 70% 87%);
   --ccd-stats-model-6: hsl(217 70% 89%);
-  --ccd-stats-tip-bg: var(--ccd-text);
-  --ccd-stats-tip-fg: var(--ccd-card);
+  --ccd-stats-tip-bg: #454542;
+  --ccd-stats-tip-fg: #f7f7f5;
 
   /* Assistant Markdown palette, lightened for a dark transcript. */
   --ccd-link: #8fa4ff;

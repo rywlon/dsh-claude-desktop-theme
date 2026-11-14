@@ -86,6 +86,32 @@ test('day counts land on their own weekday row and scale against the busiest day
   assert.equal(window.heat[indexOf(NOW)]?.date, key(NOW.getDate()));
 });
 
+test('the heatmap scales by per-day tokens, not prompt counts', () => {
+  const snap = snapshot({
+    days: [[key(29), 99]],
+    modelDays: [[key(29), 'p/m', 1000], [key(29), 'p/other', 2000], [key(28), 'p/m', 500]],
+  });
+  const data = buildCardData(snap, { tab: 'overview', range: 'all' }, () => 0, NOW);
+  const heat = data.overview?.heat ?? [];
+  const end = new Date(NOW);
+  end.setDate(end.getDate() + (6 - end.getDay()));
+  const start = new Date(end);
+  start.setDate(start.getDate() - (HEAT_DAYS - 1));
+  const indexOf = (date: Date) =>
+    Math.floor(Math.round((date.getTime() - start.getTime()) / 86_400_000) / 7) * 7 + date.getDay();
+  const day = (offset: number) => {
+    const date = new Date(NOW);
+    date.setDate(date.getDate() - offset);
+    return date;
+  };
+  const busy = day(1);
+  const quiet = day(2);
+  assert.equal(heat[indexOf(busy)]?.count, 3000);
+  assert.equal(heat[indexOf(busy)]?.level, 4);
+  assert.equal(heat[indexOf(quiet)]?.count, 500);
+  assert.equal(heat[indexOf(quiet)]?.level, 1);
+});
+
 test('a window with no activity is entirely empty', () => {
   const window = heatWindow([], NOW);
   assert.deepEqual([...new Set(window.heat.map(cell => cell.level))], [0, null]);
@@ -106,9 +132,9 @@ test('counts and compact tokens use Chinese dates and a 24-hour clock', () => {
   assert.equal(formatDayLabel('2026-09-30'), '9月30日');
 });
 
-test('the heatmap tooltip uses Chinese dates', () => {
-  assert.equal(heatTip('2026-09-30', 1387), '9月30日 \u2014 1,387');
-  assert.equal(heatTip('2026-10-03', 0), '10月3日 \u2014 0');
+test('the heatmap tooltip quotes the day\u2019s tokens', () => {
+  assert.equal(heatTip('2026-09-30', 1_387_000), '9月30日 \u2014 1.4M Token');
+  assert.equal(heatTip('2026-10-03', 0), '10月3日 \u2014 0 Token');
 });
 
 test('the card data uses Chinese labels and keeps tile order and hidden metrics', () => {
@@ -142,7 +168,7 @@ test('English statistics localize labels, dates, legends and book notes without 
   assert.equal(english.overview!.note, "You've used about 22413× as many tokens as The Little Prince.");
   assert.equal(bookNote(22_000, () => 0, 'en'), "You've used about as many tokens as The Little Prince.");
   assert.equal(bookNote(1000, () => 0, 'en'), null);
-  assert.equal(heatTip('2026-09-30', 1387, 'en'), 'Sep 30 — 1,387');
+  assert.equal(heatTip('2026-09-30', 1_387_000, 'en'), 'Sep 30 \u2014 1.4M tokens');
   assert.equal(buildModels(snap, 'all', NOW, 'en').legend[0]?.usage, 'Input 400 · Output 200');
 });
 

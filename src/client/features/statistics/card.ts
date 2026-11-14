@@ -17,7 +17,7 @@
  * `theme/tokens.css`).
  */
 import type { StatsRangeId } from '../../../shared/stats.ts';
-import { formatCount, formatDayLabel, formatTokens } from './format.ts';
+import { formatDayLabel, formatTokens } from './format.ts';
 import { STATS_COPY } from './locales.ts';
 
 /** Marks the card container; the compatibility layer positions it. */
@@ -155,14 +155,15 @@ export function heatLevel(value: number, peak: number): number {
 }
 
 /**
- * The heatmap's tooltip line, exactly the reference's copy: `Sep 30 — 1,387`.
+ * The heatmap's tooltip line: `9月30日 — 1.4k Token`.
  *
  * @param date - local day key.
- * @param count - that day's count.
+ * @param tokens - tokens that day produced.
  * @returns the line the tooltip shows.
  */
-export function heatTip(date: string, count: number, language: 'zh' | 'en' = 'zh'): string {
-  return `${formatDayLabel(date, language)} \u2014 ${formatCount(count)}`;
+export function heatTip(date: string, tokens: number, language: 'zh' | 'en' = 'zh'): string {
+  const unit = language === 'en' ? 'tokens' : 'Token';
+  return `${formatDayLabel(date, language)} \u2014 ${formatTokens(tokens)} ${unit}`;
 }
 
 /** One segmented control: buttons in a labelled group, the active one pilled. */
