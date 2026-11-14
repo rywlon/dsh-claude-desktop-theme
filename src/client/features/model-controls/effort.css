@@ -1,4 +1,7 @@
-/* Adapted from zanwei/claude-model-selector (MIT). See LICENSE. */
+/*
+ * Effort popover. The card, the 30px rail and the 16×30 knob follow the
+ * claude-style popover (MIT); the palette is Minimal Style's own.
+ */
 
 .ccd-effort {
   --effort-accent: var(--ccd-effort-color-1);
@@ -7,17 +10,24 @@
   --effort-muted: var(--ccd-effort-color-5);
   --effort-track: var(--ccd-effort-color-6);
   --effort-track-fill: var(--ccd-effort-color-7);
-  --effort-progress: 0;
-  --effort-thumb-w: 16px;
-  --effort-thumb-h: 20px;
-  --effort-track-pad: 0px;
-  --effort-track-radius: 6px;
   --effort-surface: var(--ccd-effort-color-8);
   --effort-outline: var(--ccd-effort-color-9);
+  --effort-progress: 0;
+  --effort-thumb-w: 16px;
+  --effort-thumb-h: 30px;
+  --effort-track-pad: 0px;
+  --effort-track-radius: 8px;
   --ease-decay: cubic-bezier(0.2, 0, 0, 1);
+  position: fixed;
+  z-index: 1000;
   display: block;
-  width: min(220px, calc(100vw - 24px));
+  width: min(262px, calc(100vw - 24px));
   max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
   color: var(--effort-text);
   font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: calc(12px * var(--ccd-font-scale, 1));
@@ -27,61 +37,52 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ccd-effort *, .ccd-effort *::before, .ccd-effort *::after {
+.ccd-effort *,
+.ccd-effort *::before,
+.ccd-effort *::after {
   box-sizing: border-box;
 }
 
-.ccd-effort button, .ccd-effort input {
+.ccd-effort button,
+.ccd-effort input {
   font: inherit;
 }
 
+/* The popover card: 6px outer padding + 3/7/4 inner, as the reference. */
 .ccd-effort .panel {
-  position: absolute;
-  z-index: 4;
-  right: 0;
-  bottom: 3.25rem;
   width: 100%;
-  padding: 12px;
+  padding: 12px 13px 12px;
   border: 1px solid var(--effort-outline);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--effort-surface);
-  box-shadow:
-    0 1px 2px var(--ccd-effort-color-11),
-    0 4px 10px var(--ccd-effort-color-12),
-    0 12px 28px var(--ccd-effort-color-13);
-  opacity: 1;
-  transform: translateY(0);
-  transition-property: opacity, transform;
-  transition-duration: 120ms;
-  transition-timing-function: ease-in;
+  box-shadow: var(--ccd-effort-shadow);
 }
 
 .ccd-effort .header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  min-height: 20px;
-  gap: 8px;
+  min-height: calc(16px * var(--ccd-font-scale, 1));
+  gap: 6px;
 }
 
 .ccd-effort .title {
   display: flex;
   align-items: baseline;
   min-width: 0;
-  color: var(--effort-text);
+  color: var(--effort-muted);
   font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
+  line-height: calc(16px * var(--ccd-font-scale, 1));
+  letter-spacing: 0;
 }
 
 .ccd-effort .level-stage {
   position: relative;
   display: inline-block;
-  height: 1.3em;
-  margin-left: 8px;
-  color: var(--effort-text-strong);
+  height: calc(16px * var(--ccd-font-scale, 1));
+  margin-left: 6px;
+  color: var(--effort-accent);
   line-height: inherit;
   vertical-align: baseline;
 }
@@ -128,108 +129,27 @@
   filter: blur(2px);
 }
 
-.ccd-effort[data-ultra] .level-current {
-  color: var(--effort-accent);
-}
-
-.ccd-effort .help-wrap {
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.ccd-effort .help-button {
-  position: relative;
-  display: grid;
-  width: 20px;
-  height: 20px;
-  margin: 0;
-  padding: 2px;
-  place-items: center;
-  border: 0;
-  border-radius: 6px;
-  background: transparent;
-  color: var(--effort-muted);
-  cursor: help;
-  transition-property: color, background-color, scale;
-  transition-duration: 150ms;
-  transition-timing-function: ease-out;
-}
-
-.ccd-effort .help-button:hover {
-  color: var(--ccd-effort-color-14);
-  background: var(--ccd-effort-color-15);
-}
-
-.ccd-effort .help-button:active {
-  scale: 0.96;
-}
-
-.ccd-effort .help-button:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--effort-accent) 35%, transparent);
-  outline-offset: 2px;
-}
-
-.ccd-effort .help-button svg {
-  width: 14px;
-  height: 14px;
-}
-
-.ccd-effort .tooltip {
-  position: absolute;
-  z-index: 8;
-  top: auto;
-  bottom: calc(100% + 6px);
-  right: 0;
-  width: min(220px, calc(100vw - 24px));
-  padding: 10px 12px;
-  border: 1px solid var(--ccd-effort-color-16);
-  border-radius: 0.5rem;
-  background: var(--ccd-effort-color-17);
-  box-shadow:
-    0 2px 5px var(--ccd-effort-color-18),
-    0 8px 18px var(--ccd-effort-color-18);
-  color: var(--ccd-effort-color-19);
-  font-size: calc(12px * var(--ccd-font-scale, 1));
-  font-weight: 450;
-  line-height: 1.35;
-  text-wrap: pretty;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-2px);
-  transition-property: opacity, transform, visibility;
-  transition-duration: 120ms;
-  transition-timing-function: ease-in;
-}
-
-.ccd-effort .help-wrap:hover .tooltip,
-.ccd-effort .help-button:focus-visible + .tooltip,
-.ccd-effort .help-wrap[data-tip-open] .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition-timing-function: ease-out;
-}
-
+/* The two ends sit above the rail, as 11px captions. */
 .ccd-effort .axis {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
   color: var(--effort-muted);
-  font-size: calc(12px * var(--ccd-font-scale, 1));
+  font-size: calc(11px * var(--ccd-font-scale, 1));
   font-weight: 400;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  line-height: calc(14px * var(--ccd-font-scale, 1));
+  letter-spacing: 0;
+  margin-top: 2px;
 }
 
 .ccd-effort .track-shell {
   position: relative;
-  height: 32px;
-  margin-top: 2px;
+  height: calc(30px * var(--ccd-font-scale, 1));
+  margin-top: 3px;
 }
 
 .ccd-effort .track {
   position: absolute;
-  inset: 6px 0;
+  inset: calc(2px * var(--ccd-font-scale, 1)) 0;
   overflow: hidden;
   border-radius: var(--effort-track-radius);
   background-color: var(--effort-track);
@@ -238,9 +158,9 @@
 .ccd-effort .track-fill {
   position: absolute;
   z-index: 0;
-  top: 0;
-  bottom: 0;
+  top: 50%;
   left: 0;
+  height: calc(26px * var(--ccd-font-scale, 1));
   width: calc(
     (100% - (var(--effort-track-pad) * 2) - var(--effort-thumb-w))
       * var(--effort-progress, 0)
@@ -248,6 +168,7 @@
   );
   border-radius: var(--effort-track-radius) 0 0 var(--effort-track-radius);
   background: var(--effort-track-fill);
+  transform: translateY(-50%);
   pointer-events: none;
   transition-property: opacity;
   transition-duration: 200ms;
@@ -258,6 +179,7 @@
   opacity: 0;
 }
 
+/* The apex rail: a violet-to-blue wash under the pixel field. */
 .ccd-effort .track::before {
   content: "";
   position: absolute;
@@ -322,40 +244,20 @@
   align-items: center;
   justify-content: space-between;
   pointer-events: none;
-}
-
-.ccd-effort .tick {
-  width: 3px;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--ccd-effort-color-32);
-  opacity: 0.82;
   transition-property: opacity;
-  transition-duration: 180ms;
+  transition-duration: 200ms;
   transition-timing-function: var(--ease-decay);
 }
 
-.ccd-effort[data-ultra] .tick {
+.ccd-effort .tick {
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ccd-effort-color-32);
+}
+
+.ccd-effort[data-ultra] .ticks {
   opacity: 0;
-}
-
-.ccd-effort .tick.is-default {
-  height: 9px;
-}
-
-.ccd-effort .default-marker-row {
-  height: 16px;
-  color: var(--effort-muted);
-  line-height: calc(16px * var(--ccd-font-scale, 1));
-  text-align: center;
-}
-
-.ccd-effort .default-marker {
-  transition: color 150ms ease-out;
-}
-
-.ccd-effort .default-marker.is-selected {
-  color: var(--ccd-text);
 }
 
 .ccd-effort .range {
@@ -386,16 +288,20 @@
   margin-top: 0;
   appearance: none;
   -webkit-appearance: none;
-  border: 1px solid var(--ccd-effort-color-33);
-  border-radius: 6px;
+  border: 0;
+  border-radius: 5px;
   background: var(--ccd-effort-color-19);
   box-shadow:
-    0 1px 2px var(--ccd-effort-color-34),
-    0 4px 10px var(--ccd-effort-color-35);
+    0 1px 3px var(--ccd-effort-color-34),
+    0 0 0 1px var(--ccd-effort-color-33);
   cursor: ew-resize;
-  transition-property: transform;
+  transition-property: transform, box-shadow, background-color;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
+}
+
+.ccd-effort .range:active::-webkit-slider-thumb {
+  transform: scale(1.06);
 }
 
 .ccd-effort .range::-moz-range-track {
@@ -411,43 +317,72 @@
 .ccd-effort .range::-moz-range-thumb {
   width: var(--effort-thumb-w);
   height: var(--effort-thumb-h);
-  border: 1px solid var(--ccd-effort-color-33);
-  border-radius: 6px;
+  border: 0;
+  border-radius: 5px;
   background: var(--ccd-effort-color-19);
   box-shadow:
-    0 1px 2px var(--ccd-effort-color-34),
-    0 4px 10px var(--ccd-effort-color-35);
+    0 1px 3px var(--ccd-effort-color-34),
+    0 0 0 1px var(--ccd-effort-color-33);
   cursor: ew-resize;
-  transition-property: transform;
+  transition-property: transform, box-shadow, background-color;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
 }
 
+.ccd-effort .range:active::-moz-range-thumb {
+  transform: scale(1.06);
+}
+
+/* The apex knob carries the accent instead of the card white. */
+.ccd-effort[data-ultra] .range::-webkit-slider-thumb {
+  background: color-mix(in srgb, var(--effort-accent) 22%, var(--ccd-effort-color-19));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--effort-accent) 40%, transparent),
+    0 0 10px color-mix(in srgb, var(--effort-accent) 35%, transparent),
+    0 1px 3px var(--ccd-effort-color-34);
+}
+
+.ccd-effort[data-ultra] .range::-moz-range-thumb {
+  background: color-mix(in srgb, var(--effort-accent) 22%, var(--ccd-effort-color-19));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--effort-accent) 40%, transparent),
+    0 0 10px color-mix(in srgb, var(--effort-accent) 35%, transparent),
+    0 1px 3px var(--ccd-effort-color-34);
+}
+
 .ccd-effort .range:focus-visible::-webkit-slider-thumb {
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--effort-accent) 30%, transparent),
-    0 1px 2px var(--ccd-effort-color-34),
-    0 4px 10px var(--ccd-effort-color-35);
+    0 0 0 2px color-mix(in srgb, var(--effort-accent) 22%, transparent),
+    0 1px 3px var(--ccd-effort-color-34);
 }
 
 .ccd-effort .range:focus-visible::-moz-range-thumb {
   box-shadow:
-    0 0 0 3px color-mix(in srgb, var(--effort-accent) 30%, transparent),
-    0 1px 2px var(--ccd-effort-color-34),
-    0 4px 10px var(--ccd-effort-color-35);
+    0 0 0 2px color-mix(in srgb, var(--effort-accent) 22%, transparent),
+    0 1px 3px var(--ccd-effort-color-34);
+}
+
+.ccd-effort .level-stage::after {
+  content: attr(data-longest);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.ccd-effort .selection-error {
+  margin-top: 6px;
+  color: var(--effort-muted);
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  overflow-wrap: anywhere;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ccd-effort .level-current,
   .ccd-effort .level-outgoing,
-  .ccd-effort .panel,
   .ccd-effort .track::before,
   .ccd-effort .track-fill,
-  .ccd-effort .default-marker,
+  .ccd-effort .ticks,
   .ccd-effort .range::-webkit-slider-thumb,
-  .ccd-effort .range::-moz-range-thumb,
-  .ccd-effort .help-button,
-  .ccd-effort .tooltip {
+  .ccd-effort .range::-moz-range-thumb {
     transition-duration: 0.001ms;
   }
 
@@ -459,12 +394,3 @@
     display: none;
   }
 }
-
-.ccd-effort .panel { position: static; width: 100%; }
-.ccd-effort { position: fixed; z-index: 1000; margin: 0; padding: 0; border: 0; background: transparent; overflow: visible; }
-.ccd-effort .level-stage::after {
-  content: attr(data-longest);
-  visibility: hidden;
-  pointer-events: none;
-}
-.ccd-effort .selection-error { margin-top: 8px; color: var(--ccd-text-secondary); font-size: calc(12px * var(--ccd-font-scale, 1)); overflow-wrap: anywhere; }

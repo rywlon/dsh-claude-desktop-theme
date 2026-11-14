@@ -28,13 +28,13 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] {
   /* Header to body. Together with the 8px padding above it and the 20px header
      this puts the first tile row ~40px below the card's top edge, which is the
      proportion the reference shows. */
-  gap: 8px;
+  gap: 12px;
   width: min(480px, calc(100% - 32px));
   flex-shrink: 0;
   margin: var(--ccd-hero-stats-margin, 20px 16px);
-  padding: 8px 12px 12px;
-  border: 1px solid var(--ccd-border-soft);
-  border-radius: 8px;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
   background: var(--ccd-stats-panel);
   font-family: var(--ccd-font-ui);
   pointer-events: auto;
@@ -63,16 +63,16 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-seg-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 20px;
-  padding: 0 6px;
+  height: auto;
+  padding: 1px 8px;
   border: 0;
-  border-radius: 4px;
+  border-radius: 5px;
   background: none;
   color: var(--ccd-stats-label);
   font-family: inherit;
-  font-size: calc(13px * var(--ccd-font-scale, 1));
+  font-size: calc(12px * var(--ccd-font-scale, 1));
   font-weight: 500;
-  line-height: calc(20px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
@@ -99,7 +99,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-overview {
   gap: 6px;
 }
 
-/* The 3×2 tile grid: 4px gutters, 44px tiles, 5px corners. */
+/* The 3×2 tile grid: 4px gutters, a 5/8 pad and 8px corners. */
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tiles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -111,9 +111,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tile {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-height: 44px;
-  padding: 4px;
-  border-radius: 5px;
+  padding: 5px 8px;
+  border-radius: 8px;
   background: var(--ccd-stats-tile);
 }
 
@@ -121,7 +120,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-label {
   overflow: hidden;
   color: var(--ccd-stats-label);
   font-size: calc(12px * var(--ccd-font-scale, 1));
-  line-height: calc(15px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -130,18 +129,18 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-value {
   overflow: hidden;
   color: var(--ccd-stats-value);
   font-size: calc(13px * var(--ccd-font-scale, 1));
-  font-weight: 580;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
-  line-height: calc(19px * var(--ccd-font-scale, 1));
+  line-height: calc(18px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 /* `Favorite model` prints one size down, as the reference does. */
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-value-small {
-  font-size: calc(12px * var(--ccd-font-scale, 1));
-  font-weight: 500;
-  line-height: calc(17px * var(--ccd-font-scale, 1));
+  font-size: calc(13px * var(--ccd-font-scale, 1));
+  font-weight: 400;
+  line-height: calc(18px * var(--ccd-font-scale, 1));
 }
 
 /* Contribution heatmap: 26 columns of 7 square cells, 3px gutters. */
@@ -161,8 +160,8 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-heat-col {
 
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-heat-cell {
   aspect-ratio: 1;
-  border-radius: 2px;
-  background: var(--ccd-stats-tile);
+  border-radius: 3px;
+  background: var(--ccd-stats-heat-base);
 }
 
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-heat-cell[data-level="1"] {
@@ -188,10 +187,10 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-heat-cell[data-
 
 html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-note {
   margin: 0;
-  padding-top: 4px;
+  padding-top: 0;
   color: var(--ccd-stats-label);
-  font-size: calc(11px * var(--ccd-font-scale, 1));
-  line-height: calc(17px * var(--ccd-font-scale, 1));
+  font-size: calc(12px * var(--ccd-font-scale, 1));
+  line-height: calc(16px * var(--ccd-font-scale, 1));
 }
 
 /* Models view: the chart group keeps the reference's 5px rhythm. */
@@ -213,7 +212,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-chart {
   grid-template-rows: minmax(0, 1fr) auto;
   column-gap: 11px;
   row-gap: 12px;
-  height: 160px;
+  height: 152px;
   padding: 8px 10px 5px 3px;
   color: var(--ccd-stats-label);
   font-size: calc(11px * var(--ccd-font-scale, 1));
@@ -374,13 +373,13 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tooltip {
   left: 0;
   display: none;
   max-width: 320px;
-  padding: 4px 8px;
-  border-radius: 6px;
+  padding: 5px 10px;
+  border-radius: 8px;
   background: var(--ccd-stats-tip-bg);
   color: var(--ccd-stats-tip-fg);
   font-size: calc(13px * var(--ccd-font-scale, 1));
-  font-weight: 600;
-  line-height: calc(16px * var(--ccd-font-scale, 1));
+  font-weight: 500;
+  line-height: calc(18px * var(--ccd-font-scale, 1));
   white-space: nowrap;
   pointer-events: none;
 }
@@ -395,7 +394,7 @@ html[data-dsh-ccd-style="true"] [data-ccd-stats-card] .ccd-stats-tip-row {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: calc(12px * var(--ccd-font-scale, 1));
+  font-size: calc(13px * var(--ccd-font-scale, 1));
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }

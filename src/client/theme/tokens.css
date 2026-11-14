@@ -322,18 +322,20 @@ html[data-dsh-ccd-style="true"] {
      equivalents. The four heat levels are the reference's own `hsl(217 70% L%)`
      with L = 72／64／56／48, i.e. "that day's value / the busiest day" in four
      equal steps. */
-  --ccd-stats-panel: #f1f1f2;
-  --ccd-stats-tile: #dadadb;
+  --ccd-stats-panel: color-mix(in srgb, var(--ccd-text) 4%, var(--ccd-card));
+  --ccd-stats-tile: color-mix(in srgb, var(--ccd-text) 15%, var(--ccd-card));
   /* The card header's active tab: the reference paints `fill-ghost-hover`, the
      same 5% black as the card itself, over the card — one step lighter than a
      stat tile. */
-  --ccd-stats-tab: #e7e7e9;
+  --ccd-stats-tab: color-mix(in srgb, var(--ccd-text) 10%, var(--ccd-card));
   --ccd-stats-label: #8a8a91;
   --ccd-stats-value: #0d0d0f;
-  --ccd-stats-heat-1: hsl(217 70% 72%);
-  --ccd-stats-heat-2: hsl(217 70% 64%);
-  --ccd-stats-heat-3: hsl(217 70% 56%);
-  --ccd-stats-heat-4: hsl(217 70% 48%);
+  --ccd-stats-heat-base: color-mix(in srgb, var(--ccd-text) 11%, transparent);
+  --ccd-stats-heat-ink: #3b6ecf;
+  --ccd-stats-heat-1: color-mix(in srgb, var(--ccd-stats-heat-ink) 20%, transparent);
+  --ccd-stats-heat-2: color-mix(in srgb, var(--ccd-stats-heat-ink) 40%, transparent);
+  --ccd-stats-heat-3: color-mix(in srgb, var(--ccd-stats-heat-ink) 65%, transparent);
+  --ccd-stats-heat-4: color-mix(in srgb, var(--ccd-stats-heat-ink) 100%, transparent);
   /* The `Models` view colours its bars and legend by rank:
      `hsl(217 70% min(88, 58 + 7n)%)`, which flattens into these six shades. */
   --ccd-stats-model-1: hsl(217 70% 58%);
@@ -344,8 +346,8 @@ html[data-dsh-ccd-style="true"] {
   --ccd-stats-model-6: hsl(217 70% 88%);
   /* Tooltips are the reference's dark popup in both themes; on a dark panel it
      steps up to a mid grey so the box keeps its contrast. */
-  --ccd-stats-tip-bg: #0c0c0c;
-  --ccd-stats-tip-fg: #f7f7f5;
+  --ccd-stats-tip-bg: var(--ccd-text);
+  --ccd-stats-tip-fg: var(--ccd-card);
 
   /* Assistant Markdown palette matched to the CCD transcript reference. */
   --ccd-link: #3b56d9;
@@ -747,15 +749,17 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
 
   /* Statistics card, dark side: the same stacked greys over this canvas, and
      the heat ramp raised one step so the steps stay visible on a dark panel. */
-  --ccd-stats-panel: #2b2b2f;
-  --ccd-stats-tile: #38383d;
-  --ccd-stats-tab: #35353a;
+  --ccd-stats-panel: color-mix(in srgb, var(--ccd-text) 4%, var(--ccd-card));
+  --ccd-stats-tile: color-mix(in srgb, var(--ccd-text) 15%, var(--ccd-card));
+  --ccd-stats-tab: color-mix(in srgb, var(--ccd-text) 10%, var(--ccd-card));
   --ccd-stats-label: #92929b;
   --ccd-stats-value: #f0f0f3;
-  --ccd-stats-heat-1: hsl(217 62% 78%);
-  --ccd-stats-heat-2: hsl(217 64% 70%);
-  --ccd-stats-heat-3: hsl(217 66% 62%);
-  --ccd-stats-heat-4: hsl(217 70% 54%);
+  --ccd-stats-heat-base: color-mix(in srgb, var(--ccd-text) 11%, transparent);
+  --ccd-stats-heat-ink: #8fa4ff;
+  --ccd-stats-heat-1: color-mix(in srgb, var(--ccd-stats-heat-ink) 20%, transparent);
+  --ccd-stats-heat-2: color-mix(in srgb, var(--ccd-stats-heat-ink) 40%, transparent);
+  --ccd-stats-heat-3: color-mix(in srgb, var(--ccd-stats-heat-ink) 65%, transparent);
+  --ccd-stats-heat-4: color-mix(in srgb, var(--ccd-stats-heat-ink) 100%, transparent);
   /* Model ramp, raised for the dark panel; six distinct steps, as the light
      theme's clamped ramp produces. */
   --ccd-stats-model-1: hsl(217 62% 70%);
@@ -764,8 +768,8 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
   --ccd-stats-model-4: hsl(217 68% 84%);
   --ccd-stats-model-5: hsl(217 70% 87%);
   --ccd-stats-model-6: hsl(217 70% 89%);
-  --ccd-stats-tip-bg: #454542;
-  --ccd-stats-tip-fg: #f7f7f5;
+  --ccd-stats-tip-bg: var(--ccd-text);
+  --ccd-stats-tip-fg: var(--ccd-card);
 
   /* Assistant Markdown palette, lightened for a dark transcript. */
   --ccd-link: #8fa4ff;
@@ -824,19 +828,19 @@ html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
 
 /* Reference card neutrals and zanwei pixel palette (MIT); canvas reads the pixel tokens. */
 html[data-dsh-ccd-style="true"] {
-  --ccd-effort-color-1: #8c73c9;
-  --ccd-effort-color-2: #a17ec2;
-  --ccd-effort-color-3: #898782;
-  --ccd-effort-color-4: #000000;
-  --ccd-effort-color-5: #898782;
-  --ccd-effort-color-6: #e6e6e6;
-  --ccd-effort-color-7: #bababa;
+  --ccd-effort-color-1: #4d6bfe;
+  --ccd-effort-color-2: #7a8ef0;
+  --ccd-effort-color-3: #3f434e;
+  --ccd-effort-color-4: #131416;
+  --ccd-effort-color-5: #848891;
+  --ccd-effort-color-6: #ebedf2;
+  --ccd-effort-color-7: #bcc2d0;
   --ccd-effort-color-8: #ffffff;
-  --ccd-effort-color-9: #d9d9d9;
+  --ccd-effort-color-9: #dde3f1;
   --ccd-effort-color-10: #2788d6;
-  --ccd-effort-color-11: rgba(62, 56, 50, 0.05);
-  --ccd-effort-color-12: rgba(62, 56, 50, 0.04);
-  --ccd-effort-color-13: rgba(62, 56, 50, 0.06);
+  --ccd-effort-color-11: rgba(16, 20, 34, 0.05);
+  --ccd-effort-color-12: rgba(16, 20, 34, 0.04);
+  --ccd-effort-color-13: rgba(16, 20, 34, 0.07);
   --ccd-effort-color-14: #74706d;
   --ccd-effort-color-15: rgba(82, 76, 70, 0.055);
   --ccd-effort-color-16: rgba(76, 70, 65, 0.1);
@@ -844,30 +848,30 @@ html[data-dsh-ccd-style="true"] {
   --ccd-effort-color-18: rgba(35, 31, 29, 0.12);
   --ccd-effort-color-19: #fff;
   --ccd-effort-color-20: rgba(70, 64, 59, 0.035);
-  --ccd-effort-color-21: #eeebe9;
-  --ccd-effort-color-22: #ece9e7;
-  --ccd-effort-color-23: #e2dce3;
-  --ccd-effort-color-24: #d9d0df;
-  --ccd-effort-color-25: #d0c1da;
-  --ccd-effort-color-26: #cdbcd9;
-  --ccd-effort-color-27: #cbbad8;
-  --ccd-effort-color-28: #d5cadc;
-  --ccd-effort-color-29: #c8b5d4;
-  --ccd-effort-color-30: #bda6cc;
-  --ccd-effort-color-31: #b59bc6;
-  --ccd-effort-color-32: rgba(0, 0, 0, 0.29);
-  --ccd-effort-color-33: rgba(0, 0, 0, 0.15);
-  --ccd-effort-color-34: rgba(62, 56, 50, 0.08);
-  --ccd-effort-color-35: rgba(62, 56, 50, 0.055);
-  --ccd-effort-pixel-leftColor: 210, 206, 214;
-  --ccd-effort-pixel-deepViolet: 156, 120, 192;
-  --ccd-effort-pixel-deepMid: 156, 132, 192;
-  --ccd-effort-pixel-midPurple: 168, 144, 204;
-  --ccd-effort-pixel-softMid: 168, 156, 204;
-  --ccd-effort-pixel-softLilac: 180, 168, 204;
-  --ccd-effort-pixel-paleCool: 192, 180, 204;
-  --ccd-effort-pixel-highlightColor: 216, 204, 228;
-  --ccd-effort-pixel-peakColor: 232, 224, 242;
+  --ccd-effort-color-21: #262c3a;
+  --ccd-effort-color-22: #2a3140;
+  --ccd-effort-color-23: #2f3748;
+  --ccd-effort-color-24: #353e52;
+  --ccd-effort-color-25: #3b455c;
+  --ccd-effort-color-26: #414c66;
+  --ccd-effort-color-27: #47536f;
+  --ccd-effort-color-28: #3d4860;
+  --ccd-effort-color-29: #455272;
+  --ccd-effort-color-30: #4c5a7e;
+  --ccd-effort-color-31: #546289;
+  --ccd-effort-color-32: rgba(16, 20, 34, 0.29);
+  --ccd-effort-color-33: rgba(16, 20, 34, 0.06);
+  --ccd-effort-color-34: rgba(16, 20, 34, 0.24);
+  --ccd-effort-color-35: rgba(16, 20, 34, 0.055);
+  --ccd-effort-pixel-leftColor: 90, 98, 118;
+  --ccd-effort-pixel-deepViolet: 96, 130, 220;
+  --ccd-effort-pixel-deepMid: 104, 140, 226;
+  --ccd-effort-pixel-midPurple: 116, 152, 232;
+  --ccd-effort-pixel-softMid: 128, 164, 238;
+  --ccd-effort-pixel-softLilac: 140, 176, 242;
+  --ccd-effort-pixel-paleCool: 154, 188, 246;
+  --ccd-effort-pixel-highlightColor: 176, 204, 250;
+  --ccd-effort-pixel-peakColor: 202, 220, 254;
 }
 
 html[data-dsh-ccd-style="true"] {
@@ -881,15 +885,15 @@ html[data-dsh-ccd-style="true"] {
  * The translucent ticks adapt to both the filled and unfilled track.
  */
 html[data-dsh-ccd-style="true"] body[data-ds-dark-theme] {
-  --ccd-effort-color-1: #a48ede;
-  --ccd-effort-color-2: #b294d3;
-  --ccd-effort-color-3: #898782;
-  --ccd-effort-color-4: #eeeeee;
-  --ccd-effort-color-5: #898782;
-  --ccd-effort-color-6: #373736;
-  --ccd-effort-color-7: #7d7d7c;
-  --ccd-effort-color-8: #20201f;
-  --ccd-effort-color-9: rgba(255, 255, 255, 0.1);
+  --ccd-effort-color-1: #8fa4ff;
+  --ccd-effort-color-2: #9fb3ff;
+  --ccd-effort-color-3: #3f434e;
+  --ccd-effort-color-4: #f4f9ff;
+  --ccd-effort-color-5: #848891;
+  --ccd-effort-color-6: #262a33;
+  --ccd-effort-color-7: #4a5568;
+  --ccd-effort-color-8: #1d2028;
+  --ccd-effort-color-9: rgba(255, 255, 255, 0.12);
   --ccd-effort-color-10: #4d93f8;
   --ccd-effort-color-11: rgba(0, 0, 0, 0.45);
   --ccd-effort-color-12: rgba(0, 0, 0, 0.35);
